@@ -1,6 +1,5 @@
 "use client";
 
-import Image from "next/image";
 import { motion } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
@@ -14,14 +13,16 @@ export default function Hero() {
         transition={{ duration: 5, ease: EASE }}
         className="absolute inset-0"
       >
-        <Image
-          src="/images/hero-main.jpg"
-          alt="A wedding ritual in Pushkar, Rajasthan, at golden hour"
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          poster="/images/hero-main.jpg"
+          className="h-full w-full object-cover"
+        >
+          <source src="/videos/hero-bg.mp4" type="video/mp4" />
+        </video>
       </motion.div>
 
       {/* Cinematic overlay for legibility */}

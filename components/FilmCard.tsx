@@ -18,7 +18,7 @@ export default function FilmCard({ film }: FilmCardProps) {
         data-cursor="play"
         className="group relative block w-full overflow-hidden text-left"
       >
-        <div className="relative aspect-video w-full overflow-hidden bg-ink">
+        <div className="relative aspect-[9/16] w-full overflow-hidden bg-ink">
           <Image
             src={film.thumbnail}
             alt={film.title}

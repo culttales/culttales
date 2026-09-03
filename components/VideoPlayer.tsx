@@ -55,7 +55,7 @@ export default function VideoPlayer({ open, onClose, poster, title, src }: Video
             initial={{ scale: 0.97, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
             transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
-            className="relative aspect-video w-full max-w-5xl overflow-hidden bg-black"
+            className="relative aspect-[9/16] w-full max-w-sm md:max-w-md overflow-hidden bg-black"
           >
             {src ? (
               <video

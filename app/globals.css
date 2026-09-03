@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --ease-cinema: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #0b0b0b;
+  color: #f4f1ea;
+  font-family: var(--font-inter), Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: #f4f1ea;
+  color: #0b0b0b;
+}
+
+/* Hairline rule utility */
+.rule-light {
+  border-color: rgba(255, 255, 255, 0.15);
+}
+.rule-dark {
+  border-color: rgba(17, 17, 17, 0.14);
+}
+
+/* Visible keyboard focus, never removed */
+a:focus-visible,
+button:focus-visible,
+[tabindex]:focus-visible {
+  outline: 1px solid currentColor;
+  outline-offset: 4px;
+}
+
+/* Underline-draw link treatment used for inline nav/CTA links */
+.link-draw {
+  position: relative;
+  display: inline-block;
+}
+.link-draw::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  bottom: -0.15em;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 500ms var(--ease-cinema);
+}
+.link-draw:hover::after,
+.link-draw:focus-visible::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Custom cursor (desktop only, disabled under reduced motion) */
+.cursor-dot {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 200;
+  pointer-events: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: #f4f1ea;
+  mix-blend-mode: difference;
+  transform: translate(-50%, -50%);
+  transition: width 320ms var(--ease-cinema), height 320ms var(--ease-cinema);
+  will-change: transform, width, height;
+}
+.cursor-dot span {
+  opacity: 0;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: #0b0b0b;
+  white-space: nowrap;
+  transition: opacity 200ms ease;
+  mix-blend-mode: normal;
+}
+.cursor-dot.is-expanded {
+  width: 74px;
+  height: 74px;
+}
+.cursor-dot.is-expanded span {
+  opacity: 1;
+}
+
+@media (hover: none), (pointer: coarse) {
+  .cursor-dot {
+    display: none;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  .cursor-dot {
+    display: none;
+  }
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* Balance long editorial headlines */
+.text-balance {
+  text-wrap: balance;
+}

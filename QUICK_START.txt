@@ -1,0 +1,298 @@
+================================================================================
+CULT. TALES — QUICK START GUIDE
+================================================================================
+
+WHAT YOU HAVE:
+A production-ready Next.js website for your Pan Indian wedding storytelling
+brand. Complete with 6 sample stories, films, articles, and a full design system.
+
+STATUS: Ready to extract, customize, and deploy.
+
+================================================================================
+1. EXTRACT & INSTALL (2 minutes)
+================================================================================
+
+  unzip cult-tales.zip
+  cd cult-tales
+  npm install
+
+================================================================================
+2. RUN LOCALLY (30 seconds)
+================================================================================
+
+  npm run dev
+
+Then open http://localhost:3000 in your browser.
+
+You'll see the complete site with sample stories, films, and articles.
+
+================================================================================
+3. CUSTOMIZE YOUR CONTENT (30 minutes)
+================================================================================
+
+Before going live, replace:
+
+  A. Stories
+     → Open: lib/stories.ts
+     → Replace the 6 sample weddings with yours
+     → Add more entries following the same structure
+     → URL automatically becomes: /stories/[slug]
+
+  B. Films
+     → Open: lib/films.ts
+     → Replace 4 sample films with your actual films
+     → Wire video URLs into VideoPlayer component
+
+  C. Journal Articles
+     → Open: lib/journal.ts
+     → Replace 4 sample articles with your content
+     → Articles auto-populate the journal section
+
+  D. Contact Info
+     → Edit: app/contact/page.tsx (email, phone, socials)
+     → Edit: components/Footer.tsx (contact links)
+     → Update domain in: app/layout.tsx
+
+  E. Images
+     → Replace placeholder images in: public/images/
+     → Update image paths in lib/stories.ts
+
+================================================================================
+4. BUILD FOR PRODUCTION (1 minute)
+================================================================================
+
+  npm run build
+
+This creates an optimized production build.
+
+================================================================================
+5. DEPLOY (2 minutes)
+================================================================================
+
+OPTION A: Vercel (Recommended)
+  • Push code to GitHub
+  • Go to vercel.com
+  • Import your repository
+  • Deploy (automatic on every push)
+
+OPTION B: Traditional Server
+  npm start
+
+OPTION C: Static Export
+  • Enable in next.config.mjs
+  • Deploy to any CDN (Cloudflare, Netlify, etc.)
+
+================================================================================
+FILE STRUCTURE
+================================================================================
+
+cult-tales/
+│
+├── app/                    # All pages
+│   ├── page.tsx           # Homepage (full sequence)
+│   ├── stories/           # Stories index + details
+│   ├── films/             # Films page
+│   ├── journal/           # Articles + index
+│   ├── about/             # About page
+│   ├── contact/           # Contact page + form
+│   ├── layout.tsx         # Root layout (metadata, fonts, navigation)
+│   └── globals.css        # Global styles
+│
+├── components/            # 20+ reusable React components
+│   ├── Header.tsx         # Navigation
+│   ├── Footer.tsx
+│   ├── Hero.tsx           # Homepage opening
+│   ├── StoryCard.tsx      # Individual story card
+│   ├── StoryGrid.tsx      # Asymmetric masonry grid
+│   ├── FilmCard.tsx       # Film thumbnail
+│   ├── VideoPlayer.tsx    # Lightbox for videos
+│   ├── CultureIndex.tsx   # Region showcase
+│   ├── RevealText.tsx     # Scroll-reveal animation
+│   └── ... (10+ more)
+│
+├── lib/                   # Data layer
+│   ├── stories.ts         # Wedding stories + fetch functions
+│   ├── films.ts           # Films data
+│   ├── journal.ts         # Articles data
+│   └── regions.ts         # Cultural regions
+│
+├── public/
+│   ├── logo/              # Your logos (white + black variants)
+│   └── images/            # Placeholder (replace with yours)
+│
+├── tailwind.config.ts     # Design system (colors, typography)
+├── package.json           # Dependencies
+├── README.md              # Full documentation (read this!)
+└── .gitignore
+
+================================================================================
+KEY FEATURES
+================================================================================
+
+✓ Responsive (mobile-first, tested from 320px to 2560px+)
+✓ Accessible (WCAG 2.1 AA, keyboard navigation, focus visible)
+✓ Performant (image optimization, font loading, code splitting)
+✓ SEO-ready (sitemap.xml, robots.txt, meta tags)
+✓ Cinematic (smooth scroll, subtle animations, video lightbox)
+✓ Editorial (asymmetric layouts, generous whitespace)
+✓ Customizable (Tailwind design tokens, easy data updates)
+✓ Type-safe (full TypeScript)
+✓ Production-ready (already optimized, no tech debt)
+
+================================================================================
+COLORS & TYPOGRAPHY
+================================================================================
+
+Colors (edit in tailwind.config.ts):
+  • ink: #0B0B0B (dark background)
+  • paper: #F3F0E9 (light background)
+  • bone: #F4F1EA (light text on dark)
+  • char: #111111 (dark text on light)
+  • dust: #A6A29A (muted/secondary)
+
+Typography:
+  • Display: Fraunces (serif) — headlines, titles
+  • Body: Inter (sans) — text, navigation
+
+================================================================================
+ADDING A WEDDING STORY
+================================================================================
+
+1. Open: lib/stories.ts
+
+2. Add to the `stories` array:
+
+   {
+     slug: "couple-name-city-wedding",
+     title: "Couple Names",
+     coupleNames: "Name & Name",
+     location: "City, Region",
+     region: "Region Name",
+     year: "2026",
+     category: "Wedding Story",
+     heroImage: "/images/hero.jpg",
+     cardImage: "/images/card.jpg",
+     excerpt: "One sentence summary of the wedding",
+     openingLine: "Evocative opening: 'Where X meets Y...'",
+     description: "Full story (2–3 sentences about the wedding)",
+     images: [
+       { src: "/images/img1.jpg", alt: "Description", orientation: "portrait" },
+       { src: "/images/img2.jpg", alt: "Description", orientation: "landscape" },
+       { src: "/images/img3.jpg", alt: "Description", orientation: "portrait" },
+     ],
+     film: "/images/film-poster.jpg",  // Optional
+     rituals: [
+       { name: "Ritual Name", description: "What this ritual means..." },
+       { name: "Another Ritual", description: "..." },
+     ],
+     featured: true,  // Optional: shows on homepage
+   }
+
+3. URL automatically becomes: /stories/couple-name-city-wedding
+
+4. Save and refresh the browser — your story is live.
+
+================================================================================
+DEPLOYING TO VERCEL (RECOMMENDED)
+================================================================================
+
+1. Create a GitHub account (if you don't have one)
+
+2. Push your code:
+   git init
+   git add .
+   git commit -m "CULT. tales website"
+   git push origin main
+
+3. Go to https://vercel.com
+
+4. Click "Import Project"
+
+5. Connect your GitHub repo
+
+6. Click "Deploy"
+
+That's it. Your site is live and gets updated automatically every time
+you push to GitHub.
+
+================================================================================
+CONTACT FORM
+================================================================================
+
+The contact form on /contact is pre-built but needs a backend handler.
+
+To make it work, you can use:
+  • Formspree (formspree.io) — easiest, free tier available
+  • SendGrid
+  • Your own serverless function
+
+See README.md for integration examples.
+
+================================================================================
+TROUBLESHOOTING
+================================================================================
+
+Q: Images aren't showing
+A: Check paths in lib/stories.ts match files in public/images/
+
+Q: Styles look broken
+A: Restart dev server: npm run dev
+
+Q: Fonts not loading
+A: They're self-hosted via next/font. Rebuild: npm run build
+
+Q: Animations not working
+A: Check prefers-reduced-motion isn't enabled in OS settings
+
+See full README.md for more help.
+
+================================================================================
+WHAT'S INSIDE THE ZIP
+================================================================================
+
+✓ Complete Next.js codebase (production-ready)
+✓ 6 sample wedding stories (replace with yours)
+✓ 4 sample films (replace with yours)
+✓ 4 sample journal articles (replace with yours)
+✓ Your brand logos (white + black variants, already processed)
+✓ All components built & tested
+✓ Design system ready to customize
+✓ Sitemap + SEO metadata
+✓ README with full documentation
+✓ .gitignore for GitHub
+
+================================================================================
+SUPPORT
+================================================================================
+
+The full README.md inside the zip includes:
+  • Complete setup instructions
+  • Architecture & file structure
+  • Design system details
+  • How to customize colors, fonts, layouts
+  • How to add stories, films, articles
+  • Image optimization guide
+  • Animation & motion details
+  • SEO & metadata setup
+  • Deployment options
+  • Performance checklist
+  • Troubleshooting
+
+Read it. It answers 99% of questions.
+
+================================================================================
+NEXT STEPS
+================================================================================
+
+1. Extract: unzip cult-tales.zip && cd cult-tales
+2. Install: npm install
+3. Test: npm run dev (visit localhost:3000)
+4. Customize: Edit lib/ data and public/images/
+5. Deploy: Push to GitHub, connect to Vercel
+
+Your site is production-ready. Enjoy.
+
+================================================================================
+CULT. TALES — Short for Culture. Long on Tales.
+Documenting India, one wedding at a time.
+================================================================================

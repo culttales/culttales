@@ -45,7 +45,7 @@ export default function FilmCard({ film }: FilmCardProps) {
         </div>
       </button>
 
-      <VideoPlayer open={open} onClose={() => setOpen(false)} poster={film.thumbnail} title={film.title} />
+      <VideoPlayer open={open} onClose={() => setOpen(false)} poster={film.thumbnail} title={film.title} src={film.src} />
     </>
   );
 }

@@ -6,6 +6,7 @@ export type Film = {
   thumbnail: string;
   duration: string;
   description: string;
+  src?: string;
 };
 
 // `thumbnail` currently points at a generated placeholder texture — replace
@@ -20,6 +21,7 @@ export const films: Film[] = [
     thumbnail: "/images/film-1.jpg",
     duration: "4:12",
     description: "Three days of ritual on the edge of a holy lake, told as one continuous evening.",
+    src: "/videos/showreel-1.mp4",
   },
   {
     slug: "backwater-vows",
@@ -29,6 +31,7 @@ export const films: Film[] = [
     thumbnail: "/images/film-2.jpg",
     duration: "3:47",
     description: "A Nair wedding drifting between canals, brass lamps and quiet certainty.",
+    src: "/videos/showreel-2.mp4",
   },
   {
     slug: "shubho-drishti",

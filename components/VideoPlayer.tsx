@@ -63,6 +63,7 @@ export default function VideoPlayer({ open, onClose, poster, title, src }: Video
                 poster={poster}
                 controls
                 autoPlay
+                playsInline
                 className="h-full w-full object-cover"
               />
             ) : (

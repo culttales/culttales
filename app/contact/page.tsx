@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import RevealText from "@/components/RevealText";
+import ContactForm from "@/components/ContactForm";
+import { contact } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -45,10 +47,10 @@ export default function ContactPage() {
                     Email
                   </p>
                   <a
-                    href="mailto:hello@culttales.in"
+                    href={`mailto:${contact.email}`}
                     className="link-draw text-xl text-bone"
                   >
-                    hello@culttales.in
+                    {contact.email}
                   </a>
                 </div>
 
@@ -56,8 +58,8 @@ export default function ContactPage() {
                   <p className="mb-2 text-xs tracking-label uppercase text-dust">
                     Phone
                   </p>
-                  <a href="tel:+910000000000" className="link-draw text-xl text-bone">
-                    +91 00000 00000
+                  <a href={contact.phoneHref} className="link-draw text-xl text-bone">
+                    {contact.phone}
                   </a>
                 </div>
 
@@ -65,8 +67,8 @@ export default function ContactPage() {
                   <p className="mb-2 text-xs tracking-label uppercase text-dust">
                     Instagram
                   </p>
-                  <a href="https://instagram.com" className="link-draw text-xl text-bone">
-                    @culttales
+                  <a href={contact.instagramUrl} className="link-draw text-xl text-bone">
+                    {contact.instagramHandle}
                   </a>
                 </div>
 
@@ -86,74 +88,7 @@ export default function ContactPage() {
             <div>
               <p className="mb-8 text-sm text-dust">Tell us about your wedding</p>
 
-              <form className="space-y-8">
-                <div>
-                  <label htmlFor="name" className="mb-2 block text-xs tracking-label uppercase text-dust">
-                    Your name
-                  </label>
-                  <input
-                    id="name"
-                    type="text"
-                    placeholder="Couple names or contact name"
-                    className="w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-bone focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="email" className="mb-2 block text-xs tracking-label uppercase text-dust">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    type="email"
-                    placeholder="your@email.com"
-                    className="w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-bone focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="wedding" className="mb-2 block text-xs tracking-label uppercase text-dust">
-                    Wedding date
-                  </label>
-                  <input
-                    id="wedding"
-                    type="text"
-                    placeholder="Month & Year or Tentative"
-                    className="w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-bone focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="location" className="mb-2 block text-xs tracking-label uppercase text-dust">
-                    Location
-                  </label>
-                  <input
-                    id="location"
-                    type="text"
-                    placeholder="City / Region"
-                    className="w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-bone focus:outline-none"
-                  />
-                </div>
-
-                <div>
-                  <label htmlFor="message" className="mb-2 block text-xs tracking-label uppercase text-dust">
-                    Tell us your story
-                  </label>
-                  <textarea
-                    id="message"
-                    placeholder="What makes your wedding unique? Are there specific rituals or traditions we should know about? Any questions?"
-                    rows={5}
-                    className="w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-bone focus:outline-none resize-none"
-                  />
-                </div>
-
-                <button
-                  type="submit"
-                  className="link-draw mt-10 inline-block text-sm text-bone"
-                >
-                  Send Message &rarr;
-                </button>
-              </form>
+              <ContactForm />
 
               <p className="mt-12 text-xs text-dust">
                 We&rsquo;ll get back to you within 48 hours. Looking forward to

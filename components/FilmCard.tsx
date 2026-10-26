@@ -9,14 +9,16 @@ type FilmCardProps = { film: Film };
 
 export default function FilmCard({ film }: FilmCardProps) {
   const [open, setOpen] = useState(false);
+  const playable = Boolean(film.src);
 
   return (
     <>
       <button
         type="button"
-        onClick={() => setOpen(true)}
-        data-cursor="play"
-        className="group relative block w-full overflow-hidden text-left"
+        onClick={() => playable && setOpen(true)}
+        disabled={!playable}
+        data-cursor={playable ? "play" : undefined}
+        className={`group relative block w-full overflow-hidden text-left ${playable ? "" : "cursor-default"}`}
       >
         <div className="relative aspect-[9/16] w-full overflow-hidden bg-ink">
           <Image
@@ -29,11 +31,15 @@ export default function FilmCard({ film }: FilmCardProps) {
           <div className="absolute inset-0 bg-ink/30 transition-colors duration-500 group-hover:bg-ink/45" />
 
           <div className="absolute inset-0 flex items-center justify-center">
-            <span className="flex h-16 w-16 items-center justify-center rounded-full border border-bone/50 text-bone opacity-0 transition-opacity duration-300 group-hover:opacity-100">
-              <svg width="16" height="18" viewBox="0 0 16 18" fill="none" aria-hidden="true">
-                <path d="M1 1.2v15.6a1 1 0 0 0 1.5.86l13-7.8a1 1 0 0 0 0-1.72l-13-7.8A1 1 0 0 0 1 1.2Z" fill="currentColor" />
-              </svg>
-            </span>
+            {playable ? (
+              <span className="flex h-16 w-16 items-center justify-center rounded-full border border-bone/50 text-bone opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+                <svg width="16" height="18" viewBox="0 0 16 18" fill="none" aria-hidden="true">
+                  <path d="M1 1.2v15.6a1 1 0 0 0 1.5.86l13-7.8a1 1 0 0 0 0-1.72l-13-7.8A1 1 0 0 0 1 1.2Z" fill="currentColor" />
+                </svg>
+              </span>
+            ) : (
+              <span className="text-xs tracking-label uppercase text-bone/80">Coming soon</span>
+            )}
           </div>
         </div>
 
@@ -45,7 +51,7 @@ export default function FilmCard({ film }: FilmCardProps) {
         </div>
       </button>
 
-      <VideoPlayer open={open} onClose={() => setOpen(false)} poster={film.thumbnail} title={film.title} src={film.src} />
+      {playable && <VideoPlayer open={open} onClose={() => setOpen(false)} poster={film.thumbnail} title={film.title} src={film.src} />}
     </>
   );
 }

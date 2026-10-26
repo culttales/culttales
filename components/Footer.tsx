@@ -1,5 +1,6 @@
 import Link from "next/link";
 import Logo from "./Logo";
+import { contact } from "@/lib/site";
 
 const NAV = [
   { label: "Stories", href: "/stories" },
@@ -31,8 +32,8 @@ export default function Footer() {
           </div>
 
           <div className="flex flex-col gap-3 text-sm text-bone/85">
-            <a href="mailto:hello@culttales.in" className="link-draw w-fit">hello@culttales.in</a>
-            <a href="tel:+910000000000" className="link-draw w-fit">+91 00000 00000</a>
+            <a href={`mailto:${contact.email}`} className="link-draw w-fit">{contact.email}</a>
+            <a href={contact.phoneHref} className="link-draw w-fit">{contact.phone}</a>
           </div>
         </div>
 

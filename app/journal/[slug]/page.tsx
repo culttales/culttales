@@ -6,15 +6,16 @@ import RevealText from "@/components/RevealText";
 import { getAllJournalPosts, getJournalPostBySlug, type JournalPost } from "@/lib/journal";
 
 type JournalPageProps = {
-  params: { slug: string };
+  params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
   return getAllJournalPosts().map((post) => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: JournalPageProps): Metadata {
-  const post = getJournalPostBySlug(params.slug);
+export async function generateMetadata({ params }: JournalPageProps): Promise<Metadata> {
+  const { slug } = await params;
+  const post = getJournalPostBySlug(slug);
   if (!post) return {};
 
   return {
@@ -28,8 +29,9 @@ export function generateMetadata({ params }: JournalPageProps): Metadata {
   };
 }
 
-export default function JournalPage({ params }: JournalPageProps) {
-  const maybePost = getJournalPostBySlug(params.slug);
+export default async function JournalPage({ params }: JournalPageProps) {
+  const { slug } = await params;
+  const maybePost = getJournalPostBySlug(slug);
   if (!maybePost) notFound();
   const post = maybePost as JournalPost;
 

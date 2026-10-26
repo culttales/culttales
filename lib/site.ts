@@ -1,9 +1,10 @@
-// Single source of truth for contact details. Replace the placeholder phone
-// number and Instagram URL with the real ones before launch.
+// Single source of truth for contact details and social links.
 export const contact = {
-  email: "hello@culttales.in",
-  phone: "+91 00000 00000",
-  phoneHref: "tel:+910000000000",
-  instagramHandle: "@culttales",
-  instagramUrl: "https://instagram.com",
+  email: "helloculttales@gmail.com",
+  phone: "+91 96335 95555",
+  phoneHref: "tel:+919633595555",
+  instagramHandle: "@cult.talesweddings",
+  instagramUrl: "https://www.instagram.com/cult.talesweddings",
+  youtubeUrl: "https://youtube.com/@cult.-tales",
+  facebookUrl: "https://www.facebook.com/share/1LXEHofj7x/",
 };

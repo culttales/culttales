@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
+import { contact } from "@/lib/site";
 
 type MobileMenuProps = {
   open: boolean;
@@ -47,8 +48,9 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           >
             <p>Short for Culture. Long on Tales.</p>
             <div className="flex gap-6 pt-2 text-bone">
-              <a href="https://instagram.com" className="link-draw">Instagram</a>
-              <a href="https://youtube.com" className="link-draw">YouTube</a>
+              <a href={contact.instagramUrl} className="link-draw">Instagram</a>
+              <a href={contact.youtubeUrl} className="link-draw">YouTube</a>
+              <a href={contact.facebookUrl} className="link-draw">Facebook</a>
             </div>
           </motion.div>
         </motion.div>

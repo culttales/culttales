@@ -27,8 +27,9 @@ export default function Footer() {
           </nav>
 
           <div className="flex flex-col gap-3 text-sm text-bone/85">
-            <a href="https://instagram.com" className="link-draw w-fit">Instagram</a>
-            <a href="https://youtube.com" className="link-draw w-fit">YouTube</a>
+            <a href={contact.instagramUrl} className="link-draw w-fit">Instagram</a>
+            <a href={contact.youtubeUrl} className="link-draw w-fit">YouTube</a>
+            <a href={contact.facebookUrl} className="link-draw w-fit">Facebook</a>
           </div>
 
           <div className="flex flex-col gap-3 text-sm text-bone/85">

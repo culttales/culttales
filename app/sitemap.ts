@@ -1,6 +1,5 @@
 import type { MetadataRoute } from "next";
 import { getAllStories } from "@/lib/stories";
-import { getAllFilms } from "@/lib/films";
 import { getAllJournalPosts } from "@/lib/journal";
 
 const baseUrl = "https://culttales.in";
@@ -11,13 +10,6 @@ export default function sitemap(): MetadataRoute.Sitemap {
     lastModified: new Date(),
     changeFrequency: "monthly" as const,
     priority: 0.8,
-  }));
-
-  const films = getAllFilms().map((film) => ({
-    url: `${baseUrl}/films`,
-    lastModified: new Date(),
-    changeFrequency: "monthly" as const,
-    priority: 0.7,
   }));
 
   const journal = getAllJournalPosts().map((post) => ({

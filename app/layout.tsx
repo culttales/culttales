@@ -22,7 +22,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://culttales.in"),
+  metadataBase: new URL("https://culttales.com"),
   title: {
     default: "CULT. tales — Pan Indian Wedding Stories",
     template: "%s — CULT. tales",
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
       "Unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
-    url: "https://culttales.in",
+    url: "https://culttales.com",
     siteName: "CULT. tales",
     type: "website",
   },

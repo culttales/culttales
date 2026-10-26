@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getAllStories } from "@/lib/stories";
 import { getAllJournalPosts } from "@/lib/journal";
 
-const baseUrl = "https://culttales.in";
+const baseUrl = "https://culttales.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const stories = getAllStories().map((story) => ({

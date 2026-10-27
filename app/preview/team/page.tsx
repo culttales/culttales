@@ -19,24 +19,33 @@ function Placeholder({ children }: { children: React.ReactNode }) {
 export default function TeamPreviewPage() {
   return (
     <>
-      <div className="bg-ink pb-24 pt-36 text-bone md:pb-32 md:pt-44">
-        <div className="mx-auto max-w-frame px-6 md:px-10">
-          <h1 className="max-w-3xl font-display text-display-lg text-balance">
-            We are storytellers of culture, love, and tradition.
-          </h1>
-          <div className="mt-12 aspect-video w-full md:mt-16">
-            <video
-              src="/videos/intro.mp4"
-              autoPlay
-              muted
-              loop
-              playsInline
-              preload="auto"
-              className="h-full w-full object-cover"
-            />
+      <section className="relative flex h-[100svh] w-full items-end overflow-hidden bg-ink">
+        <video
+          autoPlay
+          muted
+          loop
+          playsInline
+          preload="auto"
+          poster="/images/hero-main.jpg"
+          className="absolute inset-0 h-full w-full object-cover"
+        >
+          <source src="/videos/intro.mp4" type="video/mp4" />
+        </video>
+
+        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/10 to-transparent" />
+        <div className="absolute inset-0 bg-ink/20" />
+
+        <div className="relative z-10 w-full px-6 pb-16 md:px-10 md:pb-20">
+          <div className="mx-auto max-w-frame">
+            <p className="mb-5 text-sm tracking-label text-dust">
+              Short for Culture. Long on Tales.
+            </p>
+            <h1 className="max-w-3xl font-display text-display-lg text-bone text-balance">
+              We are storytellers of culture, love, and tradition.
+            </h1>
           </div>
         </div>
-      </div>
+      </section>
 
       <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2">
         <div className="relative aspect-[4/5] w-full md:aspect-auto">

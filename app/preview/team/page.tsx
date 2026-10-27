@@ -21,32 +21,22 @@ export default function TeamPreviewPage() {
     <>
       <div className="bg-ink pb-24 pt-36 text-bone md:pb-32 md:pt-44">
         <div className="mx-auto max-w-frame px-6 md:px-10">
-          <p className="mb-6 text-sm text-dust">
-            Prepared for <Placeholder>client name</Placeholder>
-          </p>
           <h1 className="max-w-3xl font-display text-display-lg text-balance">
             We are storytellers of culture, love, and tradition.
           </h1>
-          <p className="mt-8 text-sm text-bone/60">
-            Our website is currently under construction. This page is a short
-            introduction to who we are.
-          </p>
+          <div className="mt-12 aspect-video w-full md:mt-16">
+            <video
+              src="/videos/intro.mp4"
+              autoPlay
+              muted
+              loop
+              playsInline
+              preload="auto"
+              className="h-full w-full object-cover"
+            />
+          </div>
         </div>
       </div>
-
-      <section className="bg-ink px-6 pb-24 md:px-10 md:pb-32">
-        <div className="mx-auto aspect-video max-w-frame">
-          <video
-            src="/videos/intro.mp4"
-            autoPlay
-            muted
-            loop
-            playsInline
-            preload="auto"
-            className="h-full w-full object-cover"
-          />
-        </div>
-      </section>
 
       <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2">
         <div className="relative aspect-[4/5] w-full md:aspect-auto">
@@ -124,13 +114,6 @@ export default function TeamPreviewPage() {
             the detail, cinematography for the emotion, and editorial work to
             place the wedding within its cultural context.
           </p>
-          <p className="mb-4 mt-10 text-sm text-dust">What We Document</p>
-          <ul className="flex flex-col gap-3 text-sm text-bone/80">
-            <li>The rituals — honoring their specificity to each community</li>
-            <li>The people — family, friends, the edges of quiet moments</li>
-            <li>The place — regional architecture, light, landscape</li>
-            <li>The emotion — the unguarded feeling underneath every ceremony</li>
-          </ul>
         </div>
       </section>
 

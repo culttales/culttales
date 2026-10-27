@@ -76,6 +76,26 @@ function Ornament() {
   );
 }
 
+function Framed({
+  src,
+  alt,
+  ratio,
+  sizes,
+}: {
+  src: string;
+  alt: string;
+  ratio: string;
+  sizes: string;
+}) {
+  return (
+    <div className="p-2.5 ring-1 ring-[#C9A96E]/45 md:p-3.5">
+      <div className={`relative w-full ${ratio}`}>
+        <Image src={src} alt={alt} fill sizes={sizes} className="object-cover" />
+      </div>
+    </div>
+  );
+}
+
 const APPROACH = [
   {
     numeral: "i.",
@@ -282,19 +302,32 @@ export default function TeamPreviewPage() {
         <div className="mx-auto max-w-frame">
           <Chapter numeral="III" label="Selected work" tone="light" />
 
-          <figure className="mx-auto mt-20 max-w-xl md:mt-24">
-            <div className="relative p-3 ring-1 ring-[#C9A96E]/50 md:p-4">
-              <div className="relative aspect-[15/16] w-full">
-                <Image
+          <div className="mx-auto mt-20 max-w-6xl space-y-10 md:mt-24 md:space-y-16">
+            <Framed
+              src="/images/moment-4.jpg"
+              alt="A couple at sunset on a palace terrace"
+              ratio="aspect-[16/9]"
+              sizes="(min-width: 1152px) 72rem, 100vw"
+            />
+            <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
+              <div className="md:col-span-5">
+                <Framed
                   src="/images/moment-1.jpg"
                   alt="A bride smiling among family"
-                  fill
-                  sizes="(min-width: 768px) 36rem, 100vw"
-                  className="object-cover"
+                  ratio="aspect-[15/16]"
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                />
+              </div>
+              <div className="md:col-span-7 md:mt-32">
+                <Framed
+                  src="/images/moment-5.jpg"
+                  alt="A bride in red by a window"
+                  ratio="aspect-[3/2]"
+                  sizes="(min-width: 768px) 55vw, 100vw"
                 />
               </div>
             </div>
-          </figure>
+          </div>
         </div>
       </section>
 

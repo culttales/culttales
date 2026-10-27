@@ -222,7 +222,7 @@ export default function TeamPreviewPage() {
       {/* Cinematic band */}
       <section className="relative h-[75svh] w-full overflow-hidden bg-ink md:h-[100svh]">
         <Image
-          src="/images/moment-2.jpg"
+          src="/images/moment-3.jpg"
           alt="A bride and groom walking through a shower of petals"
           fill
           sizes="100vw"

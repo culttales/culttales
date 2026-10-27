@@ -36,13 +36,14 @@ export default function TeamPreviewPage() {
 
       <section className="bg-ink px-6 pb-24 md:px-10 md:pb-32">
         <div className="mx-auto aspect-video max-w-frame">
-          <iframe
-            src="https://www.youtube-nocookie.com/embed/eja1K4jfTew"
-            title="CULT. tales introduction"
-            allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
-            allowFullScreen
-            loading="lazy"
-            className="h-full w-full"
+          <video
+            src="/videos/intro.mp4"
+            autoPlay
+            muted
+            loop
+            playsInline
+            preload="auto"
+            className="h-full w-full object-cover"
           />
         </div>
       </section>

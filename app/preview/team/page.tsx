@@ -297,10 +297,10 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
-      {/* III. Selected work */}
+      {/* III. Rituals & Romance */}
       <section className={`${IVORY} px-6 py-32 text-char md:px-10 md:py-48`}>
         <div className="mx-auto max-w-frame">
-          <Chapter numeral="III" label="Selected work" tone="light" />
+          <Chapter numeral="III" label="Rituals &amp; Romance" tone="light" />
 
           <div className="mx-auto mt-20 max-w-6xl space-y-10 md:mt-24 md:space-y-16">
             <Framed

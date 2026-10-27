@@ -141,16 +141,22 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
-      {/* Full-bleed image */}
-      <section className="relative h-[70svh] w-full bg-ink md:h-[90svh]">
-        <Image
-          src="/images/about-1.jpg"
-          alt="CULT. tales at work"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-ink/15" />
+      {/* Full-bleed diptych */}
+      <section className="grid grid-cols-1 bg-ink md:grid-cols-2">
+        {[
+          { src: "/images/couple-2.jpg", alt: "A couple holding hands in a garden" },
+          { src: "/images/couple-4.jpg", alt: "A bride and groom in quiet conversation" },
+        ].map((img) => (
+          <div key={img.src} className="relative h-[85svh] w-full md:h-[100svh]">
+            <Image
+              src={img.src}
+              alt={img.alt}
+              fill
+              sizes="(min-width: 768px) 50vw, 100vw"
+              className="object-cover"
+            />
+          </div>
+        ))}
       </section>
 
       {/* Approach */}
@@ -196,21 +202,42 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
+      {/* Selected work */}
+      <section className="bg-paper px-6 pb-16 pt-28 text-char md:px-10 md:pt-44">
+        <div className="mx-auto max-w-frame">
+          <p className="border-t border-line-dark pt-5 text-xs uppercase tracking-[0.28em] text-char/60">
+            Selected work
+          </p>
+          <div className="mt-16 grid grid-cols-1 gap-10 md:mt-24 md:grid-cols-12 md:gap-8">
+            <div className="relative aspect-[2/3] w-full md:col-span-5 md:col-start-2">
+              <Image
+                src="/images/couple-1.jpg"
+                alt="A bride smiling at a window"
+                fill
+                sizes="(min-width: 768px) 40vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="relative aspect-[2/3] w-full md:col-span-4 md:col-start-8 md:mt-40">
+              <Image
+                src="/images/couple-3.jpg"
+                alt="A bride in a pink lehenga in a garden"
+                fill
+                sizes="(min-width: 768px) 33vw, 100vw"
+                className="object-cover"
+              />
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Details to come */}
-      <section className="bg-paper px-6 py-24 text-char md:px-10 md:py-32">
-        <div className="mx-auto grid max-w-frame grid-cols-1 gap-12 md:grid-cols-2">
-          <div className="border-t border-line-dark pt-6">
-            <p className="mb-5 text-xs uppercase tracking-[0.28em] text-char/60">
-              Selected work
-            </p>
-            <Placeholder>images or film links for the client</Placeholder>
-          </div>
-          <div className="border-t border-line-dark pt-6">
-            <p className="mb-5 text-xs uppercase tracking-[0.28em] text-char/60">
-              Get in touch
-            </p>
-            <Placeholder>contact details to show</Placeholder>
-          </div>
+      <section className="bg-paper px-6 pb-24 pt-16 text-char md:px-10 md:pb-32 md:pt-24">
+        <div className="mx-auto max-w-frame border-t border-line-dark pt-6">
+          <p className="mb-5 text-xs uppercase tracking-[0.28em] text-char/60">
+            Get in touch
+          </p>
+          <Placeholder>contact details to show</Placeholder>
         </div>
       </section>
     </>

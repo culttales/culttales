@@ -34,6 +34,19 @@ export default function TeamPreviewPage() {
         </div>
       </div>
 
+      <section className="bg-ink px-6 pb-24 md:px-10 md:pb-32">
+        <div className="mx-auto aspect-video max-w-frame">
+          <iframe
+            src="https://www.youtube-nocookie.com/embed/eja1K4jfTew"
+            title="CULT. tales introduction"
+            allow="accelerometer; encrypted-media; picture-in-picture; fullscreen"
+            allowFullScreen
+            loading="lazy"
+            className="h-full w-full"
+          />
+        </div>
+      </section>
+
       <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2">
         <div className="relative aspect-[4/5] w-full md:aspect-auto">
           <Image

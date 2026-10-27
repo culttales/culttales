@@ -9,6 +9,6 @@ export default function HideOnPreview({
   children: React.ReactNode;
 }) {
   const pathname = usePathname();
-  if (pathname?.startsWith("/preview")) return null;
+  if (pathname?.startsWith("/preview") || pathname === "/hello") return null;
   return <>{children}</>;
 }

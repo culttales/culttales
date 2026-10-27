@@ -123,7 +123,9 @@ export default function TeamPreviewPage() {
         </header>
 
         <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center">
-          <Label>Short for Culture &middot; Long on Tales</Label>
+          <p className={`text-xs uppercase tracking-[0.3em] md:text-sm md:tracking-[0.42em] ${GOLD}`}>
+            Where culture becomes story
+          </p>
           <RevealText
             as="h1"
             className="mt-8 max-w-5xl font-display text-display-lg font-normal leading-[1.02] text-bone text-balance"
@@ -134,6 +136,9 @@ export default function TeamPreviewPage() {
           </RevealText>
           <div className="mt-10">
             <Ornament />
+          </div>
+          <div className="mt-8">
+            <Label>Wedding Stories &middot; Culture &middot; Documentary</Label>
           </div>
         </div>
 

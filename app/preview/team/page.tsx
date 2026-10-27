@@ -197,6 +197,17 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
+      {/* Cinematic band */}
+      <section className="relative h-[70svh] w-full bg-ink md:h-[100svh]">
+        <Image
+          src="/images/moment-2.jpg"
+          alt="A bride and groom walking through a shower of petals"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+      </section>
+
       {/* Closing statement */}
       <section className="relative overflow-hidden bg-ink px-6 pb-32 text-bone md:px-10 md:pb-48">
         <div className="mx-auto max-w-4xl border-t border-line-light pt-24 text-center md:pt-36">
@@ -219,25 +230,22 @@ export default function TeamPreviewPage() {
           <p className="border-t border-line-dark pt-5 text-xs uppercase tracking-[0.28em] text-char/60">
             Selected work
           </p>
-          <div className="mt-16 grid grid-cols-1 gap-10 md:mt-24 md:grid-cols-12 md:gap-8">
-            <div className="relative aspect-[2/3] w-full md:col-span-5 md:col-start-2">
-              <Image
-                src="/images/couple-1.jpg"
-                alt="A bride smiling at a window"
-                fill
-                sizes="(min-width: 768px) 40vw, 100vw"
-                className="object-cover"
-              />
-            </div>
-            <div className="relative aspect-[2/3] w-full md:col-span-4 md:col-start-8 md:mt-40">
-              <Image
-                src="/images/couple-3.jpg"
-                alt="A bride in a pink lehenga in a garden"
-                fill
-                sizes="(min-width: 768px) 33vw, 100vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="mt-16 grid grid-cols-1 gap-10 md:mt-24 md:grid-cols-3 md:gap-8">
+            {[
+              { src: "/images/couple-1.jpg", alt: "A bride smiling at a window", ratio: "aspect-[2/3]", offset: "" },
+              { src: "/images/moment-1.jpg", alt: "A bride smiling among family", ratio: "aspect-[15/16]", offset: "md:mt-32" },
+              { src: "/images/couple-3.jpg", alt: "A bride in a pink lehenga in a garden", ratio: "aspect-[2/3]", offset: "md:mt-16" },
+            ].map((img) => (
+              <div key={img.src} className={`relative w-full ${img.ratio} ${img.offset}`}>
+                <Image
+                  src={img.src}
+                  alt={img.alt}
+                  fill
+                  sizes="(min-width: 768px) 33vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            ))}
           </div>
         </div>
       </section>

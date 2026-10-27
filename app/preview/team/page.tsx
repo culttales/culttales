@@ -28,11 +28,6 @@ const APPROACH = [
     title: "Cinematography",
     body: "For the emotion. Films that carry how a wedding feels, not only how it looks.",
   },
-  {
-    n: "03",
-    title: "Editorial",
-    body: "For the context. Each wedding placed within its culture, its family and its place.",
-  },
 ];
 
 export default function TeamPreviewPage() {
@@ -169,10 +164,10 @@ export default function TeamPreviewPage() {
             as="h2"
             className="max-w-3xl font-display text-display-md text-balance"
           >
-            Photography, cinematography and editorial, woven into one story.
+            Photography and cinematography, woven into one story.
           </RevealText>
 
-          <div className="mt-20 grid grid-cols-1 gap-14 md:mt-28 md:grid-cols-3 md:gap-12">
+          <div className="mt-20 grid grid-cols-1 gap-14 md:mt-28 md:max-w-4xl md:grid-cols-2 md:gap-12">
             {APPROACH.map((item) => (
               <div key={item.n} className="border-t border-line-light pt-8">
                 <p className="font-display text-sm text-dust">{item.n}</p>

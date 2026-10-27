@@ -309,7 +309,7 @@ export default function TeamPreviewPage() {
               ratio="aspect-[16/9]"
               sizes="(min-width: 1152px) 72rem, 100vw"
             />
-            <div className="grid grid-cols-1 gap-10 md:grid-cols-12 md:gap-12">
+            <div className="grid grid-cols-1 items-center gap-10 md:grid-cols-12 md:gap-12">
               <div className="md:col-span-5">
                 <Framed
                   src="/images/moment-1.jpg"
@@ -318,7 +318,7 @@ export default function TeamPreviewPage() {
                   sizes="(min-width: 768px) 40vw, 100vw"
                 />
               </div>
-              <div className="md:col-span-7 md:mt-32">
+              <div className="md:col-span-7">
                 <Framed
                   src="/images/moment-5.jpg"
                   alt="A bride in red by a window"
@@ -326,6 +326,22 @@ export default function TeamPreviewPage() {
                   sizes="(min-width: 768px) 55vw, 100vw"
                 />
               </div>
+            </div>
+            <div className="grid grid-cols-2 gap-6 md:grid-cols-4 md:gap-8">
+              {[
+                ["/images/moment-6.jpg", "A couple dancing in a shower of sparks"],
+                ["/images/moment-7.jpg", "A bride and groom smiling at each other"],
+                ["/images/moment-8.jpg", "A couple in a quiet moment under red drapes"],
+                ["/images/moment-9.jpg", "A couple walking hand in hand among guests"],
+              ].map(([src, alt]) => (
+                <Framed
+                  key={src}
+                  src={src}
+                  alt={alt}
+                  ratio="aspect-[2/3]"
+                  sizes="(min-width: 768px) 25vw, 50vw"
+                />
+              ))}
             </div>
           </div>
         </div>

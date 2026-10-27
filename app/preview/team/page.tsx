@@ -203,11 +203,10 @@ export default function TeamPreviewPage() {
             </div>
           </div>
 
-          <dl className="mx-auto mt-24 grid max-w-5xl grid-cols-1 text-center md:mt-32 md:grid-cols-3">
+          <dl className="mx-auto mt-24 grid max-w-3xl grid-cols-1 text-center md:mt-32 md:grid-cols-2">
             {[
-              ["Based in", "Kerala, India"],
-              ["Travelling", "Across India"],
-              ["Craft", "Photography & Film"],
+              ["Based in", "Kerala & Rajasthan"],
+              ["Craft", "Photography & Filmmaking"],
             ].map(([term, value], i) => (
               <div
                 key={term}

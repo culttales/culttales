@@ -5,6 +5,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import CustomCursor from "@/components/CustomCursor";
 import SmoothScroll from "@/components/SmoothScroll";
+import HideOnPreview from "@/components/HideOnPreview";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -55,9 +56,13 @@ export default function RootLayout({
       <body>
         <SmoothScroll />
         <CustomCursor />
-        <Header />
+        <HideOnPreview>
+          <Header />
+        </HideOnPreview>
         <main>{children}</main>
-        <Footer />
+        <HideOnPreview>
+          <Footer />
+        </HideOnPreview>
       </body>
     </html>
   );

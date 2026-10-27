@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Image from "next/image";
 import RevealText from "@/components/RevealText";
+import { contact } from "@/lib/site";
 
 // Private page shared directly with a client. Not linked from the site,
 // not in the sitemap, and marked noindex.
@@ -72,14 +73,6 @@ function Ornament() {
       <span className={`block h-1.5 w-1.5 rotate-45 ${GOLD_BG}`} />
       <span className={`block h-px w-16 ${GOLD_BG} opacity-50`} />
     </div>
-  );
-}
-
-function Placeholder({ children }: { children: React.ReactNode }) {
-  return (
-    <span className="inline-block border border-dashed border-current/30 px-3 py-1 text-xs tracking-wide opacity-60">
-      [PLACEHOLDER: {children}]
-    </span>
   );
 }
 
@@ -325,7 +318,48 @@ export default function TeamPreviewPage() {
               className="h-16 w-auto opacity-90 md:h-20"
             />
             <span className={`my-10 block h-px w-16 ${GOLD_BG} opacity-60`} />
-            <Placeholder>contact details to show</Placeholder>
+            <Label>Contact details</Label>
+
+            <dl className="mt-12 grid w-full grid-cols-1 border-t border-[#C9A96E]/30 md:grid-cols-3">
+              {[
+                ["Email", contact.email, `mailto:${contact.email}`],
+                ["Phone", contact.phone, contact.phoneHref],
+                ["Instagram", contact.instagramHandle, contact.instagramUrl],
+              ].map(([term, value, href], i) => (
+                <div
+                  key={term}
+                  className={`border-b border-[#C9A96E]/30 py-10 md:border-b-0 ${
+                    i > 0 ? "md:border-l" : ""
+                  }`}
+                >
+                  <dt className={`font-display text-sm italic ${GOLD}`}>
+                    {term}
+                  </dt>
+                  <dd className="mt-3">
+                    <a
+                      href={href}
+                      {...(href.startsWith("http")
+                        ? { target: "_blank", rel: "noopener noreferrer" }
+                        : {})}
+                      className="link-draw font-display text-xl text-bone"
+                    >
+                      {value}
+                    </a>
+                  </dd>
+                </div>
+              ))}
+            </dl>
+
+            <div className="mt-16 max-w-xl">
+              <p className={`font-display text-sm italic ${GOLD}`}>
+                Travel availability
+              </p>
+              <p className="mt-4 text-[15px] leading-[1.9] text-bone/65">
+                We travel across all regions of India and internationally for
+                Pan-Indian weddings. Timelines and budgets discussed
+                individually.
+              </p>
+            </div>
           </div>
         </div>
       </section>

@@ -78,61 +78,77 @@ export default function TeamPreviewPage() {
       </section>
 
       {/* The story */}
-      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-44">
-        <div className="mx-auto grid max-w-frame grid-cols-1 gap-16 md:grid-cols-12 md:gap-10">
-          <div className="md:col-span-3">
-            <p className="border-t border-line-dark pt-5 text-xs uppercase tracking-[0.28em] text-char/60">
+      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-48">
+        <div className="mx-auto max-w-frame">
+          <div className="flex items-center gap-5">
+            <span className="block h-px w-14 bg-char/40" />
+            <p className="text-xs uppercase tracking-[0.28em] text-char/60">
               Who we are
             </p>
           </div>
-          <div className="md:col-span-8 md:col-start-5">
-            <RevealText
-              as="p"
-              className="font-display text-display-sm leading-snug text-char text-balance"
-            >
-              At CULT. TALES, we believe every wedding is more than a
-              celebration — it is a story of two people, two families,
-              generations of traditions, and emotions that deserve to live
-              forever.
-            </RevealText>
 
-            <div className="mt-14 grid grid-cols-1 gap-8 text-base leading-[1.85] text-char/70 md:grid-cols-2 md:gap-14">
-              <div className="space-y-8">
-                <p>
-                  We are a Pan-Indian wedding photography and filmmaking team
-                  dedicated to documenting weddings in their most authentic
-                  form. From intimate rituals and sacred traditions to
-                  spontaneous laughter, heartfelt emotions, and grand
-                  celebrations, we look beyond the obvious to capture the
-                  moments that truly matter.
-                </p>
-                <p>
-                  Our approach combines the art of cinematic filmmaking with the
-                  honesty of documentary storytelling. We don&rsquo;t simply
-                  photograph how a wedding looks; we capture how it feels.
-                  Every frame, every ritual, every fleeting glance becomes a
-                  part of a larger story — one that reflects your culture, your
-                  relationships, and your individuality.
-                </p>
-              </div>
-              <div className="space-y-8">
-                <p>
-                  Travelling across India, we explore the diverse traditions
-                  and unique expressions of love that make every wedding
-                  different. We approach each celebration with curiosity,
-                  sensitivity, and a deep respect for the customs and people
-                  who bring it to life.
-                </p>
-                <p>
-                  For us, exceptional wedding storytelling is not just about
-                  beautiful visuals. It is about understanding your story,
-                  anticipating meaningful moments, preserving the details, and
-                  creating films and photographs that grow more valuable with
-                  time.
-                </p>
-              </div>
+          <RevealText
+            as="h2"
+            className="mt-12 max-w-5xl font-display text-display-md font-normal leading-[1.15] text-char text-balance md:mt-16"
+          >
+            At CULT. TALES, we believe every wedding is more than a celebration
+            &mdash; <em className="italic">it is a story</em> of two people, two
+            families, generations of traditions, and emotions that deserve to
+            live forever.
+          </RevealText>
+
+          <div className="mt-20 grid grid-cols-1 gap-14 md:mt-32 md:grid-cols-12 md:gap-10">
+            <div className="md:col-span-5 md:col-start-2">
+              <p className="text-lg leading-[1.9] text-char/75 first-letter:float-left first-letter:mr-4 first-letter:mt-1 first-letter:font-display first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-char">
+                We are a Pan-Indian wedding photography and filmmaking team
+                dedicated to documenting weddings in their most authentic form.
+                From intimate rituals and sacred traditions to spontaneous
+                laughter, heartfelt emotions, and grand celebrations, we look
+                beyond the obvious to capture the moments that truly matter.
+              </p>
+              <p className="mt-8 text-base leading-[1.9] text-char/65">
+                Our approach combines the art of cinematic filmmaking with the
+                honesty of documentary storytelling. We don&rsquo;t simply
+                photograph how a wedding looks; we capture how it feels. Every
+                frame, every ritual, every fleeting glance becomes a part of a
+                larger story &mdash; one that reflects your culture, your
+                relationships, and your individuality.
+              </p>
+            </div>
+            <div className="md:col-span-4 md:col-start-8 md:pt-24">
+              <p className="text-base leading-[1.9] text-char/65">
+                Travelling across India, we explore the diverse traditions and
+                unique expressions of love that make every wedding different. We
+                approach each celebration with curiosity, sensitivity, and a
+                deep respect for the customs and people who bring it to life.
+              </p>
+              <p className="mt-8 text-base leading-[1.9] text-char/65">
+                For us, exceptional wedding storytelling is not just about
+                beautiful visuals. It is about understanding your story,
+                anticipating meaningful moments, preserving the details, and
+                creating films and photographs that grow more valuable with
+                time.
+              </p>
             </div>
           </div>
+
+          <dl className="mt-24 grid grid-cols-1 border-t border-line-dark md:mt-36 md:grid-cols-3">
+            {[
+              ["Based in", "Kerala, India"],
+              ["Travelling", "Across India"],
+              ["Craft", "Photography & Filmmaking"],
+            ].map(([term, value]) => (
+              <div
+                key={term}
+                className="border-b border-line-dark py-8 md:border-b-0 md:py-10"
+              >
+                <dt className="text-xs uppercase tracking-[0.28em] text-char/50">
+                  {term}
+                </dt>
+                <dd className="mt-3 font-display text-2xl text-char">{value}</dd>
+              </div>
+            ))}
+          </dl>
         </div>
       </section>
 

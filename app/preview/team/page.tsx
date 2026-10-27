@@ -117,27 +117,6 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
-        <div className="mx-auto max-w-frame">
-          <p className="mb-8 text-sm text-dust">The Team</p>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
-            {[1, 2, 3].map((n) => (
-              <div key={n} className="border-t border-line-light pt-8">
-                <div className="flex aspect-[4/5] w-full items-center justify-center border border-dashed border-bone/30 text-sm text-dust">
-                  [PLACEHOLDER: team member {n} photo]
-                </div>
-                <h3 className="mt-6 font-display text-2xl">
-                  <Placeholder>name</Placeholder>
-                </h3>
-                <p className="mt-3 text-sm text-bone/75">
-                  <Placeholder>role and short bio</Placeholder>
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
       <section className="bg-ink px-6 pb-28 text-bone md:px-10 md:pb-36">
         <div className="mx-auto max-w-frame border-t border-line-light pt-12">
           <p className="mb-4 text-sm text-dust">Selected Work</p>

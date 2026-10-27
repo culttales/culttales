@@ -9,9 +9,75 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false, nocache: true },
 };
 
+// Page-local accent: a muted champagne gold used only for hairlines,
+// numerals and small labels.
+const GOLD = "text-[#C9A96E]";
+const GOLD_BG = "bg-[#C9A96E]";
+const IVORY = "bg-[#F5F1E8]";
+
+// Fine film grain laid over dark sections.
+const GRAIN =
+  "url(\"data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E\")";
+
+function Grain() {
+  return (
+    <div
+      aria-hidden
+      className="pointer-events-none absolute inset-0 opacity-[0.06] mix-blend-overlay"
+      style={{ backgroundImage: GRAIN }}
+    />
+  );
+}
+
+function Label({
+  children,
+  tone = "dark",
+}: {
+  children: React.ReactNode;
+  tone?: "dark" | "light";
+}) {
+  return (
+    <p
+      className={`text-[11px] uppercase tracking-[0.3em] md:tracking-[0.42em] ${
+        tone === "dark" ? "text-bone/60" : "text-char/55"
+      }`}
+    >
+      {children}
+    </p>
+  );
+}
+
+function Chapter({
+  numeral,
+  label,
+  tone = "dark",
+}: {
+  numeral: string;
+  label: string;
+  tone?: "dark" | "light";
+}) {
+  return (
+    <div className="flex flex-col items-center text-center">
+      <span className={`font-display text-lg italic ${GOLD}`}>{numeral}</span>
+      <span className={`my-5 block h-10 w-px ${GOLD_BG} opacity-60`} />
+      <Label tone={tone}>{label}</Label>
+    </div>
+  );
+}
+
+function Ornament() {
+  return (
+    <div aria-hidden className="flex items-center justify-center gap-4">
+      <span className={`block h-px w-16 ${GOLD_BG} opacity-50`} />
+      <span className={`block h-1.5 w-1.5 rotate-45 ${GOLD_BG}`} />
+      <span className={`block h-px w-16 ${GOLD_BG} opacity-50`} />
+    </div>
+  );
+}
+
 function Placeholder({ children }: { children: React.ReactNode }) {
   return (
-    <span className="border border-dashed border-current/40 px-2 py-0.5 text-sm opacity-70">
+    <span className="inline-block border border-dashed border-current/30 px-3 py-1 text-xs tracking-wide opacity-60">
       [PLACEHOLDER: {children}]
     </span>
   );
@@ -19,12 +85,12 @@ function Placeholder({ children }: { children: React.ReactNode }) {
 
 const APPROACH = [
   {
-    n: "01",
+    numeral: "i.",
     title: "Photography",
     body: "For the detail. Every ritual, every gesture, every fleeting glance, held still.",
   },
   {
-    n: "02",
+    numeral: "ii.",
     title: "Cinematography",
     body: "For the emotion. Films that carry how a wedding feels, not only how it looks.",
   },
@@ -47,82 +113,87 @@ export default function TeamPreviewPage() {
           <source src="/videos/intro.mp4" type="video/mp4" />
         </video>
 
-        <div className="absolute inset-0 bg-gradient-to-b from-ink/60 via-ink/10 to-transparent" />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
+        <div className="absolute inset-0 bg-ink/35" />
+        <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(11,11,11,0.75)_100%)]" />
+        <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
+        <Grain />
 
-        <header className="relative z-10 flex justify-center pt-10 md:pt-14">
+        <header className="relative z-10 flex justify-center pt-10 md:pt-12">
           <Image
             src="/logo/cult-tales-logo-white.png"
             alt="CULT. tales"
             width={510}
             height={331}
             priority
-            className="h-14 w-auto md:h-20"
+            className="h-12 w-auto md:h-16"
           />
         </header>
 
-        <div className="relative z-10 mt-auto w-full px-6 pb-14 md:px-10 md:pb-20">
-          <div className="mx-auto max-w-frame">
-            <p className="mb-6 text-xs uppercase tracking-[0.28em] text-bone/70">
-              Short for Culture. Long on Tales.
-            </p>
-            <h1 className="max-w-4xl font-display text-display-lg font-normal text-bone text-balance">
-              We are storytellers of culture, love, and tradition.
-            </h1>
-            <div className="mt-12 flex items-center gap-4 text-xs uppercase tracking-[0.28em] text-bone/60">
-              <span className="block h-px w-14 bg-bone/40" />
-              Scroll
-            </div>
+        <div className="relative z-10 flex flex-1 flex-col items-center justify-center px-6 text-center">
+          <Label>Short for Culture &middot; Long on Tales</Label>
+          <RevealText
+            as="h1"
+            className="mt-8 max-w-5xl font-display text-display-lg font-normal leading-[1.02] text-bone text-balance"
+          >
+            We are storytellers of{" "}
+            <em className="italic text-bone/90">culture, love,</em> and
+            tradition.
+          </RevealText>
+          <div className="mt-10">
+            <Ornament />
           </div>
+        </div>
+
+        <div className="relative z-10 flex flex-col items-center pb-10 md:pb-12">
+          <Label>Scroll</Label>
+          <span className={`mt-4 block h-12 w-px ${GOLD_BG} opacity-70`} />
         </div>
       </section>
 
-      {/* The story */}
-      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-48">
+      {/* I. Who we are */}
+      <section className={`${IVORY} px-6 py-32 text-char md:px-10 md:py-48`}>
         <div className="mx-auto max-w-frame">
-          <div className="flex items-center gap-5">
-            <span className="block h-px w-14 bg-char/40" />
-            <p className="text-xs uppercase tracking-[0.28em] text-char/60">
-              Who we are
-            </p>
-          </div>
+          <Chapter numeral="I" label="Who we are" tone="light" />
 
           <RevealText
             as="h2"
-            className="mt-12 max-w-5xl font-display text-display-md font-normal leading-[1.15] text-char text-balance md:mt-16"
+            className="mx-auto mt-16 max-w-5xl text-center font-display text-display-md font-normal leading-[1.2] text-char text-balance md:mt-20"
           >
-            At CULT. TALES, we believe every wedding is more than a celebration
-            &mdash; <em className="italic">it is a story</em> of two people, two
+            At CULT. TALES, we believe every wedding is more than a
+            celebration &mdash;{" "}
+            <em className="italic">it is a story</em> of two people, two
             families, generations of traditions, and emotions that deserve to
             live forever.
           </RevealText>
 
-          <div className="mt-20 grid grid-cols-1 gap-14 md:mt-32 md:grid-cols-12 md:gap-10">
-            <div className="md:col-span-5 md:col-start-2">
-              <p className="text-lg leading-[1.9] text-char/75 first-letter:float-left first-letter:mr-4 first-letter:mt-1 first-letter:font-display first-letter:text-7xl first-letter:leading-[0.8] first-letter:text-char">
-                We are a Pan-Indian wedding photography and filmmaking team
-                dedicated to documenting weddings in their most authentic form.
-                From intimate rituals and sacred traditions to spontaneous
-                laughter, heartfelt emotions, and grand celebrations, we look
-                beyond the obvious to capture the moments that truly matter.
+          <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-12 md:mt-28 md:grid-cols-2 md:gap-20">
+            <div className="space-y-8 text-[17px] leading-[1.95] text-char/70">
+              <p className="first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:font-display first-letter:text-[4.5rem] first-letter:leading-[0.75] first-letter:text-char">
+                We are a Pan-Indian wedding photography and filmmaking team dedicated to documenting weddings in their most
+                authentic form. From intimate rituals and sacred traditions to
+                spontaneous laughter, heartfelt emotions, and grand
+                celebrations, we look beyond the obvious to capture the moments
+                that truly matter.
               </p>
-              <p className="mt-8 text-base leading-[1.9] text-char/65">
+              <p>
                 Our approach combines the art of cinematic filmmaking with the
                 honesty of documentary storytelling. We don&rsquo;t simply
-                photograph how a wedding looks; we capture how it feels. Every
-                frame, every ritual, every fleeting glance becomes a part of a
-                larger story &mdash; one that reflects your culture, your
-                relationships, and your individuality.
+                photograph how a wedding looks; we capture how it feels.
               </p>
             </div>
-            <div className="md:col-span-4 md:col-start-8 md:pt-24">
-              <p className="text-base leading-[1.9] text-char/65">
+            <div className="space-y-8 text-[17px] leading-[1.95] text-char/70 md:pt-16">
+              <p>
+                Every frame, every ritual, every fleeting glance becomes a part
+                of a larger story &mdash; one that reflects your culture, your
+                relationships, and your individuality.
+              </p>
+              <p>
                 Travelling across India, we explore the diverse traditions and
-                unique expressions of love that make every wedding different. We
-                approach each celebration with curiosity, sensitivity, and a
+                unique expressions of love that make every wedding different.
+                We approach each celebration with curiosity, sensitivity, and a
                 deep respect for the customs and people who bring it to life.
               </p>
-              <p className="mt-8 text-base leading-[1.9] text-char/65">
+              <p>
                 For us, exceptional wedding storytelling is not just about
                 beautiful visuals. It is about understanding your story,
                 anticipating meaningful moments, preserving the details, and
@@ -132,45 +203,75 @@ export default function TeamPreviewPage() {
             </div>
           </div>
 
-          <dl className="mt-24 grid grid-cols-1 border-t border-line-dark md:mt-36 md:grid-cols-3">
+          <dl className="mx-auto mt-24 grid max-w-5xl grid-cols-1 text-center md:mt-32 md:grid-cols-3">
             {[
               ["Based in", "Kerala, India"],
               ["Travelling", "Across India"],
-              ["Craft", "Photography & Filmmaking"],
-            ].map(([term, value]) => (
+              ["Craft", "Photography & Film"],
+            ].map(([term, value], i) => (
               <div
                 key={term}
-                className="border-b border-line-dark py-8 md:border-b-0 md:py-10"
+                className={`border-t border-[#C9A96E]/40 py-10 ${
+                  i > 0 ? "md:border-l" : ""
+                }`}
               >
-                <dt className="text-xs uppercase tracking-[0.28em] text-char/50">
+                <dt className="text-[11px] uppercase tracking-[0.42em] text-char/50">
                   {term}
                 </dt>
-                <dd className="mt-3 font-display text-2xl text-char">{value}</dd>
+                <dd className="mt-4 font-display text-2xl italic text-char">
+                  {value}
+                </dd>
               </div>
             ))}
           </dl>
         </div>
       </section>
 
-      {/* Approach */}
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-44">
-        <div className="mx-auto max-w-frame">
-          <p className="mb-6 text-xs uppercase tracking-[0.28em] text-dust">
-            Our approach
-          </p>
+      {/* Cinematic band */}
+      <section className="relative h-[75svh] w-full overflow-hidden bg-ink md:h-[100svh]">
+        <Image
+          src="/images/moment-2.jpg"
+          alt="A bride and groom walking through a shower of petals"
+          fill
+          sizes="100vw"
+          className="object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-transparent to-ink/20" />
+        <div className="absolute inset-6 border border-bone/25 md:inset-10" />
+        <p className="absolute inset-x-0 bottom-12 text-center font-display text-xl italic text-bone/90 md:bottom-20 md:text-2xl">
+          Not how it looks &mdash; how it feels.
+        </p>
+      </section>
+
+      {/* II. Approach */}
+      <section className="relative overflow-hidden bg-ink px-6 py-32 text-bone md:px-10 md:py-48">
+        <Grain />
+        <div className="relative mx-auto max-w-frame">
+          <Chapter numeral="II" label="Our approach" />
+
           <RevealText
             as="h2"
-            className="max-w-3xl font-display text-display-md text-balance"
+            className="mx-auto mt-16 max-w-3xl text-center font-display text-display-md font-normal text-balance md:mt-20"
           >
-            Photography and cinematography, woven into one story.
+            Photography and cinematography,{" "}
+            <em className="italic">woven into one story.</em>
           </RevealText>
 
-          <div className="mt-20 grid grid-cols-1 gap-14 md:mt-28 md:max-w-4xl md:grid-cols-2 md:gap-12">
-            {APPROACH.map((item) => (
-              <div key={item.n} className="border-t border-line-light pt-8">
-                <p className="font-display text-sm text-dust">{item.n}</p>
-                <h3 className="mt-6 font-display text-3xl">{item.title}</h3>
-                <p className="mt-4 max-w-xs text-sm leading-[1.8] text-bone/65">
+          <div className="mx-auto mt-20 grid max-w-4xl grid-cols-1 md:mt-28 md:grid-cols-2">
+            {APPROACH.map((item, i) => (
+              <div
+                key={item.title}
+                className={`border-t border-[#C9A96E]/35 px-2 py-12 text-center md:px-12 ${
+                  i > 0 ? "md:border-l" : ""
+                }`}
+              >
+                <p className={`font-display text-lg italic ${GOLD}`}>
+                  {item.numeral}
+                </p>
+                <h3 className="mt-6 font-display text-4xl font-normal">
+                  {item.title}
+                </h3>
+                <p className="mx-auto mt-5 max-w-xs text-[15px] leading-[1.9] text-bone/60">
                   {item.body}
                 </p>
               </div>
@@ -179,60 +280,54 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
-      {/* Cinematic band */}
-      <section className="relative h-[70svh] w-full bg-ink md:h-[100svh]">
-        <Image
-          src="/images/moment-2.jpg"
-          alt="A bride and groom walking through a shower of petals"
-          fill
-          sizes="100vw"
-          className="object-cover"
-        />
+      {/* III. Selected work */}
+      <section className={`${IVORY} px-6 py-32 text-char md:px-10 md:py-48`}>
+        <div className="mx-auto max-w-frame">
+          <Chapter numeral="III" label="Selected work" tone="light" />
+
+          <figure className="mx-auto mt-20 max-w-xl md:mt-24">
+            <div className="relative p-3 ring-1 ring-[#C9A96E]/50 md:p-4">
+              <div className="relative aspect-[15/16] w-full">
+                <Image
+                  src="/images/moment-1.jpg"
+                  alt="A bride smiling among family"
+                  fill
+                  sizes="(min-width: 768px) 36rem, 100vw"
+                  className="object-cover"
+                />
+              </div>
+            </div>
+          </figure>
+        </div>
       </section>
 
-      {/* Closing statement */}
-      <section className="relative overflow-hidden bg-ink px-6 pb-32 text-bone md:px-10 md:pb-48">
-        <div className="mx-auto max-w-4xl border-t border-line-light pt-24 text-center md:pt-36">
+      {/* Closing */}
+      <section className="relative overflow-hidden bg-ink px-6 py-32 text-bone md:px-10 md:py-48">
+        <Grain />
+        <div className="relative mx-auto max-w-4xl text-center">
+          <Ornament />
           <RevealText
             as="p"
-            className="font-display text-display-md italic leading-snug text-balance"
+            className="mt-16 font-display text-display-md font-normal italic leading-[1.25] text-balance"
           >
             We don&rsquo;t just document weddings. We preserve the culture, the
             emotions, and the stories that make them unforgettable.
           </RevealText>
-          <p className="mt-16 text-xs uppercase tracking-[0.28em] text-dust">
-            CULT. TALES — Your story, told through the soul of your culture.
-          </p>
-        </div>
-      </section>
-
-      {/* Selected work */}
-      <section className="bg-paper px-6 pb-16 pt-28 text-char md:px-10 md:pt-44">
-        <div className="mx-auto max-w-frame">
-          <p className="border-t border-line-dark pt-5 text-xs uppercase tracking-[0.28em] text-char/60">
-            Selected work
-          </p>
-          <div className="mt-16 md:mt-24">
-            <div className="relative mx-auto aspect-[15/16] w-full max-w-xl">
-              <Image
-                src="/images/moment-1.jpg"
-                alt="A bride smiling among family"
-                fill
-                sizes="(min-width: 768px) 36rem, 100vw"
-                className="object-cover"
-              />
-            </div>
+          <div className="mt-16">
+            <Label>Your story, told through the soul of your culture</Label>
           </div>
-        </div>
-      </section>
 
-      {/* Details to come */}
-      <section className="bg-paper px-6 pb-24 pt-16 text-char md:px-10 md:pb-32 md:pt-24">
-        <div className="mx-auto max-w-frame border-t border-line-dark pt-6">
-          <p className="mb-5 text-xs uppercase tracking-[0.28em] text-char/60">
-            Get in touch
-          </p>
-          <Placeholder>contact details to show</Placeholder>
+          <div className="mt-28 flex flex-col items-center md:mt-36">
+            <Image
+              src="/logo/cult-tales-logo-white.png"
+              alt="CULT. tales"
+              width={510}
+              height={331}
+              className="h-16 w-auto opacity-90 md:h-20"
+            />
+            <span className={`my-10 block h-px w-16 ${GOLD_BG} opacity-60`} />
+            <Placeholder>contact details to show</Placeholder>
+          </div>
         </div>
       </section>
     </>

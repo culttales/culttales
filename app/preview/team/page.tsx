@@ -25,7 +25,7 @@ export default function TeamPreviewPage() {
             Prepared for <Placeholder>client name</Placeholder>
           </p>
           <h1 className="max-w-3xl font-display text-display-lg text-balance">
-            We are storytellers of culture, love and tradition.
+            We are storytellers of culture, love, and tradition.
           </h1>
           <p className="mt-8 text-sm text-bone/60">
             Our website is currently under construction. This page is a short
@@ -46,20 +46,45 @@ export default function TeamPreviewPage() {
         </div>
         <div className="flex items-center justify-center px-6 py-20 md:px-10 md:py-24">
           <div className="max-w-xl text-bone">
-            <p className="text-base leading-relaxed text-bone/75">
-              CULT. tales travels across India documenting weddings in their most
-              authentic form. We capture more than ceremonies — the people, the
-              rituals, the chaos, the silence, the laughter, the heritage, the
-              emotion.
+            <p className="font-display text-xl text-bone">
+              Short for Culture. Long on Tales.
             </p>
             <p className="mt-6 text-base leading-relaxed text-bone/75">
-              Every wedding carries a story that deserves to be told with care,
-              authenticity and visual honesty. We spend time understanding the
-              community, the region, the specific version of a ritual this family
-              practices, so the final story feels entirely theirs.
+              At CULT. TALES, we believe every wedding is more than a
+              celebration — it is a story of two people, two families,
+              generations of traditions, and emotions that deserve to live
+              forever.
+            </p>
+            <p className="mt-6 text-base leading-relaxed text-bone/75">
+              We are a Pan-Indian wedding photography and filmmaking team
+              dedicated to documenting weddings in their most authentic form.
+              From intimate rituals and sacred traditions to spontaneous
+              laughter, heartfelt emotions, and grand celebrations, we look
+              beyond the obvious to capture the moments that truly matter.
+            </p>
+            <p className="mt-6 text-base leading-relaxed text-bone/75">
+              Our approach combines the art of cinematic filmmaking with the
+              honesty of documentary storytelling. We don&rsquo;t simply
+              photograph how a wedding looks; we capture how it feels. Every
+              frame, every ritual, every fleeting glance becomes a part of a
+              larger story — one that reflects your culture, your
+              relationships, and your individuality.
+            </p>
+            <p className="mt-6 text-base leading-relaxed text-bone/75">
+              Travelling across India, we explore the diverse traditions and
+              unique expressions of love that make every wedding different. We
+              approach each celebration with curiosity, sensitivity, and a deep
+              respect for the customs and people who bring it to life.
+            </p>
+            <p className="mt-6 text-base leading-relaxed text-bone/75">
+              For us, exceptional wedding storytelling is not just about
+              beautiful visuals. It is about understanding your story,
+              anticipating meaningful moments, preserving the details, and
+              creating films and photographs that grow more valuable with time.
             </p>
             <p className="mt-6 font-display text-xl text-bone">
-              Short for Culture. Long on Tales.
+              We don&rsquo;t just document weddings. We preserve the culture,
+              the emotions, and the stories that make them unforgettable.
             </p>
           </div>
         </div>
@@ -131,8 +156,7 @@ export default function TeamPreviewPage() {
             Let&rsquo;s tell your story.
           </h2>
           <p className="mx-auto mt-8 max-w-editorial text-base leading-relaxed text-char/70">
-            We work across all regions of India, and travel internationally
-            for Pan-Indian and diaspora weddings.
+            CULT. TALES — Your story, told through the soul of your culture.
           </p>
           <p className="mt-10 font-display text-xl text-char">
             <Placeholder>contact details to show</Placeholder>

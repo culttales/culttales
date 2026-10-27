@@ -152,24 +152,6 @@ export default function TeamPreviewPage() {
         </div>
       </section>
 
-      {/* Full-bleed diptych */}
-      <section className="grid grid-cols-1 bg-ink md:grid-cols-2">
-        {[
-          { src: "/images/couple-2.jpg", alt: "A couple holding hands in a garden" },
-          { src: "/images/couple-4.jpg", alt: "A bride and groom in quiet conversation" },
-        ].map((img) => (
-          <div key={img.src} className="relative h-[85svh] w-full md:h-[100svh]">
-            <Image
-              src={img.src}
-              alt={img.alt}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover"
-            />
-          </div>
-        ))}
-      </section>
-
       {/* Approach */}
       <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-44">
         <div className="mx-auto max-w-frame">
@@ -230,22 +212,16 @@ export default function TeamPreviewPage() {
           <p className="border-t border-line-dark pt-5 text-xs uppercase tracking-[0.28em] text-char/60">
             Selected work
           </p>
-          <div className="mt-16 grid grid-cols-1 gap-10 md:mt-24 md:grid-cols-3 md:gap-8">
-            {[
-              { src: "/images/couple-1.jpg", alt: "A bride smiling at a window", ratio: "aspect-[2/3]", offset: "" },
-              { src: "/images/moment-1.jpg", alt: "A bride smiling among family", ratio: "aspect-[15/16]", offset: "md:mt-32" },
-              { src: "/images/couple-3.jpg", alt: "A bride in a pink lehenga in a garden", ratio: "aspect-[2/3]", offset: "md:mt-16" },
-            ].map((img) => (
-              <div key={img.src} className={`relative w-full ${img.ratio} ${img.offset}`}>
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 33vw, 100vw"
-                  className="object-cover"
-                />
-              </div>
-            ))}
+          <div className="mt-16 md:mt-24">
+            <div className="relative mx-auto aspect-[15/16] w-full max-w-xl">
+              <Image
+                src="/images/moment-1.jpg"
+                alt="A bride smiling among family"
+                fill
+                sizes="(min-width: 768px) 36rem, 100vw"
+                className="object-cover"
+              />
+            </div>
           </div>
         </div>
       </section>

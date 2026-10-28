@@ -1,7 +1,16 @@
 import type { Metadata } from "next";
+import { Inter } from "next/font/google";
 import Image from "next/image";
 import RevealText from "@/components/RevealText";
 import { contact } from "@/lib/site";
+
+// This page keeps the typeface it was approved with.
+const inter = Inter({
+  subsets: ["latin"],
+  variable: "--font-inter",
+  weight: ["300", "400", "500"],
+  display: "swap",
+});
 
 // Private page shared directly with a client. Not linked from the site,
 // not in the sitemap, and marked noindex.
@@ -111,7 +120,7 @@ const APPROACH = [
 
 export default function TeamPreviewPage() {
   return (
-    <>
+    <div className={`client-page ${inter.variable}`}>
       {/* Hero */}
       <section className="relative flex h-[100svh] w-full flex-col overflow-hidden bg-ink">
         <video
@@ -417,6 +426,6 @@ export default function TeamPreviewPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

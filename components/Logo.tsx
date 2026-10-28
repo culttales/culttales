@@ -5,7 +5,8 @@ import clsx from "clsx";
 type LogoProps = {
   variant?: "white" | "black";
   className?: string;
-  priority?: boolean;
+  /** Load straight away, for logos visible on first paint. */
+  eager?: boolean;
 };
 
 /**
@@ -14,7 +15,7 @@ type LogoProps = {
  *  - white: for use on dark (ink) backgrounds
  *  - black: for use on light (paper) backgrounds
  */
-export default function Logo({ variant = "white", className, priority }: LogoProps) {
+export default function Logo({ variant = "white", className, eager }: LogoProps) {
   const src =
     variant === "white"
       ? "/logo/cult-tales-logo-white.png"
@@ -31,7 +32,7 @@ export default function Logo({ variant = "white", className, priority }: LogoPro
         alt="CULT. tales"
         width={510}
         height={331}
-        priority={priority}
+        loading={eager ? "eager" : undefined}
         className="h-full w-auto object-contain"
       />
     </Link>

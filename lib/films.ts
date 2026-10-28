@@ -1,5 +1,3 @@
-import { mediaUrl } from "@/lib/media";
-
 export type Film = {
   slug: string;
   title: string;
@@ -8,32 +6,38 @@ export type Film = {
   thumbnail: string;
   duration: string;
   description: string;
+  /** Full film, played in the lightbox. */
   src?: string;
+  /** Short muted loop shown on hover and in the homepage showcase. */
+  preview?: string;
 };
 
-// `thumbnail` currently points at a generated placeholder texture — replace
-// with a real frame grab or poster image, and wire an actual video source
-// into VideoPlayer once footage is ready.
+// The first two films are real footage, stored upright at 1920x1080 and kept
+// under Cloudflare's 25 MiB asset limit. Their titles and places are still
+// placeholders. The last two have no footage yet, so they stay off the site
+// (see getReleasedFilms) until a `src` is added.
 export const films: Film[] = [
   {
     slug: "a-wedding-in-pushkar",
     title: "A Wedding in Pushkar",
     location: "Rajasthan",
     year: "2026",
-    thumbnail: "/images/film-1-poster.jpg",
-    duration: "4:12",
+    thumbnail: "/images/film-1-still.jpg",
+    duration: "0:55",
     description: "Three days of ritual on the edge of a holy lake, told as one continuous evening.",
-    src: mediaUrl("/videos/showreel-1.mp4"),
+    src: "/videos/film-1.mp4",
+    preview: "/videos/film-1-preview.mp4",
   },
   {
-    slug: "backwater-vows",
-    title: "Backwater Vows",
+    slug: "the-sangeet",
+    title: "The Sangeet",
     location: "Kerala",
     year: "2026",
-    thumbnail: "/images/film-2-poster.jpg",
-    duration: "3:47",
-    description: "A Nair wedding drifting between canals, brass lamps and quiet certainty.",
-    src: mediaUrl("/videos/showreel-2.mp4"),
+    thumbnail: "/images/film-2-still.jpg",
+    duration: "0:39",
+    description: "Lights low, music loud and two families on one dance floor. The night before the vows.",
+    src: "/videos/film-2.mp4",
+    preview: "/videos/film-2-preview.mp4",
   },
   {
     slug: "shubho-drishti",
@@ -57,6 +61,11 @@ export const films: Film[] = [
 
 export function getAllFilms(): Film[] {
   return films;
+}
+
+/** Films with footage to play; the ones shown on the site. */
+export function getReleasedFilms(): Film[] {
+  return films.filter((f) => f.src);
 }
 
 export function getFilmBySlug(slug: string): Film | undefined {

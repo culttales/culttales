@@ -1,7 +1,20 @@
 import { NextResponse } from "next/server";
 import { contact } from "@/lib/site";
 
-const fields = ["name", "email", "wedding", "location", "message"] as const;
+// Every field the enquiry forms may send, with its label in the email.
+const fields = [
+  ["name", "Names"],
+  ["email", "Email"],
+  ["phone", "Phone / WhatsApp"],
+  ["wedding", "Celebration dates"],
+  ["location", "Venue & city"],
+  ["guests", "Guests"],
+  ["rituals", "Rituals & events"],
+  ["scope", "Coverage"],
+  ["message", "Message"],
+] as const;
+
+type Field = (typeof fields)[number][0];
 
 export async function POST(request: Request) {
   let body: Record<string, unknown>;
@@ -11,15 +24,25 @@ export async function POST(request: Request) {
     return NextResponse.json({ error: "Invalid request." }, { status: 400 });
   }
 
-  const data: Record<string, string> = {};
-  for (const key of fields) {
+  // A hidden field people never see; bots that fill it get a quiet "ok".
+  if (typeof body.website === "string" && body.website.trim()) {
+    return NextResponse.json({ ok: true });
+  }
+
+  const data = {} as Record<Field, string>;
+  for (const [key] of fields) {
     const value = body[key];
-    data[key] = typeof value === "string" ? value.trim().slice(0, 4000) : "";
+    const text = Array.isArray(value)
+      ? value.filter((v) => typeof v === "string").join(", ")
+      : typeof value === "string"
+        ? value
+        : "";
+    data[key] = text.trim().slice(0, 4000);
   }
 
   if (!data.name || !data.message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     return NextResponse.json(
-      { error: "Please add your name, a valid email and a message." },
+      { error: "Please add your names, a valid email and a few words about your celebration." },
       { status: 400 },
     );
   }
@@ -31,8 +54,10 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true });
   }
 
-  const row = (label: string, value: string) =>
-    value ? `<p><strong>${label}:</strong> ${escapeHtml(value)}</p>` : "";
+  const html = fields
+    .filter(([key]) => key !== "message" && data[key])
+    .map(([key, label]) => `<p><strong>${label}:</strong> ${escapeHtml(data[key])}</p>`)
+    .join("");
 
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
@@ -46,10 +71,7 @@ export async function POST(request: Request) {
       reply_to: data.email,
       subject: `New enquiry from ${data.name.replace(/[\r\n]+/g, " ")}`,
       html:
-        row("Name", data.name) +
-        row("Email", data.email) +
-        row("Wedding date", data.wedding) +
-        row("Location", data.location) +
+        html +
         `<p><strong>Message:</strong></p><p>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>`,
     }),
   }).catch(() => null);

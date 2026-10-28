@@ -2,84 +2,89 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
+import AmbientToggle from "./AmbientToggle";
 
 const NAV_LINKS = [
   { label: "Stories", href: "/stories" },
   { label: "Films", href: "/films" },
-  { label: "Journal", href: "/journal" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
+  { label: "Journal", href: "/journal" },
 ];
 
 export default function Header() {
+  const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    const onScroll = () => setScrolled(window.scrollY > 80);
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
 
+  useEffect(() => {
+    setMenuOpen(false);
+  }, [pathname]);
+
+  // Over the homepage's dark hero the bar starts clear with light text;
+  // everywhere else, and once scrolled, it settles onto ivory.
+  const solid = scrolled || pathname !== "/";
+
   return (
-    <>
-      <header
-        className={clsx(
-          "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
-          scrolled || menuOpen
-            ? "bg-ink/80 backdrop-blur-md border-b border-line-light"
-            : "bg-transparent border-b border-transparent"
-        )}
-      >
-        <div className="mx-auto flex max-w-frame items-center justify-between px-6 py-5 md:px-10">
-          <Logo variant="white" className="h-6 md:h-7" priority />
-
-          <nav className="hidden items-center gap-9 md:flex">
-            {NAV_LINKS.slice(0, 4).map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="link-draw text-sm text-bone/90"
-              >
-                {link.label}
-              </Link>
-            ))}
-          </nav>
-
-          <div className="hidden md:block">
-            <Link href="/contact" className="link-draw text-sm text-bone">
-              Let&rsquo;s Talk &rarr;
+    <header
+      className={clsx(
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,padding,box-shadow,color] duration-500",
+        solid
+          ? "bg-paper/90 py-3 text-obsidian shadow-[0_1px_0_rgba(22,20,18,0.08)] backdrop-blur-md"
+          : "py-5 text-paper"
+      )}
+    >
+      <div className="mx-auto grid max-w-site grid-cols-[1fr_auto_1fr] items-center px-5 md:px-12">
+        <nav className="hidden items-center gap-9 text-[11px] font-medium uppercase tracking-editorial lg:flex">
+          {NAV_LINKS.map((link) => (
+            <Link
+              key={link.href}
+              href={link.href}
+              className={clsx(
+                "py-1 transition-colors hover:text-bronze",
+                pathname.startsWith(link.href) && "text-bronze"
+              )}
+            >
+              {link.label}
             </Link>
-          </div>
+          ))}
+        </nav>
 
-          <button
-            type="button"
-            aria-label={menuOpen ? "Close menu" : "Open menu"}
-            aria-expanded={menuOpen}
-            onClick={() => setMenuOpen((v: boolean) => !v)}
-            className="relative z-50 flex h-8 w-8 flex-col items-end justify-center gap-[6px] md:hidden"
-          >
-            <span
-              className={clsx(
-                "block h-px bg-bone transition-all duration-300",
-                menuOpen ? "w-6 translate-y-[3.5px] rotate-45" : "w-6"
-              )}
-            />
-            <span
-              className={clsx(
-                "block h-px bg-bone transition-all duration-300",
-                menuOpen ? "w-6 -translate-y-[3.5px] -rotate-45" : "w-4"
-              )}
-            />
-          </button>
+        <button
+          type="button"
+          aria-label={menuOpen ? "Close menu" : "Open menu"}
+          aria-expanded={menuOpen}
+          onClick={() => setMenuOpen((open) => !open)}
+          className="flex h-9 w-9 flex-col items-start justify-center gap-1.5 justify-self-start lg:hidden"
+        >
+          <span className={clsx("block h-[1.5px] w-6 bg-current transition-transform duration-300", menuOpen && "translate-y-[7.5px] rotate-45")} />
+          <span className={clsx("block h-[1.5px] w-4 bg-current transition-opacity duration-300", menuOpen && "opacity-0")} />
+          <span className={clsx("block h-[1.5px] w-6 bg-current transition-transform duration-300", menuOpen && "-translate-y-[7.5px] -rotate-45")} />
+        </button>
+
+        <Logo variant={solid ? "black" : "white"} className="h-8 md:h-10" eager />
+
+        <div className="flex items-center justify-end gap-2.5 sm:gap-4 md:gap-6">
+          <div className="hidden sm:block">
+            <AmbientToggle light={!solid} />
+          </div>
+          <Link href="/contact" className="btn-bronze btn-sm">
+            Enquire<span className="hidden sm:inline">&nbsp;/ Book a Date</span>
+          </Link>
         </div>
-      </header>
+      </div>
 
       <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} links={NAV_LINKS} />
-    </>
+    </header>
   );
 }

@@ -5,6 +5,8 @@ export type JournalPost = {
   date: string;
   readTime: string;
   image: string;
+  /** Where to centre the photo when it is cropped, e.g. "60% 40%". */
+  imageFocus?: string;
   excerpt: string;
   body: string[];
 };
@@ -16,7 +18,8 @@ export const journalPosts: JournalPost[] = [
     category: "Traditions",
     date: "March 2026",
     readTime: "6 min",
-    image: "/images/journal-1.jpg",
+    image: "/images/moment-4.jpg",
+    imageFocus: "42% 50%",
     excerpt:
       "Beneath the simplicity of a Nair wedding sits a set of rituals that have barely changed in generations.",
     body: [
@@ -31,7 +34,8 @@ export const journalPosts: JournalPost[] = [
     category: "Culture",
     date: "February 2026",
     readTime: "7 min",
-    image: "/images/journal-2.jpg",
+    image: "/images/wedding-canopy.jpg",
+    imageFocus: "48% 50%",
     excerpt:
       "Three days, four ceremonies, and a desert light that changes everything it touches.",
     body: [
@@ -45,7 +49,8 @@ export const journalPosts: JournalPost[] = [
     category: "Journal",
     date: "January 2026",
     readTime: "5 min",
-    image: "/images/journal-3.jpg",
+    image: "/images/moment-3.jpg",
+    imageFocus: "52% 45%",
     excerpt:
       "An event has a schedule. A story has a shape. Indian weddings, done right, are always the latter.",
     body: [
@@ -59,7 +64,8 @@ export const journalPosts: JournalPost[] = [
     category: "Fashion",
     date: "December 2025",
     readTime: "8 min",
-    image: "/images/journal-4.jpg",
+    image: "/images/moment-5.jpg",
+    imageFocus: "68% 40%",
     excerpt:
       "From Kanjeevaram silk to Phulkari embroidery, what a bride wears is a map of where she's from.",
     body: [

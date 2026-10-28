@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import RevealText from "@/components/RevealText";
-import { getAllJournalPosts, getJournalPostBySlug, type JournalPost } from "@/lib/journal";
+import ClosingInvite from "@/components/ClosingInvite";
+import { getAllJournalPosts, getJournalPostBySlug } from "@/lib/journal";
 
 type JournalPageProps = {
   params: Promise<{ slug: string }>;
@@ -29,11 +29,10 @@ export async function generateMetadata({ params }: JournalPageProps): Promise<Me
   };
 }
 
-export default async function JournalPage({ params }: JournalPageProps) {
+export default async function JournalArticlePage({ params }: JournalPageProps) {
   const { slug } = await params;
-  const maybePost = getJournalPostBySlug(slug);
-  if (!maybePost) notFound();
-  const post = maybePost as JournalPost;
+  const post = getJournalPostBySlug(slug);
+  if (!post) notFound();
 
   const allPosts = getAllJournalPosts();
   const currentIdx = allPosts.findIndex((p) => p.slug === post.slug);
@@ -41,68 +40,88 @@ export default async function JournalPage({ params }: JournalPageProps) {
 
   return (
     <article className="bg-paper text-char">
-      {/* Header */}
-      <section className="border-b border-line-dark px-6 py-16 md:px-10 md:py-20">
-        <div className="mx-auto max-w-4xl">
-          <p className="mb-4 text-sm text-dust">{post.category}</p>
-          <h1 className="font-display text-display-md text-balance">{post.title}</h1>
-          <p className="mt-4 text-sm text-char/70">
-            {post.date} &middot; {post.readTime} read
-          </p>
+      <header className="px-5 pt-32 md:px-12 md:pt-44">
+        <div className="mx-auto max-w-site">
+          <div className="section-marker">
+            <Link href="/journal" className="transition-colors hover:text-bronze">
+              &larr; The journal
+            </Link>
+            <span className="hidden sm:inline">
+              {post.date} &middot; {post.readTime} read
+            </span>
+          </div>
+          <div className="mx-auto mt-14 max-w-3xl text-center md:mt-20">
+            <p className="eyebrow">{post.category}</p>
+            <h1 className="mt-5 text-[2.75rem] font-light leading-[1.04] text-obsidian sm:text-6xl md:text-[72px]">
+              {post.title}
+            </h1>
+            <p className="mt-6 font-display text-xl italic text-char/80 md:text-2xl">&ldquo;{post.excerpt}&rdquo;</p>
+          </div>
+          <div className="relative mx-auto mt-12 aspect-[4/3] max-w-[1240px] overflow-hidden rounded-2xl bg-sand shadow-xl md:mt-16 md:aspect-[16/9]">
+            <Image
+              src={post.image}
+              alt=""
+              fill
+              loading="eager"
+              fetchPriority="high"
+              sizes="(min-width: 1240px) 1240px, 100vw"
+              className="object-cover"
+              style={post.imageFocus ? { objectPosition: post.imageFocus } : undefined}
+            />
+          </div>
         </div>
-      </section>
+      </header>
 
-      {/* Featured image */}
-      <div className="relative aspect-video w-full overflow-hidden">
-        <Image
-          src={post.image}
-          alt={post.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-      </div>
-
-      {/* Body */}
-      <section className="px-6 py-24 md:px-10 md:py-32">
-        <div className="mx-auto max-w-editorial">
+      <section className="px-5 py-20 md:px-12 md:py-28">
+        <div className="mx-auto max-w-editorial space-y-7 text-base font-light leading-[1.9] text-char/90 md:text-lg">
           {post.body.map((paragraph, i) => (
-            <p key={i} className="mb-6 text-base leading-relaxed text-char/80 last:mb-0">
+            <p
+              key={i}
+              className={
+                i === 0
+                  ? "first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.5rem] first-letter:leading-[0.8] first-letter:text-obsidian"
+                  : undefined
+              }
+            >
               {paragraph}
             </p>
           ))}
+          <p className="pt-4 font-display text-xl italic text-bronze">Short for Culture. Long on Tales.</p>
         </div>
       </section>
 
-      {/* Next article CTA */}
-      <section className="border-t border-line-dark bg-ink px-6 py-24 text-bone md:px-10 md:py-32">
-        <div className="mx-auto max-w-frame">
-          <p className="mb-8 text-sm text-dust">Next Article</p>
-          <Link
-            href={`/journal/${next.slug}`}
-            data-cursor="view"
-            className="group grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-14"
-          >
-            <div className="relative aspect-[16/10] w-full overflow-hidden">
-              <Image
-                src={next.image}
-                alt={next.title}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
-              />
-            </div>
-            <div>
-              <p className="text-sm text-dust">{next.category}</p>
-              <h3 className="mt-2 font-display text-display-sm text-balance">{next.title}</h3>
-              <span className="link-draw mt-6 inline-block text-sm text-bone">
-                Read article &rarr;
-              </span>
-            </div>
-          </Link>
-        </div>
-      </section>
+      {next && next.slug !== post.slug && (
+        <section className="border-t border-line-dark bg-sand px-5 py-20 md:px-12 md:py-28">
+          <div className="mx-auto max-w-[1240px]">
+            <p className="mb-8 text-[11px] font-medium uppercase tracking-editorial text-muted">Next note</p>
+            <Link
+              href={`/journal/${next.slug}`}
+              data-cursor="view"
+              className="group grid grid-cols-1 items-center gap-8 md:grid-cols-2 md:gap-14"
+            >
+              <div className="relative aspect-[16/10] overflow-hidden rounded-2xl bg-paper">
+                <Image
+                  src={next.image}
+                  alt=""
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="card-img object-cover"
+                  style={next.imageFocus ? { objectPosition: next.imageFocus } : undefined}
+                />
+              </div>
+              <div>
+                <p className="eyebrow">{next.category}</p>
+                <h2 className="mt-3 text-4xl leading-[1.08] text-obsidian md:text-5xl">{next.title}</h2>
+                <span className="text-link mt-6">Read the note &rarr;</span>
+              </div>
+            </Link>
+          </div>
+        </section>
+      )}
+
+      <div className="pt-24 md:pt-36">
+        <ClosingInvite eyebrow="Planning your own celebration?" />
+      </div>
     </article>
   );
 }

@@ -1,145 +1,188 @@
 import type { Metadata } from "next";
 import Image from "next/image";
-import Link from "next/link";
-import EditorialSection from "@/components/EditorialSection";
-import RevealText from "@/components/RevealText";
+import ClosingInvite from "@/components/ClosingInvite";
+import PageIntro from "@/components/PageIntro";
+import Reveal from "@/components/Reveal";
+import SectionMarker from "@/components/SectionMarker";
 
 export const metadata: Metadata = {
   title: "About",
-  description: "CULT. tales — storytellers of culture, love and tradition across India.",
+  description:
+    "CULT. tales is a Pan-Indian wedding photography and filmmaking team based in Kerala and Rajasthan, documenting weddings in their most authentic form.",
 };
+
+const APPROACH = [
+  {
+    title: "Photography",
+    body: "For the detail. Every ritual, every gesture, every fleeting glance, held still.",
+  },
+  {
+    title: "Cinematography",
+    body: "For the emotion. Films that carry how a wedding feels, not only how it looks.",
+  },
+  {
+    title: "Cultural documentation",
+    body: "For the context. The meaning behind each ritual, kept as your family practises it.",
+  },
+];
+
+const DOCUMENT = [
+  { title: "The rituals", body: "Honouring how each community, and each family, keeps them.", src: "/images/moment-3.jpg", alt: "Family showering the couple with rose petals", focus: "52% 45%" },
+  { title: "The people", body: "Family, friends and the quiet edges of every moment.", src: "/images/moment-9.jpg", alt: "The couple walking hand in hand among their guests" },
+  { title: "The place", body: "Regional architecture, light and landscape.", src: "/images/moment-4.jpg", alt: "The couple at sunset on a palace terrace", focus: "42% 50%" },
+  { title: "The emotion", body: "The unguarded feeling underneath every ceremony.", src: "/images/moment-5.jpg", alt: "A bride in red smiling beside a window", focus: "68% 40%" },
+];
+
+const SERVICES = [
+  {
+    title: "Wedding stories",
+    body: "Full coverage across photography and cinematography, delivered as one visual story of the wedding, its people and its rituals.",
+  },
+  {
+    title: "Wedding films",
+    body: "Cinematic wedding documentaries, built around the emotional arc of the day.",
+  },
+  {
+    title: "Cultural stories",
+    body: "Editorial documentation of rituals, traditions and celebrations beyond individual weddings.",
+  },
+];
 
 export default function AboutPage() {
   return (
     <>
-      <div className="bg-ink pb-24 pt-36 text-bone md:pb-32 md:pt-44">
-        <div className="mx-auto max-w-frame px-6 md:px-10">
-          <RevealText as="h1" className="max-w-3xl font-display text-display-lg text-balance">
-            We are storytellers of culture, love and tradition.
-          </RevealText>
-        </div>
-      </div>
-
-      <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2">
-        <div className="relative aspect-[4/5] w-full md:aspect-auto">
-          <Image
-            src="/images/about-1.jpg"
-            alt="Portrait"
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="flex items-center justify-center px-6 py-20 md:px-10 md:py-24">
-          <div className="max-w-xl text-bone">
-            <p className="text-base leading-relaxed text-bone/75">
-              CULT. tales travels across India documenting weddings in their most
-              authentic form. We capture more than ceremonies — the people, the
-              rituals, the chaos, the silence, the laughter, the heritage, the
-              emotion.
-            </p>
-            <p className="mt-6 text-base leading-relaxed text-bone/75">
-              Every wedding carries a story that deserves to be told with care,
-              authenticity and visual honesty. We spend time understanding the
-              community, the region, the specific version of a ritual this family
-              practices, so the final story feels entirely theirs.
-            </p>
-            <p className="mt-6 font-display text-xl text-bone">
-              Short for Culture. Long on Tales.
-            </p>
-          </div>
-        </div>
-      </section>
-
-      <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2 md:grid-rows-[auto_auto]">
-        <div className="relative aspect-video w-full md:col-span-1">
-          <Image
-            src="/images/about-2.jpg"
-            alt="Behind the scenes"
-            fill
-            sizes="(min-width: 768px) 50vw, 100vw"
-            className="object-cover"
-          />
-        </div>
-        <div className="border-t border-line-light px-6 py-12 md:border-l md:border-t-0 md:px-10 md:py-16">
-          <p className="mb-4 text-sm text-dust">Our Approach</p>
-          <h2 className="max-w-xs font-display text-3xl text-bone">
-            Photography + Cinematography + Editorial
-          </h2>
-          <p className="mt-6 text-sm text-bone/70">
-            We shoot every wedding across multiple mediums — photography for
-            the detail, cinematography for the emotion, and editorial work to
-            place the wedding within its cultural context.
-          </p>
-        </div>
-
-        <div className="border-t border-line-light px-6 py-12 md:border-t md:px-10 md:py-16">
-          <p className="mb-4 text-sm text-dust">What We Document</p>
-          <ul className="flex flex-col gap-3 text-sm text-bone/80">
-            <li>The rituals — honoring their specificity to each community</li>
-            <li>The people — family, friends, the edges of quiet moments</li>
-            <li>The place — regional architecture, light, landscape</li>
-            <li>The emotion — the unguarded feeling underneath every ceremony</li>
-          </ul>
-        </div>
-      </section>
-
-      <EditorialSection
-        tone="light"
-        align="center"
-        statement="Understanding a wedding means understanding a culture, a family, a moment in time that will never happen again."
+      <PageIntro
+        label="About us — who we are"
+        aside="Based in Kerala & Rajasthan"
+        title={
+          <>
+            Storytellers of <em>culture, love</em> &amp; tradition.
+          </>
+        }
+        intro="A Pan-Indian wedding photography and filmmaking team, travelling across India and beyond to document weddings in their most authentic form."
       />
 
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
-        <div className="mx-auto max-w-frame">
-          <p className="mb-8 text-sm text-dust">Services</p>
-          <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
-            <div className="border-t border-line-light pt-8">
-              <h3 className="font-display text-2xl">Wedding Stories</h3>
-              <p className="mt-3 text-sm text-bone/75">
-                Full-day coverage across photography and cinematography,
-                delivered as a curated visual narrative of the wedding,
-                the people, and the rituals.
-              </p>
-            </div>
+      <section className="bg-paper px-5 pb-24 md:px-12 md:pb-36">
+        <div className="mx-auto grid max-w-site grid-cols-1 items-start gap-12 border-t border-line-dark pt-14 lg:grid-cols-12 lg:gap-16">
+          <Reveal className="lg:col-span-5">
+            <figure>
+              <div className="relative aspect-[4/5] overflow-hidden rounded-2xl bg-sand shadow-xl">
+                <Image
+                  src="/images/moment-1.jpg"
+                  alt="A bride laughing among the women of her family"
+                  fill
+                  loading="eager"
+                  fetchPriority="high"
+                  sizes="(min-width: 1024px) 40vw, 100vw"
+                  className="object-cover"
+                />
+              </div>
+              <figcaption className="mt-3 flex justify-between text-[10px] uppercase tracking-[0.18em] text-muted">
+                <span>Fig. 01 — Among family</span>
+                <span className="font-display text-[13px] normal-case italic tracking-normal">Not how it looks, how it feels</span>
+              </figcaption>
+            </figure>
+          </Reveal>
 
-            <div className="border-t border-line-light pt-8">
-              <h3 className="font-display text-2xl">Wedding Films</h3>
-              <p className="mt-3 text-sm text-bone/75">
-                Cinematic wedding documentaries — 3 to 5 minute edits built
-                around the emotional arc of the day.
-              </p>
-            </div>
+          <Reveal delay={0.1} className="space-y-6 text-base font-light leading-[1.9] text-char/85 lg:col-span-7 lg:pt-6 md:text-[17px]">
+            <p className="first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.5rem] first-letter:leading-[0.8] first-letter:text-obsidian">
+              We are a Pan-Indian wedding photography and filmmaking team dedicated to documenting
+              weddings in their most authentic form. From intimate rituals and sacred traditions to
+              spontaneous laughter, heartfelt emotions and grand celebrations, we look beyond the
+              obvious to capture the moments that truly matter.
+            </p>
+            <p>
+              Our approach combines the art of cinematic filmmaking with the honesty of documentary
+              storytelling. We don&rsquo;t simply photograph how a wedding looks; we capture how it
+              feels.
+            </p>
+            <p>
+              Every frame, every ritual, every fleeting glance becomes part of a larger story, one that
+              reflects your culture, your relationships and your individuality.
+            </p>
+            <p>
+              Travelling across India, we explore the diverse traditions and unique expressions of love
+              that make every wedding different. We approach each celebration with curiosity,
+              sensitivity and a deep respect for the customs and people who bring it to life.
+            </p>
+            <p>
+              For us, exceptional wedding storytelling is not just about beautiful visuals. It is about
+              understanding your story, anticipating meaningful moments, preserving the details, and
+              creating films and photographs that grow more valuable with time.
+            </p>
+            <p className="font-display text-2xl italic text-bronze">Short for Culture. Long on Tales.</p>
+          </Reveal>
+        </div>
+      </section>
 
-            <div className="border-t border-line-light pt-8">
-              <h3 className="font-display text-2xl">Cultural Stories</h3>
-              <p className="mt-3 text-sm text-bone/75">
-                Editorial documentation of rituals, traditions, and cultural
-                celebrations beyond individual weddings.
-              </p>
-            </div>
+      <section className="on-dark bg-obsidian px-5 py-24 text-paper md:px-12 md:py-36">
+        <div className="mx-auto max-w-site">
+          <SectionMarker title="Our approach" aside="Photography · Film · Culture" />
+          <h2 className="mt-14 max-w-4xl text-[2.5rem] font-light leading-[1.05] sm:text-6xl md:text-[68px]">
+            Photography and cinematography, <em>woven into one story.</em>
+          </h2>
+          <div className="mt-16 grid grid-cols-1 border-t border-line-light md:grid-cols-3">
+            {APPROACH.map((item, i) => (
+              <div
+                key={item.title}
+                className={`border-b border-line-light py-10 md:border-b-0 md:px-10 md:py-14 ${i > 0 ? "md:border-l" : "md:pl-0"}`}
+              >
+                <p className="font-display text-lg italic text-gold">{String(i + 1).padStart(2, "0")} /</p>
+                <h3 className="mt-5 text-3xl md:text-4xl">{item.title}</h3>
+                <p className="mt-4 max-w-xs text-[15px] font-light leading-[1.8] text-paper/70">{item.body}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-36">
-        <div className="mx-auto max-w-frame text-center">
-          <RevealText as="h2" className="font-display text-display-md text-balance">
-            Let&rsquo;s tell your story.
-          </RevealText>
-          <p className="mx-auto mt-8 max-w-editorial text-base leading-relaxed text-char/70">
-            We work across all regions of India, and travel internationally
-            for Pan-Indian and diaspora weddings. Get in touch to discuss your
-            vision.
-          </p>
-          <Link
-            href="/contact"
-            className="link-draw mt-10 inline-block font-display text-2xl text-char"
-          >
-            Start a Conversation &rarr;
-          </Link>
+      <section className="bg-paper px-5 py-24 md:px-12 md:py-36">
+        <div className="mx-auto max-w-site">
+          <SectionMarker title="What we document" aside="Beyond the obvious" />
+          <div className="mt-14 grid grid-cols-1 gap-x-8 gap-y-14 sm:grid-cols-2 lg:grid-cols-4">
+            {DOCUMENT.map((item, i) => (
+              <Reveal key={item.title} delay={i * 0.08}>
+                <div className="group relative aspect-[3/4] overflow-hidden rounded-2xl bg-sand shadow-md">
+                  <Image
+                    src={item.src}
+                    alt={item.alt}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="card-img object-cover"
+                    style={item.focus ? { objectPosition: item.focus } : undefined}
+                  />
+                </div>
+                <h3 className="mt-5 text-2xl text-obsidian md:text-3xl">{item.title}</h3>
+                <p className="mt-2 text-sm font-light leading-relaxed text-char/75">{item.body}</p>
+              </Reveal>
+            ))}
+          </div>
         </div>
       </section>
+
+      <section className="border-y border-line-dark bg-sand px-5 py-24 md:px-12 md:py-32">
+        <p className="mx-auto max-w-4xl text-center font-display text-[2rem] italic leading-[1.25] text-obsidian sm:text-4xl md:text-5xl">
+          &ldquo;Understanding a wedding means understanding a culture, a family, a moment in time that
+          will never happen again.&rdquo;
+        </p>
+      </section>
+
+      <section className="bg-paper px-5 py-24 md:px-12 md:py-36">
+        <div className="mx-auto max-w-site">
+          <SectionMarker title="What we offer" aside="Timelines and budgets discussed individually" />
+          <div className="mt-14 grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
+            {SERVICES.map((service, i) => (
+              <div key={service.title} className="rounded-2xl border border-line-dark bg-sand/50 p-8">
+                <p className="font-display text-lg italic text-bronze">{String(i + 1).padStart(2, "0")} /</p>
+                <h3 className="mt-4 text-3xl text-obsidian">{service.title}</h3>
+                <p className="mt-3 text-[15px] font-light leading-[1.8] text-char/80">{service.body}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <ClosingInvite eyebrow="Let's tell your story" title="We travel across India and beyond for Pan-Indian weddings." />
     </>
   );
 }

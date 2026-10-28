@@ -1,3 +1,5 @@
+import SectionMarker from "./SectionMarker";
+
 const QUESTIONS = [
   {
     q: "What do you cover at a wedding?",
@@ -23,28 +25,32 @@ const QUESTIONS = [
 
 export default function FAQ() {
   return (
-    <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-44">
-      <div className="mx-auto grid max-w-frame grid-cols-1 gap-14 md:grid-cols-12 md:gap-10">
-        <div className="md:col-span-4">
-          <p className="eyebrow mb-6">Questions</p>
-          <h2 className="font-display text-display-md text-balance">
-            Everything you may <em>wish</em> to ask.
-          </h2>
-        </div>
+    <section className="border-t border-line-dark bg-paper px-5 py-24 md:px-12 md:py-36">
+      <div className="mx-auto max-w-site">
+        <SectionMarker title="Questions" aside="Before you write to us" />
+        <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-4">
+            <h2 className="text-[2.5rem] leading-[1.05] text-obsidian sm:text-5xl">
+              Everything you may <em>wish</em> to ask.
+            </h2>
+          </div>
 
-        <div className="md:col-span-7 md:col-start-6">
-          {QUESTIONS.map((item) => (
-            <details key={item.q} className="faq group border-t border-bronze/25 last:border-b">
-              <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-7 font-display text-xl italic md:text-2xl">
-                {item.q}
-                <span
-                  aria-hidden
-                  className="relative block h-4 w-4 shrink-0 before:absolute before:left-0 before:top-1/2 before:h-px before:w-4 before:bg-bronze after:absolute after:left-1/2 after:top-0 after:h-4 after:w-px after:bg-bronze after:transition-transform after:duration-500 group-open:after:scale-y-0"
-                />
-              </summary>
-              <p className="max-w-xl pb-8 text-base leading-relaxed text-char/70">{item.a}</p>
-            </details>
-          ))}
+          <div className="border-t border-line-dark lg:col-span-7 lg:col-start-6">
+            {QUESTIONS.map((item) => (
+              <details key={item.q} className="faq group border-b border-line-dark">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 font-display text-[1.4rem] leading-snug text-obsidian transition-colors hover:text-bronze md:py-7 md:text-2xl">
+                  {item.q}
+                  <span
+                    aria-hidden
+                    className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-obsidian/20 text-lg text-obsidian/60 transition-all duration-500 group-open:rotate-45 group-open:border-bronze group-open:text-bronze"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="max-w-xl pb-7 text-[15px] font-light leading-[1.8] text-char/80">{item.a}</p>
+              </details>
+            ))}
+          </div>
         </div>
       </div>
     </section>

@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { Cormorant_Garamond, Inter } from "next/font/google";
+import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -16,10 +16,10 @@ const cormorant = Cormorant_Garamond({
   display: "swap",
 });
 
-const inter = Inter({
+const jakarta = Plus_Jakarta_Sans({
   subsets: ["latin"],
-  variable: "--font-inter",
-  weight: ["300", "400", "500"],
+  variable: "--font-sans",
+  weight: ["300", "400", "500", "600"],
   display: "swap",
 });
 
@@ -53,13 +53,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${inter.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${cormorant.variable} ${jakarta.variable}`} suppressHydrationWarning>
       <head>
-        {/* Show the logo intro once per visit; mark it seen before first paint. */}
+        {/* Show the logo intro once per visit; mark it seen before first paint.
+            "intro-done" lets later page visits skip the wait for it. */}
         <script
           dangerouslySetInnerHTML={{
             __html:
-              "try{if(sessionStorage.getItem('ct-intro'))document.documentElement.classList.add('intro-seen');sessionStorage.setItem('ct-intro','1')}catch(e){}",
+              "try{if(sessionStorage.getItem('ct-intro'))document.documentElement.classList.add('intro-seen');sessionStorage.setItem('ct-intro','1')}catch(e){}setTimeout(function(){document.documentElement.classList.add('intro-done')},4000);",
           }}
         />
       </head>

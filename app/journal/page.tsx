@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
+import ClosingInvite from "@/components/ClosingInvite";
 import JournalList from "@/components/JournalList";
+import PageIntro from "@/components/PageIntro";
 import { getAllJournalPosts } from "@/lib/journal";
 
 export const metadata: Metadata = {
@@ -8,23 +10,26 @@ export const metadata: Metadata = {
 };
 
 export default function JournalPage() {
-  const posts = getAllJournalPosts();
-
   return (
-    <div className="bg-paper pb-28 pt-36 text-char md:pb-48 md:pt-52">
-      <div className="mx-auto max-w-frame px-6 md:px-10">
-        <div className="mx-auto mb-20 max-w-3xl text-center md:mb-28">
-          <p className="eyebrow mb-6">Journal</p>
-          <h1 className="font-display text-display-lg text-balance">
-            Culture, ritual, and the craft of documenting them.
-          </h1>
-          <div aria-hidden className="ornament mt-10">
-            <i />
-          </div>
-        </div>
+    <>
+      <PageIntro
+        label="The journal — notes from the studio"
+        aside="Rituals · Culture · Craft"
+        title={
+          <>
+            Culture, ritual &amp; the <em>craft</em> of keeping them.
+          </>
+        }
+        intro="What we learn at every wedding: the meaning behind a ritual, the regions they come from, and how we document them with care."
+      />
 
-        <JournalList posts={posts} />
-      </div>
-    </div>
+      <section className="bg-paper px-5 pb-24 md:px-12 md:pb-36">
+        <div className="mx-auto max-w-site border-t border-line-dark pt-14">
+          <JournalList posts={getAllJournalPosts()} />
+        </div>
+      </section>
+
+      <ClosingInvite eyebrow="Planning your own celebration?" />
+    </>
   );
 }

@@ -3,55 +3,95 @@ import Logo from "./Logo";
 import { contact } from "@/lib/site";
 
 const NAV = [
-  { label: "Stories", href: "/stories" },
+  { label: "Wedding Stories", href: "/stories" },
   { label: "Films", href: "/films" },
+  { label: "About Us", href: "/about" },
   { label: "Journal", href: "/journal" },
-  { label: "About", href: "/about" },
   { label: "Contact", href: "/contact" },
+];
+
+const TICKER = [
+  "Short for Culture. Long on Tales.",
+  "Kerala · Rajasthan · Across India & Beyond",
+  "Visual storytellers & memory keepers",
 ];
 
 export default function Footer() {
   return (
-    <footer className="on-dark border-t border-gold/15 bg-wine px-6 pb-10 pt-20 text-bone md:px-10 md:pt-28">
-      <div className="mx-auto max-w-frame">
-        <div className="flex flex-col items-center text-center">
-          <Logo variant="white" className="h-12 md:h-16" />
-          <p className="mt-5 font-display text-lg italic text-bone/70">
-            Short for Culture. Long on Tales.
-          </p>
-          <div className="ornament mt-10">
-            <i />
+    <footer className="on-dark border-t border-line-light bg-obsidian px-5 pb-12 pt-20 text-paper md:px-12">
+      <div className="mx-auto max-w-site">
+        <div aria-hidden className="mb-16 overflow-hidden border-y border-line-light py-5">
+          <div className="animate-marquee gap-12 text-xs uppercase tracking-[0.28em] text-paper/60">
+            {[0, 1].map((copy) => (
+              <div key={copy} className="flex shrink-0 items-center gap-12">
+                {TICKER.map((item) => (
+                  <span key={item} className="flex items-center gap-12">
+                    <span>{item}</span>
+                    <span className="text-bronze">&#10022;</span>
+                  </span>
+                ))}
+              </div>
+            ))}
           </div>
         </div>
 
-        <div className="mt-14 grid grid-cols-1 gap-12 text-center md:grid-cols-3 md:text-left">
-          <nav className="flex flex-wrap justify-center gap-x-8 gap-y-3 md:flex-col md:items-start">
-            <p className="eyebrow mb-2 w-full md:w-auto">Explore</p>
-            {NAV.map((item) => (
-              <Link key={item.href} href={item.href} className="link-draw w-fit text-sm text-bone/85">
-                {item.label}
-              </Link>
-            ))}
+        <div className="grid grid-cols-1 gap-12 border-b border-line-light pb-16 md:grid-cols-12">
+          <div className="md:col-span-5">
+            <Logo variant="white" className="h-12 md:h-14" />
+            <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-paper/70">
+              A visual storytelling studio documenting Pan-Indian wedding stories, where love
+              meets legacy.
+            </p>
+            <a
+              href={`mailto:${contact.email}`}
+              className="mt-5 inline-block text-xs uppercase tracking-editorial text-bronze transition-colors hover:text-paper"
+            >
+              {contact.email}
+            </a>
+          </div>
+
+          <nav className="md:col-span-3">
+            <p className="text-[10px] uppercase tracking-editorial text-paper/50">Navigation</p>
+            <ul className="mt-4 space-y-2.5 text-xs uppercase tracking-editorial text-paper/80">
+              {NAV.map((item) => (
+                <li key={item.href}>
+                  <Link href={item.href} className="transition-colors hover:text-bronze">
+                    {item.label}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </nav>
 
-          <div className="flex flex-col items-center gap-3 text-sm text-bone/85 md:items-start">
-            <p className="eyebrow mb-2">Follow</p>
-            <a href={contact.instagramUrl} className="link-draw w-fit">Instagram</a>
-            <a href={contact.youtubeUrl} className="link-draw w-fit">YouTube</a>
-            <a href={contact.facebookUrl} className="link-draw w-fit">Facebook</a>
-          </div>
-
-          <div className="flex flex-col items-center gap-3 text-sm text-bone/85 md:items-start">
-            <p className="eyebrow mb-2">Enquiries</p>
-            <a href={`mailto:${contact.email}`} className="link-draw w-fit">{contact.email}</a>
-            <a href={contact.phoneHref} className="link-draw w-fit">{contact.phone}</a>
+          <div className="md:col-span-4">
+            <p className="text-[10px] uppercase tracking-editorial text-paper/50">The Studio</p>
+            <p className="mt-4 text-sm font-light leading-relaxed text-paper/75">
+              Based in Kerala &amp; Rajasthan.
+              <br />
+              Travelling across India and beyond.
+            </p>
+            <a href={contact.phoneHref} className="mt-3 inline-block text-sm text-paper/75 transition-colors hover:text-bronze">
+              {contact.phone}
+            </a>
+            <div className="mt-5 flex flex-wrap gap-x-6 gap-y-2 text-[11px] uppercase tracking-editorial text-bronze">
+              <a href={contact.instagramUrl} className="transition-colors hover:text-paper">Instagram</a>
+              <a href={contact.youtubeUrl} className="transition-colors hover:text-paper">YouTube</a>
+              <a href={contact.facebookUrl} className="transition-colors hover:text-paper">Facebook</a>
+            </div>
           </div>
         </div>
 
-        <span className="gold-rule mt-16" />
-        <div className="mt-8 flex flex-col gap-2 text-center text-[11px] uppercase tracking-[0.25em] text-bone/45 md:flex-row md:items-center md:justify-between md:text-left">
-          <p>&copy; {new Date().getFullYear()} CULT. tales. All rights reserved.</p>
-          <p>Documenting India, one wedding at a time.</p>
+        <div className="flex flex-col items-center pt-12 text-center">
+          <p
+            aria-hidden
+            className="pointer-events-none select-none whitespace-nowrap font-display text-[13vw] leading-none tracking-tight text-paper/10 min-[1440px]:text-[188px]"
+          >
+            CULT. TALES
+          </p>
+          <div className="mt-6 flex w-full flex-col items-center justify-between gap-4 text-[10px] uppercase tracking-editorial text-paper/50 sm:flex-row">
+            <span>&copy; {new Date().getFullYear()} CULT. tales. All rights reserved.</span>
+            <span>Short for Culture. Long on Tales.</span>
+          </div>
         </div>
       </div>
     </footer>

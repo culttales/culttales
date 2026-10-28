@@ -12,7 +12,7 @@ export default function Intro() {
         alt=""
         width={510}
         height={331}
-        priority
+        loading="eager"
         className="h-auto w-28 md:w-36"
       />
       <span />

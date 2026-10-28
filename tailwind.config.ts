@@ -9,23 +9,29 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        ink: "#0B0B0B", // primary dark background
-        paper: "#F8F4ED", // warm ivory: the main background
-        sand: "#EFE6D9", // deeper sand for alternating sections
-        wine: "#4A1D22", // deep oxblood for closing sections
-        bronze: "#8A6A3A", // gold for text and lines on light grounds
-        gold: "#C9A96E", // champagne gold: hairlines, numerals, small labels
+        ink: "#0B0B0B", // near black, kept for the private client page
+        obsidian: "#161412", // warm black: dark sections and headings
+        paper: "#F7F4EF", // alabaster: the main background
+        sand: "#EFEAE2", // warm stone for alternating sections
+        stone: "#E4DDD3", // deeper stone for chips and hover states
+        wine: "#4A1D22",
+        bronze: {
+          DEFAULT: "#9E7B56", // accent for labels, italics and buttons
+          deep: "#836341", // button hover
+        },
+        gold: "#C9A96E", // lighter accent on dark grounds
         bone: "#F4F1EA", // text on dark
-        char: "#2B2420", // espresso text on light
-        dust: "#A6A29A", // secondary / muted text, both modes
+        char: "#2B2420", // body text on light
+        muted: "#6E675F", // secondary text and metadata
+        dust: "#A6A29A",
         line: {
-          light: "rgba(201,169,110,0.22)", // gold hairline on dark
-          dark: "rgba(138,106,58,0.28)", // bronze hairline on light
+          light: "rgba(247,244,239,0.12)", // hairline on dark
+          dark: "rgba(22,20,18,0.1)", // hairline on light
         },
       },
       fontFamily: {
         display: ["var(--font-display)", "Georgia", "serif"],
-        sans: ["var(--font-inter)", "Helvetica", "Arial", "sans-serif"],
+        sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Helvetica", "Arial", "sans-serif"],
       },
       fontSize: {
         "display-xl": ["clamp(4rem, 10.5vw, 10.5rem)", { lineHeight: "0.95", letterSpacing: "-0.01em" }],
@@ -35,10 +41,12 @@ const config: Config = {
       },
       letterSpacing: {
         label: "0.32em",
+        editorial: "0.22em",
       },
       maxWidth: {
         editorial: "42rem",
         frame: "1680px",
+        site: "1440px",
       },
       transitionTimingFunction: {
         cinema: "cubic-bezier(0.22, 1, 0.36, 1)",

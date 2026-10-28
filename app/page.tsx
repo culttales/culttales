@@ -71,7 +71,7 @@ export default function HomePage() {
           <div className="mt-16 text-center">
             <Link
               href="/films"
-              className="inline-block border border-gold/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink"
+              className="btn-gold"
             >
               Watch All Films
             </Link>

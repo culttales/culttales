@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Curtain from "./Curtain";
 import Link from "next/link";
 import type { JournalPost } from "@/lib/journal";
 
@@ -13,13 +14,15 @@ export default function JournalList({ posts }: { posts: JournalPost[] }) {
           className="group grid grid-cols-1 gap-6 border-t border-line-dark py-10 last:border-b md:grid-cols-[minmax(0,220px)_1fr_auto] md:items-center md:gap-10"
         >
           <div className="relative aspect-[4/3] w-full overflow-hidden bg-char/10 md:w-[220px]">
-            <Image
-              src={post.image}
-              alt={post.title}
-              fill
-              sizes="220px"
-              className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.05]"
-            />
+            <Curtain className="absolute inset-0 overflow-hidden">
+              <Image
+                src={post.image}
+                alt={post.title}
+                fill
+                sizes="220px"
+                className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.05]"
+              />
+            </Curtain>
           </div>
 
           <div>

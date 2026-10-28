@@ -74,7 +74,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-10 inline-block border border-gold/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink disabled:opacity-50"
+        className="mt-10 btn-gold disabled:opacity-50"
       >
         {status === "sending" ? "Sending…" : <>Send Message &rarr;</>}
       </button>

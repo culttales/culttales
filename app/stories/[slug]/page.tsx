@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Image from "next/image";
+import Curtain from "@/components/Curtain";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import RevealText from "@/components/RevealText";
@@ -83,13 +84,15 @@ export default async function StoryPage({ params }: StoryPageProps) {
         {story.images[0] && (
           <div className="relative aspect-[16/10] w-full overflow-hidden">
             <span aria-hidden className="pointer-events-none absolute inset-4 z-10 ring-1 ring-gold/40 md:inset-8" />
-            <Image
-              src={story.images[0].src}
-              alt={story.images[0].alt}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <Curtain className="absolute inset-0 overflow-hidden">
+              <Image
+                src={story.images[0].src}
+                alt={story.images[0].alt}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </Curtain>
           </div>
         )}
 
@@ -97,13 +100,15 @@ export default async function StoryPage({ params }: StoryPageProps) {
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2 md:gap-5">
             {story.images.slice(1, 3).map((img) => (
               <div key={img.src + img.alt} className="relative aspect-[4/5] w-full overflow-hidden">
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  fill
-                  sizes="(min-width: 768px) 50vw, 100vw"
-                  className="object-cover"
-                />
+                <Curtain className="absolute inset-0 overflow-hidden">
+                  <Image
+                    src={img.src}
+                    alt={img.alt}
+                    fill
+                    sizes="(min-width: 768px) 50vw, 100vw"
+                    className="object-cover"
+                  />
+                </Curtain>
               </div>
             ))}
           </div>
@@ -147,13 +152,15 @@ export default async function StoryPage({ params }: StoryPageProps) {
           <p className="eyebrow mb-8">Another story awaits</p>
           <Link href={`/stories/${next.slug}`} data-cursor="view" className="group grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-14">
             <div className="relative aspect-[16/10] w-full overflow-hidden">
-              <Image
-                src={next.cardImage}
-                alt={`${next.coupleNames} — ${next.location}`}
-                fill
-                sizes="(min-width: 768px) 50vw, 100vw"
-                className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
-              />
+              <Curtain className="absolute inset-0 overflow-hidden">
+                <Image
+                  src={next.cardImage}
+                  alt={`${next.coupleNames} — ${next.location}`}
+                  fill
+                  sizes="(min-width: 768px) 50vw, 100vw"
+                  className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
+                />
+              </Curtain>
             </div>
             <div>
               <h3 className="font-display text-display-sm text-balance">{next.coupleNames}</h3>

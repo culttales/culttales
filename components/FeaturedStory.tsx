@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Curtain from "./Curtain";
 import Link from "next/link";
 import type { Story } from "@/lib/stories";
 import RevealText from "./RevealText";
@@ -12,13 +13,15 @@ export default function FeaturedStory({ story }: { story: Story }) {
         <Link href={`/stories/${story.slug}`} data-cursor="view" className="group grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-14">
           <div className="gold-frame">
           <div className="relative aspect-[4/5] w-full overflow-hidden md:aspect-[3/4]">
-            <Image
-              src={story.heroImage}
-              alt={`${story.coupleNames} — ${story.location}`}
-              fill
-              sizes="(min-width: 768px) 50vw, 100vw"
-              className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
-            />
+            <Curtain className="absolute inset-0 overflow-hidden">
+              <Image
+                src={story.heroImage}
+                alt={`${story.coupleNames} — ${story.location}`}
+                fill
+                sizes="(min-width: 768px) 50vw, 100vw"
+                className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
+              />
+            </Curtain>
           </div>
           </div>
 

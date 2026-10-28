@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Curtain from "./Curtain";
 import Link from "next/link";
 import type { Story } from "@/lib/stories";
 
@@ -25,13 +26,15 @@ export default function RealStories({ stories }: { stories: Story[] }) {
               className={`group block ${i % 2 === 1 ? "lg:mt-20" : ""}`}
             >
               <div className="relative aspect-[3/4] w-full overflow-hidden bg-char/10">
-                <Image
-                  src={story.cardImage}
-                  alt={`${story.coupleNames} — ${story.location}`}
-                  fill
-                  sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
-                  className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.05]"
-                />
+                <Curtain className="absolute inset-0 overflow-hidden" delay={(i % 4) * 0.12}>
+                  <Image
+                    src={story.cardImage}
+                    alt={`${story.coupleNames} — ${story.location}`}
+                    fill
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.05]"
+                  />
+                </Curtain>
                 <span aria-hidden className="pointer-events-none absolute inset-3 ring-1 ring-paper/40 transition-all duration-700 group-hover:inset-4 group-hover:ring-paper/80" />
               </div>
               <div className="mt-6 text-center">
@@ -47,7 +50,7 @@ export default function RealStories({ stories }: { stories: Story[] }) {
         <div className="mt-20 text-center">
           <Link
             href="/stories"
-            className="inline-block border border-[#8a6f3a]/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-[#8a6f3a] transition-colors duration-500 hover:bg-[#8a6f3a] hover:text-paper"
+            className="btn-bronze"
           >
             See All Stories
           </Link>

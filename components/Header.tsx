@@ -16,10 +16,20 @@ const NAV_LINKS = [
 
 export default function Header() {
   const [scrolled, setScrolled] = useState(false);
+  const [hidden, setHidden] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
+    // Step out of the way while reading down the page; return on scroll up.
+    let last = window.scrollY;
+    const onScroll = () => {
+      const y = window.scrollY;
+      setScrolled(y > 40);
+      if (Math.abs(y - last) > 6) {
+        setHidden(y > last && y > 240);
+        last = y;
+      }
+    };
     onScroll();
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
@@ -29,9 +39,10 @@ export default function Header() {
     <>
       <header
         className={clsx(
-          "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
+          "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,transform] duration-700 ease-cinema",
+          hidden && !menuOpen && "-translate-y-full",
           scrolled || menuOpen
-            ? "bg-ink/85 backdrop-blur-md border-b border-gold/25"
+            ? "bg-ink/80 backdrop-blur-xl border-b border-gold/20"
             : "bg-transparent border-b border-transparent"
         )}
       >
@@ -60,7 +71,7 @@ export default function Header() {
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="border border-gold/60 px-6 py-2.5 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink">
+            <Link href="/contact" className="btn-gold btn-sm">
               Let&rsquo;s Talk
             </Link>
           </div>

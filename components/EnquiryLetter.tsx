@@ -85,7 +85,7 @@ export default function EnquiryLetter() {
             <button
               type="submit"
               disabled={status === "sending"}
-              className="mt-14 inline-block border border-gold/60 px-12 py-4 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink disabled:opacity-50"
+              className="mt-14 btn-gold disabled:opacity-50"
             >
               {status === "sending" ? "Sending…" : "Send Our Letter"}
             </button>

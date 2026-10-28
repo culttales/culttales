@@ -21,14 +21,14 @@ const config: Config = {
         },
       },
       fontFamily: {
-        display: ["var(--font-fraunces)", "Georgia", "serif"],
+        display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-inter)", "Helvetica", "Arial", "sans-serif"],
       },
       fontSize: {
-        "display-xl": ["clamp(3.5rem, 9.5vw, 9rem)", { lineHeight: "1", letterSpacing: "-0.015em" }],
-        "display-lg": ["clamp(2.75rem, 6.5vw, 6rem)", { lineHeight: "1.04", letterSpacing: "-0.015em" }],
-        "display-md": ["clamp(2rem, 3.8vw, 3.5rem)", { lineHeight: "1.12" }],
-        "display-sm": ["clamp(1.5rem, 2.4vw, 2.1rem)", { lineHeight: "1.15" }],
+        "display-xl": ["clamp(4rem, 10.5vw, 10.5rem)", { lineHeight: "0.95", letterSpacing: "-0.01em" }],
+        "display-lg": ["clamp(3.1rem, 7.2vw, 7rem)", { lineHeight: "1", letterSpacing: "-0.01em" }],
+        "display-md": ["clamp(2.3rem, 4.4vw, 4.2rem)", { lineHeight: "1.08" }],
+        "display-sm": ["clamp(1.75rem, 2.8vw, 2.5rem)", { lineHeight: "1.12" }],
       },
       letterSpacing: {
         label: "0.32em",

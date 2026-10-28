@@ -4,14 +4,26 @@ import Link from "next/link";
 import { motion } from "motion/react";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
+const HEADLINE = ["We are documenting", "Pan Indian", "Wedding Stories."];
+
+// Hold the hero's entrance until the logo intro has lifted (first visit only).
+function introDelay() {
+  if (typeof document === "undefined") return 0;
+  const root = document.documentElement;
+  if (root.classList.contains("intro-seen")) return 0;
+  if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return 0;
+  return 2.1;
+}
 
 export default function Hero() {
+  const d = introDelay();
+
   return (
     <section className="relative flex h-[100svh] w-full items-center overflow-hidden bg-ink">
       <motion.div
-        initial={{ scale: 1.12 }}
+        initial={{ scale: 1.15 }}
         animate={{ scale: 1 }}
-        transition={{ duration: 5, ease: EASE }}
+        transition={{ duration: 9, ease: EASE, delay: d }}
         className="absolute inset-0"
       >
         <video
@@ -27,34 +39,49 @@ export default function Hero() {
       </motion.div>
 
       {/* Cinematic overlay for legibility */}
-      <div className="absolute inset-0 bg-ink/35" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_30%,rgba(11,11,11,0.75)_100%)]" />
+      <div className="absolute inset-0 bg-ink/40" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_center,transparent_25%,rgba(11,11,11,0.8)_100%)]" />
       <div className="absolute inset-x-0 bottom-0 h-2/3 bg-gradient-to-t from-ink to-transparent" />
+
+      {/* Fine gold mat around the frame */}
+      <motion.div
+        aria-hidden
+        initial={{ opacity: 0, scale: 1.02 }}
+        animate={{ opacity: 1, scale: 1 }}
+        transition={{ delay: d + 0.2, duration: 1.6, ease: EASE }}
+        className="pointer-events-none absolute inset-3 z-10 border border-gold/30 md:inset-6"
+      />
 
       <div className="relative z-10 w-full px-6 pt-16 md:px-10">
         <div className="mx-auto flex max-w-frame flex-col items-center text-center">
           <motion.p
-            initial={{ opacity: 0, y: 14 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.4, duration: 0.9, ease: EASE }}
-            className="eyebrow mb-5"
+            initial={{ opacity: 0, letterSpacing: "0.55em" }}
+            animate={{ opacity: 1, letterSpacing: "0.32em" }}
+            transition={{ delay: d + 0.3, duration: 1.6, ease: EASE }}
+            className="eyebrow mb-8"
           >
             Short for Culture. Long on Tales.
           </motion.p>
 
-          <motion.h1
-            initial={{ opacity: 0, y: 24 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.55, duration: 1, ease: EASE }}
-            className="max-w-4xl font-display text-display-lg text-bone text-balance"
-          >
-            We are documenting Pan Indian Wedding Stories.
-          </motion.h1>
+          <h1 className="max-w-6xl font-display text-display-lg font-light text-bone">
+            {HEADLINE.map((line, i) => (
+              <span key={line} className="block overflow-hidden pb-[0.08em] md:whitespace-nowrap">
+                <motion.span
+                  className="block"
+                  initial={{ y: "105%" }}
+                  animate={{ y: "0%" }}
+                  transition={{ delay: d + 0.5 + i * 0.14, duration: 1.3, ease: EASE }}
+                >
+                  {line}
+                </motion.span>
+              </span>
+            ))}
+          </h1>
 
           <motion.p
             initial={{ opacity: 0, y: 16 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.75, duration: 0.9, ease: EASE }}
+            transition={{ delay: d + 1.1, duration: 1.1, ease: EASE }}
             className="mt-8 max-w-md text-base leading-relaxed text-bone/75"
           >
             Unearthing the real rituals, colourful traditions, and beautiful
@@ -64,30 +91,26 @@ export default function Hero() {
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 1, duration: 0.8, ease: EASE }}
+            transition={{ delay: d + 1.4, duration: 1, ease: EASE }}
             className="mt-12"
           >
-            <Link
-              href="/stories"
-              className="inline-block border border-gold/60 bg-ink/20 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-gold backdrop-blur-sm transition-colors duration-500 hover:bg-gold hover:text-ink"
-            >
+            <Link href="/stories" className="btn-gold bg-ink/20 backdrop-blur-sm">
               Explore Our Stories
             </Link>
           </motion.div>
         </div>
       </div>
 
-      <motion.a
-        href="#introduction"
-        aria-label="Scroll to introduction"
+      <motion.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ delay: 1.3, duration: 0.8, ease: EASE }}
-        className="absolute bottom-8 left-1/2 z-10 flex -translate-x-1/2 flex-col items-center gap-3 text-[10px] uppercase tracking-[0.4em] text-bone/60"
+        transition={{ delay: d + 1.6, duration: 1, ease: EASE }}
+        className="absolute inset-x-6 bottom-8 z-10 hidden items-end justify-between text-[10px] uppercase tracking-[0.4em] text-bone/55 md:inset-x-12 md:bottom-12 md:flex"
       >
-        Scroll
-        <span aria-hidden className="block h-10 w-px bg-gold/70" />
-      </motion.a>
+        <span>Kerala &middot; Rajasthan</span>
+        <span>Across India &amp; Beyond</span>
+      </motion.div>
+
     </section>
   );
 }

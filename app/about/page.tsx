@@ -136,7 +136,7 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="mt-12 inline-block border border-[#8a6f3a]/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-[#8a6f3a] transition-colors duration-500 hover:bg-[#8a6f3a] hover:text-paper"
+            className="mt-12 btn-bronze"
           >
             Start a Conversation
           </Link>

@@ -19,7 +19,7 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
           animate={{ clipPath: "inset(0 0 0% 0)" }}
           exit={{ clipPath: "inset(0 0 100% 0)" }}
           transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
-          className="fixed inset-0 z-40 flex flex-col justify-between bg-ink px-6 pb-10 pt-28 md:hidden"
+          className="fixed inset-0 z-40 flex flex-col justify-between bg-paper px-6 pb-10 pt-28 md:hidden"
         >
           <nav className="flex flex-col gap-1">
             {links.map((link, i) => (
@@ -32,7 +32,7 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="block border-b border-gold/25 py-5 font-display text-display-sm italic text-bone"
+                  className="block border-b border-line-dark py-5 font-display text-display-sm text-char"
                 >
                   {link.label}
                 </Link>
@@ -44,10 +44,10 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex flex-col gap-3 text-xs uppercase tracking-[0.25em] text-gold"
+            className="flex flex-col gap-3 text-xs uppercase tracking-[0.25em] text-bronze"
           >
             <p>Short for Culture. Long on Tales.</p>
-            <div className="flex gap-6 pt-2 text-bone/80">
+            <div className="flex gap-6 pt-2 text-char/80">
               <a href={contact.instagramUrl} className="link-draw">Instagram</a>
               <a href={contact.youtubeUrl} className="link-draw">YouTube</a>
               <a href={contact.facebookUrl} className="link-draw">Facebook</a>

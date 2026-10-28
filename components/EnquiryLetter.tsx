@@ -36,7 +36,7 @@ export default function EnquiryLetter() {
   }
 
   return (
-    <section id="enquire" className="relative bg-ink px-6 py-28 text-bone md:px-10 md:py-44">
+    <section id="enquire" className="on-dark relative bg-wine px-6 py-28 text-bone md:px-10 md:py-44">
       <div className="mx-auto max-w-4xl text-center">
         <p className="eyebrow mb-6">Begin Your Story</p>
         <h2 className="font-display text-display-lg">Hello there.</h2>

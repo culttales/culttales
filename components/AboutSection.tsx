@@ -14,7 +14,7 @@ const EASE = [0.22, 1, 0.36, 1] as const;
  */
 export default function AboutSection() {
   return (
-    <section id="about-us" className="relative bg-ink text-bone overflow-hidden">
+    <section id="about-us" className="relative bg-paper text-char overflow-hidden">
       {/* ── Top band: editorial statement ── */}
       <div className="px-6 pt-28 pb-20 md:px-10 md:pt-36 md:pb-28">
         <div className="mx-auto max-w-frame">
@@ -32,7 +32,7 @@ export default function AboutSection() {
             as="h2"
             className="max-w-4xl font-display text-display-lg text-balance"
           >
-            We are storytellers of culture, love and tradition.
+            We are storytellers of <em>culture, love</em> and tradition.
           </RevealText>
         </div>
       </div>
@@ -65,7 +65,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.15, ease: EASE }}
-            className="text-base leading-relaxed text-bone/75"
+            className="text-base leading-relaxed text-char/75"
           >
             CULT. tales travels across India documenting weddings in their most
             authentic form. We capture more than ceremonies — the people, the
@@ -78,7 +78,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.3, ease: EASE }}
-            className="mt-6 text-base leading-relaxed text-bone/75"
+            className="mt-6 text-base leading-relaxed text-char/75"
           >
             Every wedding carries a story that deserves to be told with care,
             authenticity and visual honesty. We spend time understanding the
@@ -91,7 +91,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
-            className="mt-8 font-display text-xl italic text-gold"
+            className="mt-8 font-display text-xl italic text-bronze"
           >
             Short for Culture. Long on Tales.
           </motion.p>
@@ -104,7 +104,7 @@ export default function AboutSection() {
           >
             <Link
               href="/about"
-              className="link-draw mt-10 inline-block text-[11px] uppercase tracking-[0.28em] text-bone"
+              className="link-draw mt-10 inline-block text-[11px] uppercase tracking-[0.28em] text-char"
             >
               More about us &rarr;
             </Link>
@@ -153,20 +153,20 @@ export default function AboutSection() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.9, delay: i * 0.15, ease: EASE }}
-              className="border-t border-line-light px-6 py-12 md:px-8 md:py-14"
+              className="border-t border-line-dark px-6 py-12 md:px-8 md:py-14"
             >
               <p className="eyebrow mb-4">{card.label}</p>
               {"title" in card ? (
                 <>
-                  <h3 className="max-w-xs font-display text-2xl text-bone">
+                  <h3 className="max-w-xs font-display text-2xl text-char">
                     {card.title}
                   </h3>
-                  <p className="mt-4 text-sm leading-relaxed text-bone/70">
+                  <p className="mt-4 text-sm leading-relaxed text-char/70">
                     {card.body}
                   </p>
                 </>
               ) : (
-                <ul className="flex flex-col gap-3 text-sm text-bone/80">
+                <ul className="flex flex-col gap-3 text-sm text-char/80">
                   {card.items!.map((item, j) => (
                     <li key={j}>{item}</li>
                   ))}

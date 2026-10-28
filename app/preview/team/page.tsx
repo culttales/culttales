@@ -111,7 +111,7 @@ const APPROACH = [
 
 export default function TeamPreviewPage() {
   return (
-    <>
+    <div className="client-page">
       {/* Hero */}
       <section className="relative flex h-[100svh] w-full flex-col overflow-hidden bg-ink">
         <video
@@ -417,6 +417,6 @@ export default function TeamPreviewPage() {
           </div>
         </div>
       </section>
-    </>
+    </div>
   );
 }

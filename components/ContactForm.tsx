@@ -3,7 +3,7 @@
 import { FormEvent, useState } from "react";
 
 const inputClass =
-  "w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-gold focus:outline-none";
+  "w-full border-b border-line-dark bg-transparent py-3 text-sm text-char placeholder-char/40 focus:border-bronze focus:outline-none";
 const labelClass = "eyebrow mb-2 block";
 
 export default function ContactForm() {
@@ -33,7 +33,7 @@ export default function ContactForm() {
 
   if (status === "sent") {
     return (
-      <p className="text-base text-bone/80" role="status">
+      <p className="text-base text-char/80" role="status">
         Thank you. We&rsquo;ve received your message and will reply within 48 hours.
       </p>
     );
@@ -69,12 +69,12 @@ export default function ContactForm() {
         />
       </div>
       {status === "error" && (
-        <p className="text-sm text-bone/80" role="alert">{error}</p>
+        <p className="text-sm text-char/80" role="alert">{error}</p>
       )}
       <button
         type="submit"
         disabled={status === "sending"}
-        className="mt-10 btn-gold disabled:opacity-50"
+        className="mt-10 btn-bronze disabled:opacity-50"
       >
         {status === "sending" ? "Sending…" : <>Send Message &rarr;</>}
       </button>

@@ -28,7 +28,7 @@ export default function FilmCard({ film }: FilmCardProps) {
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
           />
-          <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-gold/20 transition-all duration-700 group-hover:inset-4 group-hover:ring-gold/70" />
+          <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-paper/30 transition-all duration-700 group-hover:inset-4 group-hover:ring-paper/70" />
           <div className="absolute inset-0 bg-ink/30 transition-colors duration-500 group-hover:bg-ink/45" />
 
           <div className="absolute inset-0 flex items-center justify-center">
@@ -39,16 +39,16 @@ export default function FilmCard({ film }: FilmCardProps) {
                 </svg>
               </span>
             ) : (
-              <span className="eyebrow">Coming soon</span>
+              <span className="text-[11px] uppercase tracking-[0.32em] text-bone/85">Coming soon</span>
             )}
           </div>
         </div>
 
         <div className="mt-4 flex items-baseline justify-between">
-          <p className="font-display text-xl text-bone transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">
+          <p className="font-display text-xl text-char transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">
             {film.title}
           </p>
-          <p className="text-[11px] uppercase tracking-[0.25em] text-bone/55">{film.location} &middot; {film.year}</p>
+          <p className="text-[11px] uppercase tracking-[0.25em] text-char/55">{film.location} &middot; {film.year}</p>
         </div>
       </button>
 

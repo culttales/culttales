@@ -10,14 +10,17 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#0B0B0B", // primary dark background
-        paper: "#F5F1E8", // warm ivory light background
+        paper: "#F8F4ED", // warm ivory: the main background
+        sand: "#EFE6D9", // deeper sand for alternating sections
+        wine: "#4A1D22", // deep oxblood for closing sections
+        bronze: "#8A6A3A", // gold for text and lines on light grounds
         gold: "#C9A96E", // champagne gold: hairlines, numerals, small labels
         bone: "#F4F1EA", // text on dark
-        char: "#111111", // text on light
+        char: "#2B2420", // espresso text on light
         dust: "#A6A29A", // secondary / muted text, both modes
         line: {
           light: "rgba(201,169,110,0.22)", // gold hairline on dark
-          dark: "rgba(160,128,70,0.3)", // gold hairline on light
+          dark: "rgba(138,106,58,0.28)", // bronze hairline on light
         },
       },
       fontFamily: {

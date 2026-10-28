@@ -23,26 +23,26 @@ const QUESTIONS = [
 
 export default function FAQ() {
   return (
-    <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-44">
+    <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-44">
       <div className="mx-auto grid max-w-frame grid-cols-1 gap-14 md:grid-cols-12 md:gap-10">
         <div className="md:col-span-4">
           <p className="eyebrow mb-6">Questions</p>
           <h2 className="font-display text-display-md text-balance">
-            Everything you may wish to ask.
+            Everything you may <em>wish</em> to ask.
           </h2>
         </div>
 
         <div className="md:col-span-7 md:col-start-6">
           {QUESTIONS.map((item) => (
-            <details key={item.q} className="faq group border-t border-gold/25 last:border-b">
+            <details key={item.q} className="faq group border-t border-bronze/25 last:border-b">
               <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-7 font-display text-xl italic md:text-2xl">
                 {item.q}
                 <span
                   aria-hidden
-                  className="relative block h-4 w-4 shrink-0 before:absolute before:left-0 before:top-1/2 before:h-px before:w-4 before:bg-gold after:absolute after:left-1/2 after:top-0 after:h-4 after:w-px after:bg-gold after:transition-transform after:duration-500 group-open:after:scale-y-0"
+                  className="relative block h-4 w-4 shrink-0 before:absolute before:left-0 before:top-1/2 before:h-px before:w-4 before:bg-bronze after:absolute after:left-1/2 after:top-0 after:h-4 after:w-px after:bg-bronze after:transition-transform after:duration-500 group-open:after:scale-y-0"
                 />
               </summary>
-              <p className="max-w-xl pb-8 text-base leading-relaxed text-bone/70">{item.a}</p>
+              <p className="max-w-xl pb-8 text-base leading-relaxed text-char/70">{item.a}</p>
             </details>
           ))}
         </div>

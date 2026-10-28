@@ -5,7 +5,7 @@ type EditorialSectionProps = {
   eyebrow?: string;
   statement: string;
   body?: string;
-  tone?: "dark" | "light";
+  tone?: "ivory" | "sand";
   align?: "left" | "center";
   id?: string;
 };
@@ -14,18 +14,17 @@ export default function EditorialSection({
   eyebrow,
   statement,
   body,
-  tone = "dark",
+  tone = "ivory",
   align = "left",
   id,
 }: EditorialSectionProps) {
-  const isDark = tone === "dark";
-
+  
   return (
     <section
       id={id}
       className={clsx(
         "px-6 py-28 md:px-10 md:py-48",
-        isDark ? "bg-ink text-bone" : "bg-paper text-char"
+        tone === "sand" ? "bg-sand text-char" : "bg-paper text-char"
       )}
     >
       <div
@@ -53,8 +52,7 @@ export default function EditorialSection({
         {body && (
           <p
             className={clsx(
-              "mt-8 max-w-editorial text-base leading-relaxed",
-              isDark ? "text-bone/75" : "text-char/70",
+              "mt-8 max-w-editorial text-base leading-relaxed text-char/70",
               align === "center" && "mx-auto"
             )}
           >

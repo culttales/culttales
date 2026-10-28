@@ -36,7 +36,7 @@ export default function StoryCard({ story, size = "medium", priority }: StoryCar
             className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.05]"
           />
         </Curtain>
-        <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-gold/20 transition-all duration-700 group-hover:inset-4 group-hover:ring-gold/70" />
+        <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-paper/30 transition-all duration-700 group-hover:inset-4 group-hover:ring-paper/70" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
 
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 md:p-7">

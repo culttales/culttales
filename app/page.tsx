@@ -28,7 +28,7 @@ export default function HomePage() {
 
       <EditorialSection
         id="introduction"
-        tone="dark"
+        tone="sand"
         align="center"
         eyebrow="Rooted in culture. Told with grace."
         statement="Every wedding carries a story. Every ritual carries a memory. Every culture deserves to be remembered."
@@ -52,11 +52,13 @@ export default function HomePage() {
 
       <CultureIndex />
 
-      <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-48">
+      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-48">
         <div className="mx-auto max-w-frame">
           <div className="mb-16 flex flex-col items-center text-center">
             <p className="eyebrow mb-6">In Motion</p>
-            <h2 className="font-display text-display-lg text-balance">Our films</h2>
+            <h2 className="font-display text-display-lg text-balance">
+              Our <em>films</em>
+            </h2>
             <div aria-hidden className="ornament mt-10">
               <i />
             </div>
@@ -71,7 +73,7 @@ export default function HomePage() {
           <div className="mt-16 text-center">
             <Link
               href="/films"
-              className="btn-gold"
+              className="btn-bronze"
             >
               Watch All Films
             </Link>
@@ -80,17 +82,19 @@ export default function HomePage() {
       </section>
 
       <EditorialSection
-        tone="light"
+        tone="sand"
         align="center"
         statement="We don't simply photograph weddings. We document the culture, people and stories surrounding them."
       />
 
-      <section className="bg-paper px-6 pb-28 text-char md:px-10 md:pb-48">
+      <section className="bg-sand px-6 pb-28 text-char md:px-10 md:pb-48">
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
               <p className="eyebrow mb-4">Notes</p>
-              <h2 className="font-display text-display-md text-balance">From the journal</h2>
+              <h2 className="font-display text-display-md text-balance">
+                From the <em>journal</em>
+              </h2>
             </div>
             <Link href="/journal" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-char md:inline-block">
               Read the journal &rarr;

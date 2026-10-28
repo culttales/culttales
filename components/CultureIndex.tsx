@@ -8,7 +8,7 @@ import { AnimatePresence, motion } from "motion/react";
 import { regions } from "@/lib/regions";
 
 /**
- * "One Country. A Thousand Stories."
+ * "One Country. <em>A Thousand Stories.</em>"
  *
  * Rather than a literal, travel-site-style map of India, this presents the
  * regions as a large editorial index — a list you read, with the image
@@ -20,19 +20,19 @@ export default function CultureIndex() {
   const region = regions[active];
 
   return (
-    <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-48">
+    <section className="bg-sand px-6 py-28 text-char md:px-10 md:py-48">
       <div className="mx-auto max-w-frame">
         <div className="mb-14 max-w-xl">
           <p className="eyebrow mb-4">The Regions</p>
           <h2 className="font-display text-display-md text-balance">
-            One Country. A Thousand Stories.
+            One Country. <em>A Thousand Stories.</em>
           </h2>
         </div>
 
         <div className="grid grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
-          <ul className="border-t border-line-light">
+          <ul className="border-t border-line-dark">
             {regions.map((r, i) => (
-              <li key={r.name} className="border-b border-line-light">
+              <li key={r.name} className="border-b border-line-dark">
                 <button
                   type="button"
                   onMouseEnter={() => setActive(i)}
@@ -40,7 +40,7 @@ export default function CultureIndex() {
                   onClick={() => setActive(i)}
                   className={clsx(
                     "flex w-full items-baseline justify-between py-4 text-left font-display transition-colors duration-300 md:py-5",
-                    active === i ? "text-gold italic" : "text-bone/40 hover:text-bone/70"
+                    active === i ? "text-bronze italic" : "text-char/40 hover:text-char/70"
                   )}
                 >
                   <span className="text-2xl md:text-3xl">{r.name}</span>
@@ -50,7 +50,7 @@ export default function CultureIndex() {
           </ul>
 
           <div className="gold-frame">
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink/60 md:aspect-auto md:h-full">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-char/10 md:aspect-auto md:h-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={region.name}

@@ -12,7 +12,7 @@ const NAV = [
 
 export default function Footer() {
   return (
-    <footer className="bg-ink px-6 pb-10 pt-20 text-bone md:px-10 md:pt-28">
+    <footer className="on-dark border-t border-gold/15 bg-wine px-6 pb-10 pt-20 text-bone md:px-10 md:pt-28">
       <div className="mx-auto max-w-frame">
         <div className="flex flex-col items-center text-center">
           <Logo variant="white" className="h-12 md:h-16" />

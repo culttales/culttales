@@ -42,7 +42,7 @@ export default function Header() {
           "fixed inset-x-0 top-0 z-50 transition-[background-color,border-color,transform] duration-700 ease-cinema",
           hidden && !menuOpen && "-translate-y-full",
           scrolled || menuOpen
-            ? "bg-ink/80 backdrop-blur-xl border-b border-gold/20"
+            ? "bg-paper/85 backdrop-blur-xl border-b border-line-dark"
             : "bg-transparent border-b border-transparent"
         )}
       >
@@ -52,26 +52,26 @@ export default function Header() {
               <Link
                 key={link.href}
                 href={link.href}
-                className="link-draw text-[11px] uppercase tracking-[0.3em] text-bone/85 transition-colors hover:text-bone"
+                className="link-draw text-[11px] uppercase tracking-[0.3em] text-char/80 transition-colors hover:text-char"
               >
                 {link.label}
               </Link>
             ))}
           </nav>
 
-          <Logo variant="white" className="col-start-1 h-6 md:col-start-2 md:h-9" priority />
+          <Logo variant="black" className="col-start-1 h-6 md:col-start-2 md:h-9" priority />
 
           <div className="hidden items-center justify-end gap-10 md:flex">
             {NAV_LINKS.slice(2, 4).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="link-draw text-[11px] uppercase tracking-[0.3em] text-bone/85 transition-colors hover:text-bone"
+                className="link-draw text-[11px] uppercase tracking-[0.3em] text-char/80 transition-colors hover:text-char"
               >
                 {link.label}
               </Link>
             ))}
-            <Link href="/contact" className="btn-gold btn-sm">
+            <Link href="/contact" className="btn-bronze btn-sm">
               Let&rsquo;s Talk
             </Link>
           </div>
@@ -85,13 +85,13 @@ export default function Header() {
           >
             <span
               className={clsx(
-                "block h-px bg-gold transition-all duration-300",
+                "block h-px bg-bronze transition-all duration-300",
                 menuOpen ? "w-6 translate-y-[3.5px] rotate-45" : "w-6"
               )}
             />
             <span
               className={clsx(
-                "block h-px bg-gold transition-all duration-300",
+                "block h-px bg-bronze transition-all duration-300",
                 menuOpen ? "w-6 -translate-y-[3.5px] -rotate-45" : "w-4"
               )}
             />

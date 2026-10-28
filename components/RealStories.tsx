@@ -5,12 +5,12 @@ import type { Story } from "@/lib/stories";
 
 export default function RealStories({ stories }: { stories: Story[] }) {
   return (
-    <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-44">
+    <section className="bg-sand px-6 py-28 text-char md:px-10 md:py-44">
       <div className="mx-auto max-w-frame">
         <div className="mb-16 flex flex-col items-center text-center md:mb-24">
           <p className="eyebrow mb-6">Selected Work</p>
           <h2 className="font-display text-display-lg text-balance">
-            Our <span className="text-[#8a6f3a]">real</span> stories
+            Our <em>real</em> stories
           </h2>
           <div aria-hidden className="ornament mt-10">
             <i />

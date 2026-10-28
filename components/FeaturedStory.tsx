@@ -6,7 +6,7 @@ import RevealText from "./RevealText";
 
 export default function FeaturedStory({ story }: { story: Story }) {
   return (
-    <section className="bg-ink px-6 pb-24 pt-4 text-bone md:px-10 md:pb-32">
+    <section className="bg-paper px-6 py-24 text-char md:px-10 md:py-36">
       <div className="mx-auto max-w-frame">
         <p className="eyebrow mb-8">Featured Story</p>
 
@@ -29,15 +29,15 @@ export default function FeaturedStory({ story }: { story: Story }) {
             <RevealText as="h3" className="font-display text-display-md text-balance">
               {story.openingLine}
             </RevealText>
-            <p className="mt-6 max-w-editorial text-base leading-relaxed text-bone/70">
+            <p className="mt-6 max-w-editorial text-base leading-relaxed text-char/70">
               {story.excerpt}
             </p>
-            <div className="mt-8 flex items-center gap-4 text-[11px] uppercase tracking-[0.25em] text-bone/55">
+            <div className="mt-8 flex items-center gap-4 text-[11px] uppercase tracking-[0.25em] text-char/55">
               <span>{story.location}</span>
               <span>&middot;</span>
               <span>{story.year}</span>
             </div>
-            <span className="link-draw mt-8 w-fit text-[11px] uppercase tracking-[0.28em] text-bone">
+            <span className="link-draw mt-8 w-fit text-[11px] uppercase tracking-[0.28em] text-char">
               Read the story &rarr;
             </span>
           </div>

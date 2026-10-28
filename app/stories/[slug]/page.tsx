@@ -42,30 +42,34 @@ export default async function StoryPage({ params }: StoryPageProps) {
   const next = getAdjacentStory(story.slug);
 
   return (
-    <article className="bg-ink text-bone">
+    <article className="bg-paper text-char">
       {/* Opening */}
-      <section className="relative flex h-[90svh] w-full items-end overflow-hidden">
-        <Image
-          src={story.heroImage}
-          alt={`${story.coupleNames} — ${story.location}`}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
-        <div className="relative z-10 w-full px-6 pb-16 md:px-10 md:pb-20">
-          <div className="mx-auto max-w-frame">
-            <p className="eyebrow mb-4">{story.category}</p>
-            <h1 className="max-w-3xl font-display text-display-lg text-balance">
-              {story.coupleNames}
-            </h1>
-            <p className="mt-4 text-sm text-bone/80">
-              {story.location} &middot; {story.year}
-            </p>
+      <section className="px-6 pb-14 pt-36 md:px-10 md:pb-20 md:pt-52">
+        <div className="mx-auto max-w-4xl text-center">
+          <p className="eyebrow mb-6">{story.category}</p>
+          <h1 className="font-display text-display-lg text-balance">{story.coupleNames}</h1>
+          <p className="mt-6 text-[11px] uppercase tracking-[0.3em] text-char/60">
+            {story.location} &middot; {story.year}
+          </p>
+          <div aria-hidden className="ornament mt-10">
+            <i />
           </div>
         </div>
       </section>
+
+      <div className="px-6 md:px-10">
+        <div className="relative mx-auto aspect-[4/5] max-w-frame overflow-hidden md:aspect-[16/9]">
+          <Image
+            src={story.heroImage}
+            alt={`${story.coupleNames} — ${story.location}`}
+            fill
+            priority
+            sizes="100vw"
+            className="object-cover"
+          />
+          <span aria-hidden className="pointer-events-none absolute inset-4 ring-1 ring-paper/60 md:inset-8" />
+        </div>
+      </div>
 
       {/* Story introduction */}
       <section className="px-6 py-24 md:px-10 md:py-32">
@@ -73,7 +77,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
           <RevealText as="h2" className="font-display text-display-md text-balance">
             &ldquo;{story.openingLine}&rdquo;
           </RevealText>
-          <p className="mt-8 max-w-editorial text-base leading-relaxed text-bone/75">
+          <p className="mt-8 max-w-editorial text-base leading-relaxed text-char/75">
             {story.description}
           </p>
         </div>
@@ -83,7 +87,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       <section className="flex flex-col gap-4 px-6 pb-4 md:gap-5 md:px-10">
         {story.images[0] && (
           <div className="relative aspect-[16/10] w-full overflow-hidden">
-            <span aria-hidden className="pointer-events-none absolute inset-4 z-10 ring-1 ring-gold/40 md:inset-8" />
+            <span aria-hidden className="pointer-events-none absolute inset-4 z-10 ring-1 ring-paper/60 md:inset-8" />
             <Curtain className="absolute inset-0 overflow-hidden">
               <Image
                 src={story.images[0].src}
@@ -116,7 +120,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       </section>
 
       {/* Cultural context */}
-      <section className="bg-paper px-6 py-24 text-char md:px-10 md:py-32">
+      <section className="bg-sand px-6 py-24 text-char md:px-10 md:py-32">
         <div className="mx-auto max-w-4xl">
           <p className="eyebrow mb-4">Cultural Context</p>
           <h2 className="font-display text-display-md text-balance">
@@ -147,7 +151,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       )}
 
       {/* Closing */}
-      <section className="border-t border-line-light px-6 py-24 md:px-10 md:py-32">
+      <section className="border-t border-line-dark px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-frame">
           <p className="eyebrow mb-8">Another story awaits</p>
           <Link href={`/stories/${next.slug}`} data-cursor="view" className="group grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-14">
@@ -165,7 +169,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
             <div>
               <h3 className="font-display text-display-sm text-balance">{next.coupleNames}</h3>
               <p className="eyebrow mt-2">{next.location} &middot; {next.year}</p>
-              <span className="link-draw mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-bone">Read the story &rarr;</span>
+              <span className="link-draw mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-char">Read the story &rarr;</span>
             </div>
           </Link>
         </div>

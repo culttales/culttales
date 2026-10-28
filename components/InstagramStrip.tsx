@@ -6,7 +6,7 @@ export default function InstagramStrip() {
   const tiles = [moments[1], moments[0], moments[3], moments[6], moments[5], moments[4]];
 
   return (
-    <section className="bg-paper px-6 py-24 text-char md:px-10 md:py-36">
+    <section className="bg-sand px-6 py-24 text-char md:px-10 md:py-36">
       <div className="mx-auto max-w-frame">
         <div className="mb-12 flex flex-col items-center text-center md:mb-16">
           <p className="eyebrow mb-5">Follow the Journey</p>

@@ -8,7 +8,7 @@ export default function Intro() {
   return (
     <div aria-hidden className="intro">
       <Image
-        src="/logo/cult-tales-logo-white.png"
+        src="/logo/cult-tales-logo-black.png"
         alt=""
         width={510}
         height={331}

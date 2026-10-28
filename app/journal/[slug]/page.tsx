@@ -76,7 +76,7 @@ export default async function JournalPage({ params }: JournalPageProps) {
       </section>
 
       {/* Next article CTA */}
-      <section className="border-t border-line-dark bg-ink px-6 py-24 text-bone md:px-10 md:py-32">
+      <section className="border-t border-line-dark bg-sand px-6 py-24 text-char md:px-10 md:py-32">
         <div className="mx-auto max-w-frame">
           <p className="eyebrow mb-8">Next Article</p>
           <Link
@@ -96,7 +96,7 @@ export default async function JournalPage({ params }: JournalPageProps) {
             <div>
               <p className="text-sm text-dust">{next.category}</p>
               <h3 className="mt-2 font-display text-display-sm text-balance">{next.title}</h3>
-              <span className="link-draw mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-bone">
+              <span className="link-draw mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-char">
                 Read article &rarr;
               </span>
             </div>

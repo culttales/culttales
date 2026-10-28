@@ -250,24 +250,6 @@ textarea:focus-visible,
   animation: kenburns 22s ease-in-out infinite;
 }
 
-/* Homepage hero: the active slide eases out of a slow zoom */
-@keyframes hero-zoom {
-  from { transform: scale(1.1); }
-  to { transform: scale(1); }
-}
-.hero-slide[data-active="true"] img {
-  animation: hero-zoom 9s cubic-bezier(0.22, 0.6, 0.3, 1) both;
-}
-
-/* Progress bar on the active hero indicator; its end advances the slide */
-@keyframes slide-progress {
-  from { transform: scaleX(0); }
-  to { transform: scaleX(1); }
-}
-.slide-progress {
-  animation: slide-progress linear both;
-}
-
 /* Hero copy rises in once the logo intro has lifted */
 @keyframes rise {
   from { opacity: 0; transform: translateY(24px); }
@@ -445,9 +427,7 @@ textarea:focus-visible,
   .animate-kenburns,
   .animate-marquee,
   .rotate-slow,
-  .hero-rise,
-  .slide-progress,
-  .hero-slide[data-active="true"] img {
+  .hero-rise {
     animation: none !important;
   }
   *,

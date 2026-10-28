@@ -1,4 +1,4 @@
-import HeroSlideshow from "@/components/home/HeroSlideshow";
+import HeroVideo from "@/components/home/HeroVideo";
 import Manifesto from "@/components/home/Manifesto";
 import StoriesShowcase from "@/components/home/StoriesShowcase";
 import Cinema from "@/components/home/Cinema";
@@ -14,7 +14,7 @@ export default function HomePage() {
 
   return (
     <>
-      <HeroSlideshow film={films[0]} />
+      <HeroVideo film={films[0]} />
       <Manifesto />
       <StoriesShowcase stories={getAllStories()} />
       <Cinema films={films} />

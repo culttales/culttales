@@ -56,7 +56,7 @@ app/
   globals.css           Type, grain, buttons, form fields, animations
 
 components/
-  home/                 Homepage sections: HeroSlideshow, Manifesto,
+  home/                 Homepage sections: HeroVideo, Manifesto,
                         StoriesShowcase, Cinema, Craft, JournalNotes, Inquire
   Header, Footer, MobileMenu, AmbientToggle (optional ambient music)
   StoryBoard            Story filters and magazine grid

@@ -139,7 +139,7 @@ export default function AmbientToggle({ light = false }: { light?: boolean }) {
       aria-pressed={on}
       aria-label={on ? "Turn ambient music off" : "Turn ambient music on"}
       title="Ambient music"
-      className={`flex items-center gap-2.5 rounded-full border px-3 py-2 text-[10px] font-medium uppercase tracking-editorial transition-colors hover:border-bronze ${
+      className={`flex items-center gap-2.5 whitespace-nowrap rounded-full border px-3 py-2 text-[10px] font-medium uppercase tracking-editorial transition-colors hover:border-bronze ${
         light ? "border-paper/25" : "border-obsidian/15"
       }`}
     >

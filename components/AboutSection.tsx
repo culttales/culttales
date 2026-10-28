@@ -23,7 +23,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: EASE }}
-            className="mb-6 text-sm tracking-label text-dust"
+            className="eyebrow mb-6"
           >
             Who We Are
           </motion.p>
@@ -91,7 +91,7 @@ export default function AboutSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.9, delay: 0.45, ease: EASE }}
-            className="mt-8 font-display text-xl italic text-bone/90"
+            className="mt-8 font-display text-xl italic text-gold"
           >
             Short for Culture. Long on Tales.
           </motion.p>
@@ -104,7 +104,7 @@ export default function AboutSection() {
           >
             <Link
               href="/about"
-              className="link-draw mt-10 inline-block text-sm text-bone"
+              className="link-draw mt-10 inline-block text-[11px] uppercase tracking-[0.28em] text-bone"
             >
               More about us &rarr;
             </Link>
@@ -155,7 +155,7 @@ export default function AboutSection() {
               transition={{ duration: 0.9, delay: i * 0.15, ease: EASE }}
               className="border-t border-line-light px-6 py-12 md:px-8 md:py-14"
             >
-              <p className="mb-4 text-sm text-dust">{card.label}</p>
+              <p className="eyebrow mb-4">{card.label}</p>
               {"title" in card ? (
                 <>
                   <h3 className="max-w-xs font-display text-2xl text-bone">

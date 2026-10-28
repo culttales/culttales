@@ -31,19 +31,19 @@ export default function Header() {
         className={clsx(
           "fixed inset-x-0 top-0 z-50 transition-colors duration-500",
           scrolled || menuOpen
-            ? "bg-ink/80 backdrop-blur-md border-b border-line-light"
+            ? "bg-ink/85 backdrop-blur-md border-b border-gold/25"
             : "bg-transparent border-b border-transparent"
         )}
       >
         <div className="mx-auto flex max-w-frame items-center justify-between px-6 py-5 md:px-10">
           <Logo variant="white" className="h-6 md:h-7" priority />
 
-          <nav className="hidden items-center gap-9 md:flex">
+          <nav className="hidden items-center gap-10 md:flex">
             {NAV_LINKS.slice(0, 4).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className="link-draw text-sm text-bone/90"
+                className="link-draw text-[11px] uppercase tracking-[0.3em] text-bone/85 transition-colors hover:text-bone"
               >
                 {link.label}
               </Link>
@@ -51,8 +51,8 @@ export default function Header() {
           </nav>
 
           <div className="hidden md:block">
-            <Link href="/contact" className="link-draw text-sm text-bone">
-              Let&rsquo;s Talk &rarr;
+            <Link href="/contact" className="border border-gold/60 px-6 py-2.5 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink">
+              Let&rsquo;s Talk
             </Link>
           </div>
 
@@ -65,13 +65,13 @@ export default function Header() {
           >
             <span
               className={clsx(
-                "block h-px bg-bone transition-all duration-300",
+                "block h-px bg-gold transition-all duration-300",
                 menuOpen ? "w-6 translate-y-[3.5px] rotate-45" : "w-6"
               )}
             />
             <span
               className={clsx(
-                "block h-px bg-bone transition-all duration-300",
+                "block h-px bg-gold transition-all duration-300",
                 menuOpen ? "w-6 -translate-y-[3.5px] -rotate-45" : "w-4"
               )}
             />

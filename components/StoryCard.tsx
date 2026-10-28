@@ -33,6 +33,7 @@ export default function StoryCard({ story, size = "medium", priority }: StoryCar
           sizes={size === "large" ? "(min-width: 768px) 66vw, 100vw" : "(min-width: 768px) 33vw, 100vw"}
           className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.05]"
         />
+        <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-gold/0 transition-all duration-700 group-hover:ring-gold/60" />
         <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/0 to-transparent opacity-70 transition-opacity duration-500 group-hover:opacity-90" />
 
         <div className="absolute inset-x-0 bottom-0 flex items-end justify-between p-6 md:p-7">
@@ -40,13 +41,13 @@ export default function StoryCard({ story, size = "medium", priority }: StoryCar
             <p className="font-display text-xl text-bone md:text-2xl">
               {story.coupleNames}
             </p>
-            <p className="mt-1 text-sm text-dust">
+            <p className="mt-2 text-[11px] uppercase tracking-[0.25em] text-bone/60">
               {story.location} &middot; {story.year}
             </p>
           </div>
           <span
             aria-hidden
-            className="translate-x-0 text-bone opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100"
+            className="translate-x-0 text-gold opacity-0 transition-all duration-500 group-hover:translate-x-1 group-hover:opacity-100"
           >
             &rarr;
           </span>

@@ -32,7 +32,7 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
                 <Link
                   href={link.href}
                   onClick={onClose}
-                  className="block border-b border-line-light py-5 font-display text-display-sm text-bone"
+                  className="block border-b border-gold/25 py-5 font-display text-display-sm italic text-bone"
                 >
                   {link.label}
                 </Link>
@@ -44,10 +44,10 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.4, duration: 0.5 }}
-            className="flex flex-col gap-2 text-sm text-dust"
+            className="flex flex-col gap-3 text-xs uppercase tracking-[0.25em] text-gold"
           >
             <p>Short for Culture. Long on Tales.</p>
-            <div className="flex gap-6 pt-2 text-bone">
+            <div className="flex gap-6 pt-2 text-bone/80">
               <a href={contact.instagramUrl} className="link-draw">Instagram</a>
               <a href={contact.youtubeUrl} className="link-draw">YouTube</a>
               <a href={contact.facebookUrl} className="link-draw">Facebook</a>

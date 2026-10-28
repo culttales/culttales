@@ -22,6 +22,7 @@ export default function AboutPage() {
 
       <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2">
         <div className="relative aspect-[4/5] w-full md:aspect-auto">
+          <span aria-hidden className="pointer-events-none absolute inset-4 z-10 ring-1 ring-gold/45 md:inset-8" />
           <Image
             src="/images/about-1.jpg"
             alt="Portrait"
@@ -44,7 +45,7 @@ export default function AboutPage() {
               community, the region, the specific version of a ritual this family
               practices, so the final story feels entirely theirs.
             </p>
-            <p className="mt-6 font-display text-xl text-bone">
+            <p className="mt-8 font-display text-xl italic text-gold">
               Short for Culture. Long on Tales.
             </p>
           </div>
@@ -53,6 +54,7 @@ export default function AboutPage() {
 
       <section className="grid grid-cols-1 gap-0 bg-ink md:grid-cols-2 md:grid-rows-[auto_auto]">
         <div className="relative aspect-video w-full md:col-span-1">
+          <span aria-hidden className="pointer-events-none absolute inset-4 z-10 ring-1 ring-gold/45 md:inset-8" />
           <Image
             src="/images/about-2.jpg"
             alt="Behind the scenes"
@@ -62,7 +64,7 @@ export default function AboutPage() {
           />
         </div>
         <div className="border-t border-line-light px-6 py-12 md:border-l md:border-t-0 md:px-10 md:py-16">
-          <p className="mb-4 text-sm text-dust">Our Approach</p>
+          <p className="eyebrow mb-4">Our Approach</p>
           <h2 className="max-w-xs font-display text-3xl text-bone">
             Photography + Cinematography + Editorial
           </h2>
@@ -74,7 +76,7 @@ export default function AboutPage() {
         </div>
 
         <div className="border-t border-line-light px-6 py-12 md:border-t md:px-10 md:py-16">
-          <p className="mb-4 text-sm text-dust">What We Document</p>
+          <p className="eyebrow mb-4">What We Document</p>
           <ul className="flex flex-col gap-3 text-sm text-bone/80">
             <li>The rituals — honoring their specificity to each community</li>
             <li>The people — family, friends, the edges of quiet moments</li>
@@ -92,7 +94,7 @@ export default function AboutPage() {
 
       <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
         <div className="mx-auto max-w-frame">
-          <p className="mb-8 text-sm text-dust">Services</p>
+          <p className="eyebrow mb-8">Services</p>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
             <div className="border-t border-line-light pt-8">
               <h3 className="font-display text-2xl">Wedding Stories</h3>
@@ -134,9 +136,9 @@ export default function AboutPage() {
           </p>
           <Link
             href="/contact"
-            className="link-draw mt-10 inline-block font-display text-2xl text-char"
+            className="mt-12 inline-block border border-[#8a6f3a]/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-[#8a6f3a] transition-colors duration-500 hover:bg-[#8a6f3a] hover:text-paper"
           >
-            Start a Conversation &rarr;
+            Start a Conversation
           </Link>
         </div>
       </section>

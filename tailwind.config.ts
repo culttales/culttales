@@ -10,13 +10,14 @@ const config: Config = {
     extend: {
       colors: {
         ink: "#0B0B0B", // primary dark background
-        paper: "#F3F0E9", // primary light background
+        paper: "#F5F1E8", // warm ivory light background
+        gold: "#C9A96E", // champagne gold: hairlines, numerals, small labels
         bone: "#F4F1EA", // text on dark
         char: "#111111", // text on light
         dust: "#A6A29A", // secondary / muted text, both modes
         line: {
-          light: "rgba(255,255,255,0.15)", // hairline on dark
-          dark: "rgba(17,17,17,0.14)", // hairline on light
+          light: "rgba(201,169,110,0.22)", // gold hairline on dark
+          dark: "rgba(160,128,70,0.3)", // gold hairline on light
         },
       },
       fontFamily: {
@@ -30,7 +31,7 @@ const config: Config = {
         "display-sm": ["clamp(1.5rem, 2.4vw, 2.1rem)", { lineHeight: "1.15" }],
       },
       letterSpacing: {
-        label: "0.14em",
+        label: "0.32em",
       },
       maxWidth: {
         editorial: "42rem",

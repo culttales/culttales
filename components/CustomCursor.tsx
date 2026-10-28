@@ -28,6 +28,7 @@ export default function CustomCursor() {
     let y = 0;
 
     const move = (e: MouseEvent) => {
+      dot.style.opacity = "1";
       x = e.clientX;
       y = e.clientY;
       dot.style.transform = `translate(${x}px, ${y}px) translate(-50%, -50%)`;
@@ -42,7 +43,7 @@ export default function CustomCursor() {
   }, []);
 
   return (
-    <div ref={dotRef} className={`cursor-dot${label ? " is-expanded" : ""}`}>
+    <div ref={dotRef} style={{ opacity: 0 }} className={`cursor-dot${label ? " is-expanded" : ""}`}>
       <span>{label}</span>
     </div>
   );

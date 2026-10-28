@@ -33,29 +33,34 @@ export default function HomePage() {
         body="We travel across India to document weddings in their most authentic form — capturing rituals, traditions, people and fleeting moments that exist beyond the frame."
       />
 
+      <span className="gold-rule" />
+
       {featured && <FeaturedStory story={featured} />}
 
       <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-36">
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
+              <p className="eyebrow mb-4">Selected Work</p>
               <h2 className="font-display text-display-md text-balance">Stories</h2>
               <p className="mt-3 max-w-md text-base text-bone/70">
                 Weddings, rituals and tales from across India.
               </p>
             </div>
-            <Link href="/stories" className="link-draw hidden text-sm text-bone md:inline-block">
+            <Link href="/stories" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-bone md:inline-block">
               View all stories &rarr;
             </Link>
           </div>
 
           <StoryGrid stories={selectedStories} />
 
-          <Link href="/stories" className="link-draw mt-10 inline-block text-sm text-bone md:hidden">
+          <Link href="/stories" className="link-draw mt-10 inline-block text-[11px] uppercase tracking-[0.28em] text-bone md:hidden">
             View all stories &rarr;
           </Link>
         </div>
       </section>
+
+      <span className="gold-rule" />
 
       <CultureIndex />
 
@@ -63,10 +68,11 @@ export default function HomePage() {
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
+              <p className="eyebrow mb-4">In Motion</p>
               <h2 className="font-display text-display-md text-balance">Films</h2>
               <p className="mt-3 max-w-md text-base text-bone/70">Stories that move.</p>
             </div>
-            <Link href="/films" className="link-draw hidden text-sm text-bone md:inline-block">
+            <Link href="/films" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-bone md:inline-block">
               Watch all films &rarr;
             </Link>
           </div>
@@ -89,12 +95,13 @@ export default function HomePage() {
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
+              <p className="eyebrow mb-4">Notes</p>
               <h2 className="font-display text-display-md text-balance">Journal</h2>
               <p className="mt-3 max-w-md text-base text-char/70">
                 Notes on culture, ritual and the craft of documenting them.
               </p>
             </div>
-            <Link href="/journal" className="link-draw hidden text-sm text-char md:inline-block">
+            <Link href="/journal" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-char md:inline-block">
               Read the journal &rarr;
             </Link>
           </div>
@@ -106,6 +113,7 @@ export default function HomePage() {
       <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
         <div className="mx-auto grid max-w-frame grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
           <div>
+            <p className="eyebrow mb-4">Our Belief</p>
             <h2 className="font-display text-display-md text-balance">
               We are storytellers of culture, love and tradition.
             </h2>
@@ -117,7 +125,7 @@ export default function HomePage() {
               people, the rituals, the chaos, the silence, the laughter, the
               heritage, the emotion.
             </p>
-            <Link href="/about" className="link-draw mt-8 w-fit text-sm text-bone">
+            <Link href="/about" className="link-draw mt-8 w-fit text-[11px] uppercase tracking-[0.28em] text-bone">
               More about us &rarr;
             </Link>
           </div>

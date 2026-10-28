@@ -3,8 +3,8 @@
 import { FormEvent, useState } from "react";
 
 const inputClass =
-  "w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-bone focus:outline-none";
-const labelClass = "mb-2 block text-xs tracking-label uppercase text-dust";
+  "w-full border-b border-line-light bg-transparent py-3 text-sm text-bone placeholder-bone/40 focus:border-gold focus:outline-none";
+const labelClass = "eyebrow mb-2 block";
 
 export default function ContactForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "sent" | "error">("idle");
@@ -74,7 +74,7 @@ export default function ContactForm() {
       <button
         type="submit"
         disabled={status === "sending"}
-        className="link-draw mt-10 inline-block text-sm text-bone disabled:opacity-50"
+        className="mt-10 inline-block border border-gold/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink disabled:opacity-50"
       >
         {status === "sending" ? "Sending…" : <>Send Message &rarr;</>}
       </button>

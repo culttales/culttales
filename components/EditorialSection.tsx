@@ -34,8 +34,13 @@ export default function EditorialSection({
           align === "center" && "text-center"
         )}
       >
+        {align === "center" && (
+          <div aria-hidden className="ornament mb-12">
+            <i />
+          </div>
+        )}
         {eyebrow && (
-          <p className={clsx("mb-6 text-sm", isDark ? "text-dust" : "text-dust")}>
+          <p className="eyebrow mb-6">
             {eyebrow}
           </p>
         )}

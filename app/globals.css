@@ -15,6 +15,7 @@ html {
 }
 
 body {
+  position: relative;
   background-color: #0b0b0b;
   color: #f4f1ea;
   font-family: var(--font-inter), Helvetica, Arial, sans-serif;
@@ -23,13 +24,88 @@ body {
 }
 
 ::selection {
-  background: #f4f1ea;
+  background: #c9a96e;
   color: #0b0b0b;
+}
+
+/* Editorial serif headings: light italic, as on the client page */
+h1,
+h2,
+h3 {
+  font-family: var(--font-fraunces), Georgia, serif;
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+/* Fine film grain over the whole site */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 90;
+  pointer-events: none;
+  opacity: 0.045;
+  mix-blend-mode: overlay;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* Small widely spaced label */
+.eyebrow {
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.32em;
+  color: #c9a96e;
+}
+@media (min-width: 768px) {
+  .eyebrow {
+    letter-spacing: 0.42em;
+  }
+}
+
+/* Champagne gold hairline and diamond ornament */
+.gold-rule {
+  display: block;
+  height: 1px;
+  width: 100%;
+  background: linear-gradient(90deg, transparent, rgba(201, 169, 110, 0.55), transparent);
+}
+.ornament {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+}
+.ornament::before,
+.ornament::after {
+  content: "";
+  display: block;
+  height: 1px;
+  width: 4rem;
+  background: rgba(201, 169, 110, 0.5);
+}
+.ornament > i {
+  display: block;
+  width: 6px;
+  height: 6px;
+  transform: rotate(45deg);
+  background: #c9a96e;
+}
+
+/* Thin gold frame (mat) used around feature imagery */
+.gold-frame {
+  padding: 0.6rem;
+  box-shadow: inset 0 0 0 1px rgba(201, 169, 110, 0.45);
+}
+@media (min-width: 768px) {
+  .gold-frame {
+    padding: 0.85rem;
+  }
 }
 
 /* Hairline rule utility */
 .rule-light {
-  border-color: rgba(255, 255, 255, 0.15);
+  border-color: rgba(201, 169, 110, 0.22);
 }
 .rule-dark {
   border-color: rgba(17, 17, 17, 0.14);
@@ -39,7 +115,7 @@ body {
 a:focus-visible,
 button:focus-visible,
 [tabindex]:focus-visible {
-  outline: 1px solid currentColor;
+  outline: 1px solid #c9a96e;
   outline-offset: 4px;
 }
 
@@ -55,7 +131,7 @@ button:focus-visible,
   bottom: -0.15em;
   width: 100%;
   height: 1px;
-  background: currentColor;
+  background: #c9a96e;
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 500ms var(--ease-cinema);
@@ -79,8 +155,8 @@ button:focus-visible,
   width: 14px;
   height: 14px;
   border-radius: 999px;
-  background: #f4f1ea;
-  mix-blend-mode: difference;
+  background: #c9a96e;
+  mix-blend-mode: normal;
   transform: translate(-50%, -50%);
   transition: width 320ms var(--ease-cinema), height 320ms var(--ease-cinema);
   will-change: transform, width, height;
@@ -128,4 +204,12 @@ button:focus-visible,
 /* Balance long editorial headlines */
 .text-balance {
   text-wrap: balance;
+}
+
+/* Darker gold for labels on ivory sections, for legibility */
+.bg-paper .eyebrow {
+  color: #8a6f3a;
+}
+.bg-paper .link-draw::after {
+  background: #8a6f3a;
 }

@@ -23,7 +23,7 @@ export default function JournalList({ posts }: { posts: JournalPost[] }) {
           </div>
 
           <div>
-            <p className="mb-2 text-sm text-dust">
+            <p className="eyebrow mb-2">
               {post.category} &middot; {post.date}
             </p>
             <h3 className="font-display text-2xl text-char transition-transform duration-500 group-hover:translate-x-1 md:text-3xl">

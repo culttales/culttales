@@ -23,6 +23,7 @@ export default function CultureIndex() {
     <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
       <div className="mx-auto max-w-frame">
         <div className="mb-14 max-w-xl">
+          <p className="eyebrow mb-4">The Regions</p>
           <h2 className="font-display text-display-md text-balance">
             One Country. A Thousand Stories.
           </h2>
@@ -39,7 +40,7 @@ export default function CultureIndex() {
                   onClick={() => setActive(i)}
                   className={clsx(
                     "flex w-full items-baseline justify-between py-4 text-left font-display transition-colors duration-300 md:py-5",
-                    active === i ? "text-bone" : "text-bone/40 hover:text-bone/70"
+                    active === i ? "text-gold italic" : "text-bone/40 hover:text-bone/70"
                   )}
                 >
                   <span className="text-2xl md:text-3xl">{r.name}</span>
@@ -48,7 +49,8 @@ export default function CultureIndex() {
             ))}
           </ul>
 
-          <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink/60 md:aspect-auto">
+          <div className="gold-frame">
+          <div className="relative aspect-[4/5] w-full overflow-hidden bg-ink/60 md:aspect-auto md:h-full">
             <AnimatePresence mode="wait">
               <motion.div
                 key={region.name}
@@ -71,7 +73,7 @@ export default function CultureIndex() {
                   {region.storySlug && (
                     <Link
                       href={`/stories/${region.storySlug}`}
-                      className="link-draw mt-4 inline-block text-sm text-bone"
+                      className="link-draw mt-4 inline-block text-[11px] uppercase tracking-[0.28em] text-bone"
                     >
                       View the story &rarr;
                     </Link>
@@ -79,6 +81,7 @@ export default function CultureIndex() {
                 </div>
               </motion.div>
             </AnimatePresence>
+          </div>
           </div>
         </div>
       </div>

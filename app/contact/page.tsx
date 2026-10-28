@@ -39,11 +39,11 @@ export default function ContactPage() {
         <div className="mx-auto max-w-frame">
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
             <div>
-              <p className="mb-8 text-sm text-dust">Get in touch</p>
+              <p className="eyebrow mb-8">Get in touch</p>
 
               <div className="space-y-12">
                 <div>
-                  <p className="mb-2 text-xs tracking-label uppercase text-dust">
+                  <p className="eyebrow mb-2">
                     Email
                   </p>
                   <a
@@ -55,7 +55,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p className="mb-2 text-xs tracking-label uppercase text-dust">
+                  <p className="eyebrow mb-2">
                     Phone
                   </p>
                   <a href={contact.phoneHref} className="link-draw text-xl text-bone">
@@ -64,7 +64,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p className="mb-2 text-xs tracking-label uppercase text-dust">
+                  <p className="eyebrow mb-2">
                     Instagram
                   </p>
                   <a href={contact.instagramUrl} className="link-draw text-xl text-bone">
@@ -73,7 +73,7 @@ export default function ContactPage() {
                 </div>
 
                 <div>
-                  <p className="mb-2 text-xs tracking-label uppercase text-dust">
+                  <p className="eyebrow mb-2">
                     Travel Availability
                   </p>
                   <p className="text-sm text-bone/80">
@@ -86,11 +86,11 @@ export default function ContactPage() {
             </div>
 
             <div>
-              <p className="mb-8 text-sm text-dust">Tell us about your wedding</p>
+              <p className="eyebrow mb-8">Tell us about your wedding</p>
 
               <ContactForm />
 
-              <p className="mt-12 text-xs text-dust">
+              <p className="eyebrow mt-12">
                 We&rsquo;ll get back to you within 48 hours. Looking forward to
                 learning about your wedding.
               </p>

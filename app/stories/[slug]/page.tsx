@@ -55,7 +55,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
         <div className="absolute inset-0 bg-gradient-to-t from-ink via-ink/20 to-transparent" />
         <div className="relative z-10 w-full px-6 pb-16 md:px-10 md:pb-20">
           <div className="mx-auto max-w-frame">
-            <p className="mb-4 text-sm text-dust">{story.category}</p>
+            <p className="eyebrow mb-4">{story.category}</p>
             <h1 className="max-w-3xl font-display text-display-lg text-balance">
               {story.coupleNames}
             </h1>
@@ -112,7 +112,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       {/* Cultural context */}
       <section className="bg-paper px-6 py-24 text-char md:px-10 md:py-32">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-4 text-sm text-dust">Cultural Context</p>
+          <p className="eyebrow mb-4">Cultural Context</p>
           <h2 className="font-display text-display-md text-balance">
             The rituals behind the ceremony.
           </h2>
@@ -134,7 +134,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       {story.film && (
         <section className="px-6 py-24 md:px-10 md:py-32">
           <div className="mx-auto max-w-frame">
-            <p className="mb-6 text-sm text-dust">Wedding Film</p>
+            <p className="eyebrow mb-6">Wedding Film</p>
             <VideoPlayerLauncher poster={story.film} title={`${story.coupleNames} — Wedding Film`} />
           </div>
         </section>
@@ -143,7 +143,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       {/* Closing */}
       <section className="border-t border-line-light px-6 py-24 md:px-10 md:py-32">
         <div className="mx-auto max-w-frame">
-          <p className="mb-8 text-sm text-dust">Another story awaits</p>
+          <p className="eyebrow mb-8">Another story awaits</p>
           <Link href={`/stories/${next.slug}`} data-cursor="view" className="group grid grid-cols-1 gap-8 md:grid-cols-2 md:items-center md:gap-14">
             <div className="relative aspect-[16/10] w-full overflow-hidden">
               <Image
@@ -156,8 +156,8 @@ export default async function StoryPage({ params }: StoryPageProps) {
             </div>
             <div>
               <h3 className="font-display text-display-sm text-balance">{next.coupleNames}</h3>
-              <p className="mt-2 text-sm text-dust">{next.location} &middot; {next.year}</p>
-              <span className="link-draw mt-6 inline-block text-sm text-bone">Read the story &rarr;</span>
+              <p className="eyebrow mt-2">{next.location} &middot; {next.year}</p>
+              <span className="link-draw mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-bone">Read the story &rarr;</span>
             </div>
           </Link>
         </div>

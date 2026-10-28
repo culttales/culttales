@@ -28,17 +28,18 @@ export default function FilmCard({ film }: FilmCardProps) {
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
           />
+          <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-gold/0 transition-all duration-700 group-hover:ring-gold/60" />
           <div className="absolute inset-0 bg-ink/30 transition-colors duration-500 group-hover:bg-ink/45" />
 
           <div className="absolute inset-0 flex items-center justify-center">
             {playable ? (
-              <span className="flex h-16 w-16 items-center justify-center rounded-full border border-bone/50 text-bone opacity-0 transition-opacity duration-300 group-hover:opacity-100">
+              <span className="flex h-16 w-16 items-center justify-center rounded-full border border-gold/70 text-gold opacity-0 transition-opacity duration-300 group-hover:opacity-100">
                 <svg width="16" height="18" viewBox="0 0 16 18" fill="none" aria-hidden="true">
                   <path d="M1 1.2v15.6a1 1 0 0 0 1.5.86l13-7.8a1 1 0 0 0 0-1.72l-13-7.8A1 1 0 0 0 1 1.2Z" fill="currentColor" />
                 </svg>
               </span>
             ) : (
-              <span className="text-xs tracking-label uppercase text-bone/80">Coming soon</span>
+              <span className="eyebrow">Coming soon</span>
             )}
           </div>
         </div>
@@ -47,7 +48,7 @@ export default function FilmCard({ film }: FilmCardProps) {
           <p className="font-display text-xl text-bone transition-transform duration-500 group-hover:translate-x-1 md:text-2xl">
             {film.title}
           </p>
-          <p className="text-sm text-dust">{film.location} &middot; {film.year}</p>
+          <p className="text-[11px] uppercase tracking-[0.25em] text-bone/55">{film.location} &middot; {film.year}</p>
         </div>
       </button>
 

@@ -44,7 +44,7 @@ export default async function JournalPage({ params }: JournalPageProps) {
       {/* Header */}
       <section className="border-b border-line-dark px-6 py-16 md:px-10 md:py-20">
         <div className="mx-auto max-w-4xl">
-          <p className="mb-4 text-sm text-dust">{post.category}</p>
+          <p className="eyebrow mb-4">{post.category}</p>
           <h1 className="font-display text-display-md text-balance">{post.title}</h1>
           <p className="mt-4 text-sm text-char/70">
             {post.date} &middot; {post.readTime} read
@@ -78,7 +78,7 @@ export default async function JournalPage({ params }: JournalPageProps) {
       {/* Next article CTA */}
       <section className="border-t border-line-dark bg-ink px-6 py-24 text-bone md:px-10 md:py-32">
         <div className="mx-auto max-w-frame">
-          <p className="mb-8 text-sm text-dust">Next Article</p>
+          <p className="eyebrow mb-8">Next Article</p>
           <Link
             href={`/journal/${next.slug}`}
             data-cursor="view"
@@ -96,7 +96,7 @@ export default async function JournalPage({ params }: JournalPageProps) {
             <div>
               <p className="text-sm text-dust">{next.category}</p>
               <h3 className="mt-2 font-display text-display-sm text-balance">{next.title}</h3>
-              <span className="link-draw mt-6 inline-block text-sm text-bone">
+              <span className="link-draw mt-6 inline-block text-[11px] uppercase tracking-[0.28em] text-bone">
                 Read article &rarr;
               </span>
             </div>

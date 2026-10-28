@@ -24,7 +24,7 @@ export default function EditorialSection({
     <section
       id={id}
       className={clsx(
-        "px-6 py-28 md:px-10 md:py-36",
+        "px-6 py-28 md:px-10 md:py-48",
         isDark ? "bg-ink text-bone" : "bg-paper text-char"
       )}
     >

@@ -37,7 +37,7 @@ export default function HomePage() {
 
       {featured && <FeaturedStory story={featured} />}
 
-      <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-36">
+      <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-48">
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
@@ -64,7 +64,7 @@ export default function HomePage() {
 
       <CultureIndex />
 
-      <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-36">
+      <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-48">
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
@@ -91,7 +91,7 @@ export default function HomePage() {
         statement="We don't simply photograph weddings. We document the culture, people and stories surrounding them."
       />
 
-      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-36">
+      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-48">
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
@@ -110,7 +110,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
+      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-48">
         <div className="mx-auto grid max-w-frame grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
           <div>
             <p className="eyebrow mb-4">Our Belief</p>

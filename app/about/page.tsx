@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AboutPage() {
   return (
     <>
-      <div className="bg-ink pb-24 pt-36 text-bone md:pb-32 md:pt-44">
+      <div className="bg-ink pb-24 pt-36 text-bone md:pb-32 md:pt-52">
         <div className="mx-auto max-w-frame px-6 md:px-10">
           <RevealText as="h1" className="max-w-3xl font-display text-display-lg text-balance">
             We are storytellers of culture, love and tradition.
@@ -92,7 +92,7 @@ export default function AboutPage() {
         statement="Understanding a wedding means understanding a culture, a family, a moment in time that will never happen again."
       />
 
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
+      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-48">
         <div className="mx-auto max-w-frame">
           <p className="eyebrow mb-8">Services</p>
           <div className="grid grid-cols-1 gap-12 md:grid-cols-3 md:gap-10">
@@ -124,7 +124,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-36">
+      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-48">
         <div className="mx-auto max-w-frame text-center">
           <RevealText as="h2" className="font-display text-display-md text-balance">
             Let&rsquo;s tell your story.

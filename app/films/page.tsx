@@ -11,11 +11,14 @@ export default function FilmsPage() {
   const films = getAllFilms();
 
   return (
-    <div className="bg-ink pb-28 pt-36 text-bone md:pb-36 md:pt-44">
+    <div className="bg-ink pb-28 pt-36 text-bone md:pb-48 md:pt-52">
       <div className="mx-auto max-w-frame px-6 md:px-10">
-        <div className="mb-14 max-w-2xl">
-          <p className="eyebrow mb-4">Films</p>
+        <div className="mx-auto mb-20 max-w-3xl text-center md:mb-28">
+          <p className="eyebrow mb-6">Films</p>
           <h1 className="font-display text-display-lg text-balance">Stories that move.</h1>
+          <div aria-hidden className="ornament mt-10">
+            <i />
+          </div>
         </div>
 
         <div className="grid grid-cols-1 gap-x-10 gap-y-16 md:grid-cols-2">

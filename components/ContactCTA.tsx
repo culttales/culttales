@@ -3,7 +3,7 @@ import RevealText from "./RevealText";
 
 export default function ContactCTA() {
   return (
-    <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-40">
+    <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-52">
       <div className="mx-auto max-w-4xl text-center">
         <div aria-hidden className="ornament mb-12">
           <i />

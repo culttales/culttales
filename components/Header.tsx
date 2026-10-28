@@ -35,11 +35,9 @@ export default function Header() {
             : "bg-transparent border-b border-transparent"
         )}
       >
-        <div className="mx-auto flex max-w-frame items-center justify-between px-6 py-5 md:px-10">
-          <Logo variant="white" className="h-6 md:h-7" priority />
-
+        <div className="mx-auto grid max-w-frame grid-cols-[1fr_auto_1fr] items-center px-6 py-5 md:px-10 md:py-6">
           <nav className="hidden items-center gap-10 md:flex">
-            {NAV_LINKS.slice(0, 4).map((link) => (
+            {NAV_LINKS.slice(0, 2).map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
@@ -50,7 +48,18 @@ export default function Header() {
             ))}
           </nav>
 
-          <div className="hidden md:block">
+          <Logo variant="white" className="col-start-1 h-6 md:col-start-2 md:h-9" priority />
+
+          <div className="hidden items-center justify-end gap-10 md:flex">
+            {NAV_LINKS.slice(2, 4).map((link) => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className="link-draw text-[11px] uppercase tracking-[0.3em] text-bone/85 transition-colors hover:text-bone"
+              >
+                {link.label}
+              </Link>
+            ))}
             <Link href="/contact" className="border border-gold/60 px-6 py-2.5 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink">
               Let&rsquo;s Talk
             </Link>
@@ -61,7 +70,7 @@ export default function Header() {
             aria-label={menuOpen ? "Close menu" : "Open menu"}
             aria-expanded={menuOpen}
             onClick={() => setMenuOpen((v: boolean) => !v)}
-            className="relative z-50 flex h-8 w-8 flex-col items-end justify-center gap-[6px] md:hidden"
+            className="relative z-50 col-start-3 flex h-8 w-8 flex-col items-end justify-center gap-[6px] justify-self-end md:hidden"
           >
             <span
               className={clsx(

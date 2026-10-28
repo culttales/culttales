@@ -28,7 +28,7 @@ export default function FilmCard({ film }: FilmCardProps) {
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover transition-transform duration-slower ease-cinema group-hover:scale-[1.04]"
           />
-          <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-gold/0 transition-all duration-700 group-hover:ring-gold/60" />
+          <span aria-hidden className="pointer-events-none absolute inset-3 z-10 ring-1 ring-gold/20 transition-all duration-700 group-hover:inset-4 group-hover:ring-gold/70" />
           <div className="absolute inset-0 bg-ink/30 transition-colors duration-500 group-hover:bg-ink/45" />
 
           <div className="absolute inset-0 flex items-center justify-center">

@@ -20,7 +20,7 @@ export default function CultureIndex() {
   const region = regions[active];
 
   return (
-    <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
+    <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-48">
       <div className="mx-auto max-w-frame">
         <div className="mb-14 max-w-xl">
           <p className="eyebrow mb-4">The Regions</p>

@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function ContactPage() {
   return (
     <>
-      <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-ink px-6 pb-20 pt-36 md:px-10 md:pb-32 md:pt-44">
+      <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-ink px-6 pb-20 pt-36 md:px-10 md:pb-32 md:pt-52">
         <Image
           src="/images/contact-bg.jpg"
           alt="Background"
@@ -35,7 +35,7 @@ export default function ContactPage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-36">
+      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-48">
         <div className="mx-auto max-w-frame">
           <div className="grid grid-cols-1 gap-16 md:grid-cols-2">
             <div>

@@ -25,9 +25,9 @@ const config: Config = {
         sans: ["var(--font-inter)", "Helvetica", "Arial", "sans-serif"],
       },
       fontSize: {
-        "display-xl": ["clamp(3.25rem, 9vw, 8.5rem)", { lineHeight: "0.98", letterSpacing: "-0.01em" }],
-        "display-lg": ["clamp(2.5rem, 6vw, 5.5rem)", { lineHeight: "1.02", letterSpacing: "-0.01em" }],
-        "display-md": ["clamp(1.9rem, 3.6vw, 3.25rem)", { lineHeight: "1.08" }],
+        "display-xl": ["clamp(3.5rem, 9.5vw, 9rem)", { lineHeight: "1", letterSpacing: "-0.015em" }],
+        "display-lg": ["clamp(2.75rem, 6.5vw, 6rem)", { lineHeight: "1.04", letterSpacing: "-0.015em" }],
+        "display-md": ["clamp(2rem, 3.8vw, 3.5rem)", { lineHeight: "1.12" }],
         "display-sm": ["clamp(1.5rem, 2.4vw, 2.1rem)", { lineHeight: "1.15" }],
       },
       letterSpacing: {

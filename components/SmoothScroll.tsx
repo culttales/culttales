@@ -13,7 +13,7 @@ export default function SmoothScroll() {
     if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
     const lenis = new Lenis({
-      duration: 1.1,
+      duration: 1.4,
       easing: (t: number) => 1 - Math.pow(1 - t, 3),
     });
 

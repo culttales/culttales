@@ -82,6 +82,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
       <section className="flex flex-col gap-4 px-6 pb-4 md:gap-5 md:px-10">
         {story.images[0] && (
           <div className="relative aspect-[16/10] w-full overflow-hidden">
+            <span aria-hidden className="pointer-events-none absolute inset-4 z-10 ring-1 ring-gold/40 md:inset-8" />
             <Image
               src={story.images[0].src}
               alt={story.images[0].alt}

@@ -48,8 +48,8 @@ export default function AboutSection() {
           className="relative aspect-[4/5] w-full md:col-span-7 md:aspect-auto md:h-[85vh]"
         >
           <Image
-            src="/images/about-1.jpg"
-            alt="Portrait — behind the scenes at a Pan Indian wedding"
+            src="/images/moment-9.jpg"
+            alt="A couple walking hand in hand among guests"
             fill
             sizes="(min-width: 768px) 58vw, 100vw"
             className="object-cover"
@@ -122,8 +122,8 @@ export default function AboutSection() {
           className="relative aspect-video w-full"
         >
           <Image
-            src="/images/about-2.jpg"
-            alt="Behind the scenes — documenting a wedding"
+            src="/images/moment-4.jpg"
+            alt="A couple at sunset on a palace terrace"
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"

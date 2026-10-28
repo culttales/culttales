@@ -213,3 +213,29 @@ button:focus-visible,
 .bg-paper .link-draw::after {
   background: #8a6f3a;
 }
+
+/* Endless photo strip on the homepage */
+@keyframes filmstrip {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.filmstrip {
+  animation: filmstrip 80s linear infinite;
+}
+.filmstrip:hover {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .filmstrip {
+    animation: none;
+  }
+}
+
+/* Hide the native disclosure marker on FAQ items */
+.faq summary::-webkit-details-marker {
+  display: none;
+}

@@ -1,12 +1,15 @@
 import Hero from "@/components/Hero";
+import Filmstrip from "@/components/Filmstrip";
+import RealStories from "@/components/RealStories";
 import AboutSection from "@/components/AboutSection";
 import EditorialSection from "@/components/EditorialSection";
 import FeaturedStory from "@/components/FeaturedStory";
-import StoryGrid from "@/components/StoryGrid";
 import CultureIndex from "@/components/CultureIndex";
 import FilmCard from "@/components/FilmCard";
 import JournalList from "@/components/JournalList";
-import ContactCTA from "@/components/ContactCTA";
+import FAQ from "@/components/FAQ";
+import InstagramStrip from "@/components/InstagramStrip";
+import EnquiryLetter from "@/components/EnquiryLetter";
 import Link from "next/link";
 import { getAllStories, getFeaturedStories } from "@/lib/stories";
 import { getAllFilms } from "@/lib/films";
@@ -15,7 +18,7 @@ import { getAllJournalPosts } from "@/lib/journal";
 export default function HomePage() {
   const stories = getAllStories();
   const [featured] = getFeaturedStories();
-  const selectedStories = stories.filter((s) => s.slug !== featured?.slug).slice(0, 5);
+  const realStories = stories.filter((s) => s.slug !== featured?.slug).slice(0, 4);
   const films = getAllFilms().slice(0, 2);
   const posts = getAllJournalPosts().slice(0, 3);
 
@@ -23,42 +26,27 @@ export default function HomePage() {
     <>
       <Hero />
 
-      <AboutSection />
-
       <EditorialSection
         id="introduction"
         tone="dark"
-        align="left"
+        align="center"
+        eyebrow="Rooted in culture. Told with grace."
         statement="Every wedding carries a story. Every ritual carries a memory. Every culture deserves to be remembered."
         body="We travel across India to document weddings in their most authentic form — capturing rituals, traditions, people and fleeting moments that exist beyond the frame."
       />
 
-      <span className="gold-rule" />
+      <Filmstrip />
 
-      {featured && <FeaturedStory story={featured} />}
+      <RealStories stories={realStories} />
 
-      <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-48">
-        <div className="mx-auto max-w-frame">
-          <div className="mb-12 flex items-end justify-between">
-            <div>
-              <p className="eyebrow mb-4">Selected Work</p>
-              <h2 className="font-display text-display-md text-balance">Stories</h2>
-              <p className="mt-3 max-w-md text-base text-bone/70">
-                Weddings, rituals and tales from across India.
-              </p>
-            </div>
-            <Link href="/stories" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-bone md:inline-block">
-              View all stories &rarr;
-            </Link>
-          </div>
+      <AboutSection />
 
-          <StoryGrid stories={selectedStories} />
-
-          <Link href="/stories" className="link-draw mt-10 inline-block text-[11px] uppercase tracking-[0.28em] text-bone md:hidden">
-            View all stories &rarr;
-          </Link>
-        </div>
-      </section>
+      {featured && (
+        <>
+          <span className="gold-rule" />
+          <FeaturedStory story={featured} />
+        </>
+      )}
 
       <span className="gold-rule" />
 
@@ -66,21 +54,27 @@ export default function HomePage() {
 
       <section className="bg-ink px-6 pb-28 pt-4 text-bone md:px-10 md:pb-48">
         <div className="mx-auto max-w-frame">
-          <div className="mb-12 flex items-end justify-between">
-            <div>
-              <p className="eyebrow mb-4">In Motion</p>
-              <h2 className="font-display text-display-md text-balance">Films</h2>
-              <p className="mt-3 max-w-md text-base text-bone/70">Stories that move.</p>
+          <div className="mb-16 flex flex-col items-center text-center">
+            <p className="eyebrow mb-6">In Motion</p>
+            <h2 className="font-display text-display-lg text-balance">Our films</h2>
+            <div aria-hidden className="ornament mt-10">
+              <i />
             </div>
-            <Link href="/films" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-bone md:inline-block">
-              Watch all films &rarr;
-            </Link>
           </div>
 
           <div className="grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-10">
             {films.map((film) => (
               <FilmCard key={film.slug} film={film} />
             ))}
+          </div>
+
+          <div className="mt-16 text-center">
+            <Link
+              href="/films"
+              className="inline-block border border-gold/60 px-10 py-4 text-[11px] uppercase tracking-[0.3em] text-gold transition-colors duration-500 hover:bg-gold hover:text-ink"
+            >
+              Watch All Films
+            </Link>
           </div>
         </div>
       </section>
@@ -91,15 +85,12 @@ export default function HomePage() {
         statement="We don't simply photograph weddings. We document the culture, people and stories surrounding them."
       />
 
-      <section className="bg-paper px-6 py-28 text-char md:px-10 md:py-48">
+      <section className="bg-paper px-6 pb-28 text-char md:px-10 md:pb-48">
         <div className="mx-auto max-w-frame">
           <div className="mb-12 flex items-end justify-between">
             <div>
               <p className="eyebrow mb-4">Notes</p>
-              <h2 className="font-display text-display-md text-balance">Journal</h2>
-              <p className="mt-3 max-w-md text-base text-char/70">
-                Notes on culture, ritual and the craft of documenting them.
-              </p>
+              <h2 className="font-display text-display-md text-balance">From the journal</h2>
             </div>
             <Link href="/journal" className="link-draw hidden text-[11px] uppercase tracking-[0.28em] text-char md:inline-block">
               Read the journal &rarr;
@@ -110,29 +101,11 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="bg-ink px-6 py-28 text-bone md:px-10 md:py-48">
-        <div className="mx-auto grid max-w-frame grid-cols-1 gap-10 md:grid-cols-2 md:gap-16">
-          <div>
-            <p className="eyebrow mb-4">Our Belief</p>
-            <h2 className="font-display text-display-md text-balance">
-              We are storytellers of culture, love and tradition.
-            </h2>
-          </div>
-          <div className="flex flex-col justify-center">
-            <p className="max-w-editorial text-base leading-relaxed text-bone/70">
-              CULT. tales travels across India documenting weddings in their
-              most authentic form. We capture more than ceremonies — the
-              people, the rituals, the chaos, the silence, the laughter, the
-              heritage, the emotion.
-            </p>
-            <Link href="/about" className="link-draw mt-8 w-fit text-[11px] uppercase tracking-[0.28em] text-bone">
-              More about us &rarr;
-            </Link>
-          </div>
-        </div>
-      </section>
+      <FAQ />
 
-      <ContactCTA />
+      <InstagramStrip />
+
+      <EnquiryLetter />
     </>
   );
 }

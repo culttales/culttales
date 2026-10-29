@@ -38,11 +38,11 @@ export const metadata: Metadata = {
     template: "%s — CULT. tales",
   },
   description:
-    "CULT. tales — where culture becomes story. Wedding stories, culture and documentary: unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+    "CULT. tales — where culture becomes story. Wedding photography, cinema and culture: unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
   openGraph: {
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
-      "Where culture becomes story. Wedding stories, culture and documentary from across India.",
+      "Where culture becomes story. Wedding photography, cinema and culture from across India.",
     url: "https://culttales.com",
     siteName: "CULT. tales",
     type: "website",
@@ -51,7 +51,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
-      "Where culture becomes story. Wedding stories, culture and documentary from across India.",
+      "Where culture becomes story. Wedding photography, cinema and culture from across India.",
   },
 };
 

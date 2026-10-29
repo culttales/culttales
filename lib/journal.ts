@@ -21,7 +21,7 @@ export const journalPosts: JournalPost[] = [
     image: "/images/moment-4.jpg",
     imageFocus: "42% 50%",
     excerpt:
-      "Beneath the simplicity of a Nair wedding sits a set of rituals that have barely changed in generations.",
+      "Beneath the simplicity of a Kerala wedding sits a set of rituals that have barely changed in generations.",
     body: [
       "A Kerala wedding rarely announces itself with spectacle. There is no towering baraat, no fireworks over a courtyard. Instead, the ceremony holds its weight in small, exact gestures: the lighting of a brass nilavilakku before a single guest has arrived, the precise minute at which a thali is tied.",
       "Understanding these rituals changes how you document them. A wide shot rarely tells the story — the story is in the hands, the timing, the quiet exchange of a look between a mother and daughter before the ceremony begins.",
@@ -55,7 +55,7 @@ export const journalPosts: JournalPost[] = [
       "An event has a schedule. A story has a shape. Indian weddings, done right, are always the latter.",
     body: [
       "It's tempting to treat a wedding as a list of moments to check off — entrance, ceremony, reception. But every Indian wedding we've documented resists that structure. There's a shape to it, built from decades of family history, regional custom and the specific people getting married.",
-      "Our approach starts before the camera does: understanding the community, the region, the specific version of a ritual this family practices, so the final story feels like theirs and no one else's.",
+      "Our approach starts before the camera does: understanding the region, the culture, the specific version of a ritual this family practices, so the final story feels like theirs and no one else's.",
     ],
   },
   {
@@ -69,7 +69,7 @@ export const journalPosts: JournalPost[] = [
     excerpt:
       "From Kanjeevaram silk to Phulkari embroidery, what a bride wears is a map of where she's from.",
     body: [
-      "Fashion at an Indian wedding is never just fashion. A Kanjeevaram saree, a Banarasi dupatta, Phulkari embroidery on a Punjabi phulkari veil — each carries regional history, family craft, and often a piece of the mother's own wedding wardrobe.",
+      "Fashion at an Indian wedding is never just fashion. A Kanjeevaram saree, a Banarasi dupatta, Phulkari embroidery on a Punjab phulkari veil — each carries regional history, family craft, and often a piece of the mother's own wedding wardrobe.",
       "We spend as much time photographing the getting-ready hours as we do the ceremony itself, because that's where the fashion story — and its meaning — actually lives.",
     ],
   },

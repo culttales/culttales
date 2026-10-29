@@ -167,7 +167,7 @@ export default function TeamPreviewPage() {
             <Ornament />
           </div>
           <div className="mt-8">
-            <Label>Wedding Stories &middot; Culture &middot; Documentary</Label>
+            <Label>Wedding Photography &middot; Cinema &middot; Culture</Label>
           </div>
         </div>
 
@@ -204,7 +204,7 @@ export default function TeamPreviewPage() {
               </p>
               <p>
                 Our approach combines the art of cinematic filmmaking with the
-                honesty of documentary storytelling. We don&rsquo;t simply
+                honesty of raw, unscripted storytelling. We don&rsquo;t simply
                 photograph how a wedding looks; we capture how it feels.
               </p>
             </div>

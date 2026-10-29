@@ -12,7 +12,7 @@ const NAV = [
 
 const TICKER = [
   "Where Culture Becomes Story",
-  "Wedding Stories · Culture · Documentary",
+  "Wedding Photography · Cinema · Culture",
   "Kerala · Rajasthan · Across India & Beyond",
   "Visual storytellers & memory keepers",
 ];
@@ -42,7 +42,7 @@ export default function Footer() {
             <div className="mt-6 max-w-sm border-t border-bronze/50 pt-5">
               <p className="text-xs uppercase tracking-[0.24em] text-gold">Where Culture Becomes Story</p>
               <p className="mt-2 text-[10px] uppercase tracking-[0.24em] text-paper/50">
-                Wedding Stories &middot; Culture &middot; Documentary
+                Wedding Photography &middot; Cinema &middot; Culture
               </p>
             </div>
             <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-paper/70">

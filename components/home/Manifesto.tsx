@@ -43,7 +43,7 @@ export default function Manifesto() {
             </h2>
             <div className="mt-7 space-y-5 text-[15px] font-light leading-[1.8] text-char/85 sm:text-base">
               <p>
-                We are a Pan-Indian wedding photography and filmmaking team, documenting weddings in
+                We are a Pan-Indian wedding photography and wedding cinema team, documenting weddings in
                 their most authentic form. From intimate rituals and sacred traditions to spontaneous
                 laughter and grand celebrations, we look beyond the obvious to the moments that truly
                 matter.

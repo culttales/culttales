@@ -18,7 +18,7 @@ const RITUALS = [
 
 const GUESTS = ["Intimate (under 100 guests)", "100 – 250 guests", "250 – 500 guests", "500+ guests"];
 
-const SCOPES = ["Photography + Film", "Photography only", "Film only"];
+const SCOPES = ["Photography + Wedding Cinema", "Photography only", "Wedding Cinema only"];
 
 type Sent = { email: string; dates: string; venue: string };
 

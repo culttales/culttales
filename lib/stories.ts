@@ -42,8 +42,8 @@ export type Story = {
 export const stories: Story[] = [
   {
     slug: "shatrunjay-pushkar-wedding",
-    title: "Shatrunjay & Ira",
-    coupleNames: "Shatrunjay & Ira",
+    title: "Shatrunjay & Surbhi",
+    coupleNames: "Shatrunjay & Surbhi",
     location: "Pushkar, Rajasthan",
     region: "Rajasthan",
     year: "2026",
@@ -82,17 +82,17 @@ export const stories: Story[] = [
     heroImage: "/images/moment-4.jpg",
     cardImage: "/images/moment-6.jpg",
     excerpt:
-      "A Nair wedding held on the backwaters, where the thali ceremony carried the quiet weight of generations.",
+      "A Kerala wedding held on the backwaters, where the thali ceremony carried the quiet weight of generations.",
     openingLine: "The backwaters keep their own time.",
     description:
-      "A traditional Kerala wedding set against palm-lined canals, built around the simplicity and grace of Nair customs — banana leaf feasts, brass lamps, and a thali tied at the exact auspicious minute.",
+      "A traditional Kerala wedding set against palm-lined canals, built around the simplicity and grace of Kerala customs — banana leaf feasts, brass lamps, and a thali tied at the exact auspicious minute.",
     images: [
       { src: "/images/moment-4.jpg", alt: "The couple at sunset on a terrace", orientation: "landscape" },
       { src: "/images/moment-6.jpg", alt: "The couple dancing in a shower of sparks", orientation: "portrait" },
       { src: "/images/moment-1.jpg", alt: "The bride laughing among the women of her family", orientation: "portrait" },
     ],
     rituals: [
-      { name: "Thali Kettu", description: "The groom ties a gold thali around the bride's neck, the central moment of a traditional Nair wedding." },
+      { name: "Thali Kettu", description: "The groom ties a gold thali around the bride's neck, the central moment of a traditional Kerala wedding." },
       { name: "Nilavilakku", description: "A brass lamp is lit at the start of the ceremony and kept burning throughout, symbolising an auspicious beginning." },
     ],
     featured: true,
@@ -112,7 +112,7 @@ export const stories: Story[] = [
       "A temple-town wedding built around the Kashi Yatra and a Mangalsutra tied to the sound of the nadaswaram.",
     openingLine: "The temple bells set the tempo for everything after.",
     description:
-      "Held in the shadow of Madurai's temple towers, this wedding followed the full arc of a Tamil Brahmin ceremony — the Kashi Yatra, the Oonjal swing ritual, and a feast served on plantain leaves for four hundred guests.",
+      "Held in the shadow of Madurai's temple towers, this wedding followed the full arc of a traditional Tamil ceremony — the Kashi Yatra, the Oonjal swing ritual, and a feast served on plantain leaves for four hundred guests.",
     images: [
       { src: "/images/wedding-pheras.jpg", alt: "The couple beside the sacred fire", orientation: "landscape" },
       { src: "/images/moment-8.jpg", alt: "The couple in a quiet moment under red drapes", orientation: "portrait" },

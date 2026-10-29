@@ -27,7 +27,7 @@ const APPROACH = [
 ];
 
 const DOCUMENT = [
-  { title: "The rituals", body: "Honouring how each community, and each family, keeps them.", src: "/images/moment-3.jpg", alt: "Family showering the couple with rose petals", focus: "52% 45%" },
+  { title: "The rituals", body: "Honouring how each region, and each family, keeps them.", src: "/images/moment-3.jpg", alt: "Family showering the couple with rose petals", focus: "52% 45%" },
   { title: "The people", body: "Family, friends and the quiet edges of every moment.", src: "/images/moment-9.jpg", alt: "The couple walking hand in hand among their guests" },
   { title: "The place", body: "Regional architecture, light and landscape.", src: "/images/moment-4.jpg", alt: "The couple at sunset on a palace terrace", focus: "42% 50%" },
   { title: "The emotion", body: "The unguarded feeling underneath every ceremony.", src: "/images/moment-5.jpg", alt: "A bride in red smiling beside a window", focus: "68% 40%" },
@@ -40,11 +40,11 @@ const SERVICES = [
   },
   {
     title: "Wedding films",
-    body: "Cinematic wedding documentaries, built around the emotional arc of the day.",
+    body: "Cinematic wedding films, built around the emotional arc of the day.",
   },
   {
     title: "Cultural stories",
-    body: "Editorial documentation of rituals, traditions and celebrations beyond individual weddings.",
+    body: "Raw culture storytelling: the rituals, traditions and celebrations beyond individual weddings.",
   },
 ];
 
@@ -92,7 +92,7 @@ export default function AboutPage() {
               obvious to capture the moments that truly matter.
             </p>
             <p>
-              Our approach combines the art of cinematic filmmaking with the honesty of documentary
+              Our approach combines the art of cinematic filmmaking with the honesty of raw, unscripted
               storytelling. We don&rsquo;t simply photograph how a wedding looks; we capture how it
               feels.
             </p>

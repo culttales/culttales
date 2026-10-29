@@ -18,26 +18,26 @@ const PILLARS: {
   second: Photo;
 }[] = [
   {
-    title: "Documentary & editorial photography",
-    body: "Honest, unobtrusive storytelling paired with considered portraits. We move quietly through your rituals so every laugh, every tear and every stolen glance stays unscripted.",
-    chips: ["Candid & documentary", "Editorial portraits", "Details & heirlooms"],
+    title: "Wedding photography",
+    body: "Honest, unobtrusive photography paired with considered portraits. We move quietly through your rituals so every laugh, every tear and every stolen glance stays unscripted.",
+    chips: ["Candid moments", "Couple portraits", "Details & heirlooms"],
     tag: "Pillar 01 · Photography",
     caption: "Unscripted emotion, framed with grace.",
     main: { src: "/images/moment-5.jpg", alt: "A bride in red smiling beside a window", focus: "68% 40%" },
     second: { src: "/images/moment-7.jpg", alt: "The bride and groom smiling under falling sparks" },
   },
   {
-    title: "Cinematic wedding films",
+    title: "Wedding cinema",
     body: "Films that keep how your wedding felt: the vows, the blessings, the music and the people, shaped into a story with its own rhythm and sound.",
     chips: ["Story-led edits", "Vows & live sound", "Cinematic colour"],
-    tag: "Pillar 02 · Film",
+    tag: "Pillar 02 · Cinema",
     caption: "Not only how it looked, but how it felt.",
     main: { src: "/images/film-1-still.jpg", alt: "The bride and groom under a red canopy, from one of our films", focus: "56% 50%" },
     second: { src: "/images/film-2-still.jpg", alt: "Family dancing at a celebration, from one of our films", focus: "60% 50%" },
   },
   {
-    title: "Cultural documentation",
-    body: "Every community celebrates differently. We learn the meaning behind your rituals before the day, so the story we tell carries your culture and traditions as they truly are.",
+    title: "Raw culture storytelling",
+    body: "Every family celebrates differently. We learn the meaning behind your rituals before the day, so the story we tell carries your culture and traditions as they truly are.",
     chips: ["Research before the day", "Rituals in context", "Family & heritage"],
     tag: "Pillar 03 · Culture",
     caption: "Your traditions, kept as they truly are.",

@@ -7,7 +7,7 @@ import SectionMarker from "../SectionMarker";
 const FACTS = [
   { value: <>Kerala <em>&amp;</em> Rajasthan</>, label: "Where our team is based" },
   { value: <>Across India</>, label: "And beyond, wherever the wedding is" },
-  { value: <>Photo <em>+</em> Film</>, label: "One team telling one story" },
+  { value: <>Photography <em>+</em> Wedding Cinema</>, label: "One team telling one story" },
 ];
 
 export default function Manifesto() {
@@ -49,7 +49,7 @@ export default function Manifesto() {
                 matter.
               </p>
               <p>
-                Our approach joins the art of cinematic filmmaking with the honesty of documentary
+                Our approach joins the art of cinematic filmmaking with the honesty of raw, unscripted
                 storytelling. We don&rsquo;t simply photograph how a wedding looks; we capture how it
                 feels.
               </p>

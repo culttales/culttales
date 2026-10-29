@@ -84,7 +84,7 @@ export default function AboutPage() {
             </figure>
           </Reveal>
 
-          <Reveal delay={0.1} className="space-y-6 text-base font-light leading-[1.9] text-char/85 lg:col-span-7 lg:pt-6 md:text-[17px]">
+          <Reveal delay={0.1} className="space-y-6 text-base font-light leading-[1.75] text-char/85 lg:col-span-7 lg:pt-6 md:text-[17px]">
             <p className="first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.5rem] first-letter:leading-[0.8] first-letter:text-obsidian">
               We are a Pan-Indian wedding photography and filmmaking team dedicated to documenting
               weddings in their most authentic form. From intimate rituals and sacred traditions to
@@ -129,7 +129,7 @@ export default function AboutPage() {
               >
                 <p className="font-display text-lg italic text-gold">{String(i + 1).padStart(2, "0")} /</p>
                 <h3 className="mt-5 text-3xl md:text-4xl">{item.title}</h3>
-                <p className="mt-4 max-w-xs text-[15px] font-light leading-[1.8] text-paper/70">{item.body}</p>
+                <p className="mt-4 max-w-xs text-base font-light leading-[1.7] text-paper/70">{item.body}</p>
               </div>
             ))}
           </div>
@@ -175,7 +175,7 @@ export default function AboutPage() {
               <div key={service.title} className="rounded-2xl border border-line-dark bg-sand/50 p-8">
                 <p className="font-display text-lg italic text-bronze">{String(i + 1).padStart(2, "0")} /</p>
                 <h3 className="mt-4 text-3xl text-obsidian">{service.title}</h3>
-                <p className="mt-3 text-[15px] font-light leading-[1.8] text-char/80">{service.body}</p>
+                <p className="mt-3 text-base font-light leading-[1.7] text-char/80">{service.body}</p>
               </div>
             ))}
           </div>

@@ -42,7 +42,7 @@ export default function Manifesto() {
             <h2 className="text-[2.5rem] leading-[1.06] text-obsidian sm:text-5xl md:text-[56px]">
               Preserving the <em>unspoken</em> poetry between rituals &amp; generations.
             </h2>
-            <div className="mt-7 space-y-5 text-[15px] font-light leading-[1.8] text-char/85 sm:text-base">
+            <div className="mt-7 space-y-5 text-base font-light leading-[1.7] text-char/85">
               <p>
                 We are a Pan-Indian wedding photography and filmmaking team, documenting weddings in
                 their most authentic form. From intimate rituals and sacred traditions to spontaneous

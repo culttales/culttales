@@ -27,7 +27,7 @@ export default function PageIntro({
             {title}
           </h1>
           {intro && (
-            <div className="text-[15px] font-light leading-[1.8] text-char/80 sm:text-base lg:col-span-4">{intro}</div>
+            <div className="text-base font-light leading-[1.7] text-char/80 lg:col-span-4">{intro}</div>
           )}
         </div>
         {children}

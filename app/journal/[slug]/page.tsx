@@ -73,7 +73,7 @@ export default async function JournalArticlePage({ params }: JournalPageProps) {
       </header>
 
       <section className="px-5 py-20 md:px-12 md:py-28">
-        <div className="mx-auto max-w-editorial space-y-7 text-base font-light leading-[1.9] text-char/90 md:text-lg">
+        <div className="mx-auto max-w-editorial space-y-7 text-base font-light leading-[1.75] text-char/90 md:text-lg">
           {post.body.map((paragraph, i) => (
             <p
               key={i}

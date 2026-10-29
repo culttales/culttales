@@ -1,5 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Cormorant_Garamond, Plus_Jakarta_Sans } from "next/font/google";
+import { Jost, Noto_Serif_Display } from "next/font/google";
 import "./globals.css";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -10,18 +10,24 @@ import Intro from "@/components/Intro";
 import MotionProvider from "@/components/MotionProvider";
 import { contact } from "@/lib/site";
 
-const cormorant = Cormorant_Garamond({
+// Headings: Noto Serif Display, a light, high-contrast Didone in the
+// fashion-editorial style, set slightly condensed (see globals.css).
+// Text and labels: Jost, a Futura-style geometric sans that holds up in
+// wide-spaced capitals. Both are variable fonts, self-hosted by next/font,
+// so no request leaves the site.
+const display = Noto_Serif_Display({
   subsets: ["latin"],
   variable: "--font-display",
   style: ["normal", "italic"],
-  weight: ["300", "400"],
+  weight: "variable",
+  axes: ["wdth"],
   display: "swap",
 });
 
-const jakarta = Plus_Jakarta_Sans({
+const jost = Jost({
   subsets: ["latin"],
   variable: "--font-sans",
-  weight: ["300", "400", "500", "600"],
+  weight: "variable",
   display: "swap",
 });
 
@@ -77,7 +83,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${cormorant.variable} ${jakarta.variable}`} suppressHydrationWarning>
+    <html lang="en" className={`${display.variable} ${jost.variable}`} suppressHydrationWarning>
       <head>
         {/* Show the logo intro once per visit; mark it seen before first paint.
             "intro-done" lets later page visits skip the wait for it. */}

@@ -47,12 +47,27 @@ export async function POST(request: Request) {
     );
   }
 
-  const apiKey = process.env.RESEND_API_KEY;
-  if (!apiKey) {
-    // No key configured (local dev): log so enquiries are not silently lost.
-    console.log("[contact] RESEND_API_KEY not set. Enquiry:", data);
-    return NextResponse.json({ ok: true });
+  const emailed = await sendEmail(data);
+  const saved = await saveEnquiry(data, emailed);
+
+  if (!emailed && !saved) {
+    if (!process.env.RESEND_API_KEY && !process.env.SUPABASE_URL) {
+      // Nothing configured (local dev): log so enquiries are not silently lost.
+      console.log("[contact] RESEND_API_KEY and SUPABASE_URL not set. Enquiry:", data);
+      return NextResponse.json({ ok: true });
+    }
+    return NextResponse.json(
+      { error: `Could not send your message. Please email us at ${contact.email}.` },
+      { status: 502 },
+    );
   }
+  return NextResponse.json({ ok: true });
+}
+
+// Emails the enquiry through Resend. Returns false when no key is set or the send fails.
+async function sendEmail(data: Record<Field, string>) {
+  const apiKey = process.env.RESEND_API_KEY;
+  if (!apiKey) return false;
 
   const html = fields
     .filter(([key]) => key !== "message" && data[key])
@@ -76,13 +91,36 @@ export async function POST(request: Request) {
     }),
   }).catch(() => null);
 
-  if (!res || !res.ok) {
-    return NextResponse.json(
-      { error: `Could not send your message. Please email us at ${contact.email}.` },
-      { status: 502 },
-    );
+  return Boolean(res?.ok);
+}
+
+// Stores the enquiry in Supabase (the enquiries table) through its REST API.
+// Returns false when Supabase is not configured or the insert fails.
+async function saveEnquiry(data: Record<Field, string>, emailed: boolean) {
+  const url = process.env.SUPABASE_URL;
+  const key = process.env.SUPABASE_SECRET_KEY;
+  if (!url || !key) return false;
+
+  const row = Object.fromEntries(
+    fields.map(([field]) => [field, data[field] || null]),
+  );
+
+  const res = await fetch(`${url.replace(/\/$/, "")}/rest/v1/enquiries`, {
+    method: "POST",
+    headers: {
+      apikey: key,
+      Authorization: `Bearer ${key}`,
+      "Content-Type": "application/json",
+      Prefer: "return=minimal",
+    },
+    body: JSON.stringify({ ...row, emailed }),
+  }).catch(() => null);
+
+  if (!res?.ok) {
+    console.error("[contact] Supabase insert failed:", res?.status, await res?.text().catch(() => ""));
+    return false;
   }
-  return NextResponse.json({ ok: true });
+  return true;
 }
 
 function escapeHtml(value: string) {

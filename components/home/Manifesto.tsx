@@ -8,7 +8,6 @@ const FACTS = [
   { value: <>Kerala <em>&amp;</em> Rajasthan</>, label: "Where our team is based" },
   { value: <>Across India</>, label: "And beyond, wherever the wedding is" },
   { value: <>Photo <em>+</em> Film</>, label: "One team telling one story" },
-  { value: <>48 <em>hours</em></>, label: "To reply to every enquiry" },
 ];
 
 export default function Manifesto() {
@@ -94,7 +93,7 @@ export default function Manifesto() {
           </Reveal>
         </div>
 
-        <dl className="mt-20 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line-dark pt-12 md:grid-cols-4">
+        <dl className="mt-20 grid grid-cols-2 gap-x-6 gap-y-10 border-t border-line-dark pt-12 md:grid-cols-3">
           {FACTS.map((fact) => (
             <div key={fact.label} className="flex flex-col-reverse justify-end">
               <dt className="mt-2 text-[10px] uppercase tracking-[0.18em] text-muted">{fact.label}</dt>

@@ -22,6 +22,7 @@ npm run preview   # builds and serves the site in the Workers runtime
 2. **Build variables** (Cloudflare dashboard → Workers & Pages → culttales → Settings → Build → Variables, and Variables and Secrets):
    - `NEXT_PUBLIC_MEDIA_URL` = `https://media.culttales.com` (build variable, inlined at build time; only needed once a video is served from R2).
    - `RESEND_API_KEY` (secret), and optionally `CONTACT_FROM_EMAIL` / `CONTACT_TO_EMAIL`. See `.env.example`.
+   - `SUPABASE_URL` = `https://yfptwzzyagykxmydwimc.supabase.co` and `SUPABASE_SECRET_KEY` (secret) so enquiries are saved in Supabase. The form succeeds if either the email or the Supabase save works.
 3. **Connect the repo.** Workers & Pages → Create → Import a repository → `culttales/culttales`,
    branch `main`. Build command `npx opennextjs-cloudflare build`, deploy command
    `npx opennextjs-cloudflare deploy`. Or deploy by hand with `npm run deploy`.

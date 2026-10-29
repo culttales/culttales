@@ -33,9 +33,14 @@ const config: Config = {
         display: ["var(--font-display)", "Georgia", "serif"],
         sans: ["var(--font-sans)", "-apple-system", "BlinkMacSystemFont", "Helvetica", "Arial", "sans-serif"],
       },
+      // Jost is a variable font: "light" sits a touch above 300 so body copy
+      // stays airy without turning spindly on phones.
+      fontWeight: {
+        light: "350",
+      },
       fontSize: {
-        "display-xl": ["clamp(4rem, 10.5vw, 10.5rem)", { lineHeight: "0.95", letterSpacing: "-0.01em" }],
-        "display-lg": ["clamp(3.1rem, 7.2vw, 7rem)", { lineHeight: "1", letterSpacing: "-0.01em" }],
+        "display-xl": ["clamp(4rem, 10.5vw, 10.5rem)", { lineHeight: "0.95", letterSpacing: "-0.02em" }],
+        "display-lg": ["clamp(3.1rem, 7.2vw, 7rem)", { lineHeight: "1", letterSpacing: "-0.018em" }],
         "display-md": ["clamp(2.3rem, 4.4vw, 4.2rem)", { lineHeight: "1.08" }],
         "display-sm": ["clamp(1.75rem, 2.8vw, 2.5rem)", { lineHeight: "1.12" }],
       },

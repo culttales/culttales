@@ -60,7 +60,7 @@ export default function Cinema({ films }: { films: Film[] }) {
               <br className="hidden sm:block" /> every whisper of the <em className="!text-stone">vidaai.</em>
             </h2>
           </div>
-          <p className="text-base font-light leading-[1.7] text-paper/75 lg:col-span-4">
+          <p className="text-[15px] font-light leading-[1.8] text-paper/75 sm:text-base lg:col-span-4">
             Our films keep the music, the rituals and the people of the day. Vows, blessings,
             laughter and the dance floor at midnight, woven into a film that feels like your own.
           </p>

@@ -13,7 +13,7 @@ export default function Inquire({ eyebrow = "06 / Begin your story" }: { eyebrow
             </h2>
           </div>
 
-          <p className="text-base font-light leading-[1.7] text-char/85">
+          <p className="text-[15px] font-light leading-[1.8] text-char/85 sm:text-base">
             Every wedding we document is planned with you from the first conversation. Share a few
             details and we will reply within 48 hours to talk through your dates, your plans and
             your story.

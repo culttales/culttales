@@ -74,7 +74,7 @@ export default function HeroVideo({ film }: { film?: Film }) {
           <br className="hidden sm:block" /> Pan Indian
           <br className="hidden sm:block" /> Wedding Stories.
         </h1>
-        <p className="hero-rise mx-auto mt-7 max-w-md text-base font-light leading-relaxed text-paper/80 [--d:240ms] md:mt-9 md:max-w-xl md:text-lg">
+        <p className="hero-rise mx-auto mt-7 max-w-md text-[15px] font-light leading-relaxed text-paper/80 [--d:240ms] md:mt-9 md:max-w-xl md:text-lg">
           Unearthing the real rituals, colourful traditions, and beautiful tales of love across India.
         </p>
         <p className="hero-rise mt-5 text-[10px] font-medium uppercase tracking-[0.28em] text-paper/60 [--d:300ms] sm:text-[11px]">

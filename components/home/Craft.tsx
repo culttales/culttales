@@ -110,7 +110,7 @@ export default function Craft() {
                           transition={{ duration: 0.55, ease: EASE }}
                           className="overflow-hidden"
                         >
-                          <div className="space-y-4 pl-9 pt-4 text-base font-light leading-[1.7] text-char/85">
+                          <div className="space-y-4 pl-9 pt-4 text-[15px] font-light leading-[1.8] text-char/85">
                             <p>{p.body}</p>
                             <ul className="flex flex-wrap gap-2 pt-1">
                               {p.chips.map((chip) => (

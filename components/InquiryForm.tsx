@@ -5,6 +5,7 @@ import { useId, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
 import { contact } from "@/lib/site";
+import Turnstile from "./Turnstile";
 
 const RITUALS = [
   "Haldi / Pithi",
@@ -24,7 +25,8 @@ type Sent = { email: string; dates: string; venue: string };
 /**
  * The wedding enquiry: couple, dates, place, the rituals to cover and a few
  * words about the celebration. Posts JSON to /api/contact, which emails the
- * studio. A hidden "website" field catches simple spam bots.
+ * studio. A hidden "website" field catches simple spam bots, and Turnstile
+ * runs when its site key is set.
  */
 export default function InquiryForm() {
   const id = useId();
@@ -32,6 +34,8 @@ export default function InquiryForm() {
   const [status, setStatus] = useState<"idle" | "sending" | "error">("idle");
   const [error, setError] = useState("");
   const [sent, setSent] = useState<Sent | null>(null);
+  // Bumped after a failed send so the bot check renders a fresh, unused token.
+  const [checkKey, setCheckKey] = useState(0);
 
   const toggleRitual = (name: string) =>
     setRituals((list) => (list.includes(name) ? list.filter((r) => r !== name) : [...list, name]));
@@ -57,6 +61,7 @@ export default function InquiryForm() {
     } catch (err) {
       setError(err instanceof Error ? err.message : "Something went wrong.");
       setStatus("error");
+      setCheckKey((k) => k + 1);
     }
   }
 
@@ -209,6 +214,8 @@ export default function InquiryForm() {
               <label htmlFor={field("website")}>Website</label>
               <input id={field("website")} name="website" type="text" tabIndex={-1} autoComplete="off" />
             </div>
+
+            <Turnstile key={checkKey} />
 
             {status === "error" && (
               <p role="alert" className="rounded-xl bg-wine/5 px-4 py-3 text-sm text-wine">

@@ -73,7 +73,7 @@ export default async function JournalArticlePage({ params }: JournalPageProps) {
       </header>
 
       <section className="px-5 py-20 md:px-12 md:py-28">
-        <div className="mx-auto max-w-editorial space-y-7 text-base font-light leading-[1.9] text-char/90 md:text-lg">
+        <div className="mx-auto max-w-editorial space-y-7 text-base font-light leading-[1.75] text-char/90 md:text-lg">
           {post.body.map((paragraph, i) => (
             <p
               key={i}
@@ -86,7 +86,7 @@ export default async function JournalArticlePage({ params }: JournalPageProps) {
               {paragraph}
             </p>
           ))}
-          <p className="pt-4 font-display text-xl italic text-bronze">Short for Culture. Long on Tales.</p>
+          <p className="pt-4 font-display text-xl italic text-bronze">Where culture becomes story.</p>
         </div>
       </section>
 

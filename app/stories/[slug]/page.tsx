@@ -130,7 +130,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
           </aside>
 
           <div className="space-y-10 lg:col-span-8">
-            <p className="text-base font-light leading-[1.85] text-char/90 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.25rem] first-letter:leading-[0.8] first-letter:text-obsidian md:text-lg">
+            <p className="text-base font-light leading-[1.75] text-char/90 first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.25rem] first-letter:leading-[0.8] first-letter:text-obsidian md:text-lg">
               {story.description}
             </p>
 

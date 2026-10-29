@@ -18,7 +18,9 @@ const NAV_LINKS = [
 export default function Header() {
   const pathname = usePathname();
   const [scrolled, setScrolled] = useState(false);
-  const [menuOpen, setMenuOpen] = useState(false);
+  // The page the menu was opened on; navigating anywhere else closes it.
+  const [menuPath, setMenuPath] = useState<string | null>(null);
+  const menuOpen = menuPath === pathname;
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -26,10 +28,6 @@ export default function Header() {
     window.addEventListener("scroll", onScroll, { passive: true });
     return () => window.removeEventListener("scroll", onScroll);
   }, []);
-
-  useEffect(() => {
-    setMenuOpen(false);
-  }, [pathname]);
 
   // Over the homepage's dark hero the bar starts clear with light text;
   // everywhere else, and once scrolled, it settles onto ivory.
@@ -64,7 +62,7 @@ export default function Header() {
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}
-          onClick={() => setMenuOpen((open) => !open)}
+          onClick={() => setMenuPath(menuOpen ? null : pathname)}
           className="flex h-9 w-9 flex-col items-start justify-center gap-1.5 justify-self-start lg:hidden"
         >
           <span className={clsx("block h-[1.5px] w-6 bg-current transition-transform duration-300", menuOpen && "translate-y-[7.5px] rotate-45")} />
@@ -84,7 +82,7 @@ export default function Header() {
         </div>
       </div>
 
-      <MobileMenu open={menuOpen} onClose={() => setMenuOpen(false)} links={NAV_LINKS} />
+      <MobileMenu open={menuOpen} onClose={() => setMenuPath(null)} links={NAV_LINKS} />
     </header>
   );
 }

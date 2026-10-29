@@ -47,7 +47,7 @@ export default function FAQ() {
                     +
                   </span>
                 </summary>
-                <p className="max-w-xl pb-7 text-[15px] font-light leading-[1.8] text-char/80">{item.a}</p>
+                <p className="max-w-xl pb-7 text-base font-light leading-[1.7] text-char/80">{item.a}</p>
               </details>
             ))}
           </div>

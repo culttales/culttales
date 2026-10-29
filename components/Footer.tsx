@@ -11,7 +11,8 @@ const NAV = [
 ];
 
 const TICKER = [
-  "Short for Culture. Long on Tales.",
+  "Where Culture Becomes Story",
+  "Wedding Stories · Culture · Documentary",
   "Kerala · Rajasthan · Across India & Beyond",
   "Visual storytellers & memory keepers",
 ];
@@ -38,6 +39,12 @@ export default function Footer() {
         <div className="grid grid-cols-1 gap-12 border-b border-line-light pb-16 md:grid-cols-12">
           <div className="md:col-span-5">
             <Logo variant="white" className="h-12 md:h-14" />
+            <div className="mt-6 max-w-sm border-t border-bronze/50 pt-5">
+              <p className="text-xs uppercase tracking-[0.24em] text-gold">Where Culture Becomes Story</p>
+              <p className="mt-2 text-[10px] uppercase tracking-[0.24em] text-paper/50">
+                Wedding Stories &middot; Culture &middot; Documentary
+              </p>
+            </div>
             <p className="mt-6 max-w-sm text-sm font-light leading-relaxed text-paper/70">
               A visual storytelling studio documenting Pan-Indian wedding stories, where love
               meets legacy.
@@ -90,7 +97,7 @@ export default function Footer() {
           </p>
           <div className="mt-6 flex w-full flex-col items-center justify-between gap-4 text-[10px] uppercase tracking-editorial text-paper/50 sm:flex-row">
             <span>&copy; {new Date().getFullYear()} CULT. tales. All rights reserved.</span>
-            <span>Short for Culture. Long on Tales.</span>
+            <span>Where Culture Becomes Story</span>
           </div>
         </div>
       </div>

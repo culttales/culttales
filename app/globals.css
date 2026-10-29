@@ -22,7 +22,9 @@ body {
   color: #2b2420;
   font-family: var(--font-sans), -apple-system, BlinkMacSystemFont, Helvetica, Arial, sans-serif;
   font-weight: 400;
+  letter-spacing: 0.005em;
   font-feature-settings: "kern", "liga";
+  font-synthesis: none;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -33,18 +35,28 @@ body {
   color: #f7f4ef;
 }
 
-/* Editorial serif headings; an <em> inside one turns italic bronze */
+/* Editorial serif headings; an <em> inside one turns italic bronze.
+   Light and slightly condensed for the fashion-editorial look; small
+   headings get a little more weight so the hairlines don't break up. */
 h1,
 h2,
 h3,
 h4 {
   font-family: var(--font-display), Georgia, serif;
-  font-weight: 400;
-  letter-spacing: -0.005em;
+  font-weight: 300;
+  font-stretch: 88%;
+  letter-spacing: -0.015em;
   text-wrap: balance;
 }
-/* Cormorant defaults to old-style figures, which make "01" read as "o1"
-   and drop phone numbers below the line; use lining figures instead. */
+h3,
+h4 {
+  font-weight: 400;
+  letter-spacing: -0.005em;
+}
+.font-display {
+  font-stretch: 88%;
+}
+/* Lining figures, so "01" and phone numbers sit on the line. */
 h1,
 h2,
 h3,

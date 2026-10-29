@@ -117,7 +117,7 @@ export default function AboutPage() {
 
       <section className="on-dark bg-obsidian px-5 py-24 text-paper md:px-12 md:py-36">
         <div className="mx-auto max-w-site">
-          <SectionMarker title="Our approach" aside="Photography · Film · Culture" />
+          <SectionMarker title="Our approach" aside="Photography · Cinema · Culture" />
           <h2 className="mt-14 max-w-4xl text-[2.5rem] font-light leading-[1.05] sm:text-6xl md:text-[68px]">
             Photography and cinematography, <em>woven into one story.</em>
           </h2>

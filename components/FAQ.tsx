@@ -3,7 +3,7 @@ import SectionMarker from "./SectionMarker";
 const QUESTIONS = [
   {
     q: "What do you cover at a wedding?",
-    a: "We document every wedding across photography, wedding cinema and culture. Photography holds the detail, cinema carries the emotion, and our culture work places the day within its culture and traditions.",
+    a: "We document every wedding across photography, wedding cinema and culture. Photography holds the detail, cinema carries the emotion, and our culture work places the day within its traditions.",
   },
   {
     q: "Do you travel for weddings?",
@@ -15,7 +15,7 @@ const QUESTIONS = [
   },
   {
     q: "How do you prepare for our wedding?",
-    a: "We spend time understanding your region, your family and the specific version of each ritual your family practices, so the final story feels entirely yours.",
+    a: "We spend time understanding your region, your family and the specific version of each ritual you practise, so the final story feels entirely yours.",
   },
   {
     q: "How do we book you?",

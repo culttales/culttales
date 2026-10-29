@@ -85,7 +85,7 @@ export const stories: Story[] = [
       "A Kerala wedding held on the backwaters, where the thali ceremony carried the quiet weight of generations.",
     openingLine: "The backwaters keep their own time.",
     description:
-      "A traditional Kerala wedding set against palm-lined canals, built around the simplicity and grace of Kerala customs — banana leaf feasts, brass lamps, and a thali tied at the exact auspicious minute.",
+      "A traditional Kerala wedding set against palm-lined canals, built around the simplicity and grace of local customs — banana leaf feasts, brass lamps, and a thali tied at the exact auspicious minute.",
     images: [
       { src: "/images/moment-4.jpg", alt: "The couple at sunset on a terrace", orientation: "landscape" },
       { src: "/images/moment-6.jpg", alt: "The couple dancing in a shower of sparks", orientation: "portrait" },

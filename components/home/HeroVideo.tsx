@@ -67,7 +67,7 @@ export default function HeroVideo({ film }: { film?: Film }) {
 
       <div className="relative z-10 mx-auto max-w-5xl pt-10">
         <p className="hero-rise mb-6 text-[10.5px] font-medium uppercase tracking-[0.32em] text-gold sm:text-xs md:mb-8">
-          Short for Culture. Long on Tales.
+          Where Culture Becomes Story
         </p>
         <h1 className="hero-rise font-display text-[2.85rem] font-normal italic leading-[1.04] tracking-[-0.01em] text-paper [--d:120ms] sm:text-6xl md:text-7xl lg:text-[5.6rem]">
           We are documenting
@@ -76,6 +76,9 @@ export default function HeroVideo({ film }: { film?: Film }) {
         </h1>
         <p className="hero-rise mx-auto mt-7 max-w-md text-[15px] font-light leading-relaxed text-paper/80 [--d:240ms] md:mt-9 md:max-w-xl md:text-lg">
           Unearthing the real rituals, colourful traditions, and beautiful tales of love across India.
+        </p>
+        <p className="hero-rise mt-5 text-[10px] font-medium uppercase tracking-[0.28em] text-paper/60 [--d:300ms] sm:text-[11px]">
+          Wedding Stories &middot; Culture &middot; Documentary
         </p>
 
         {film?.src && (

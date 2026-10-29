@@ -99,11 +99,13 @@ export async function POST(request: Request) {
 }
 
 // Browsers send Origin on cross-site POSTs; refuse ones from other sites.
+// Compares with the Host header, since request.url is rewritten on Workers.
 function sameOrigin(request: Request) {
   const origin = request.headers.get("origin");
   if (!origin) return true;
   try {
-    return new URL(origin).host === new URL(request.url).host;
+    const host = request.headers.get("x-forwarded-host") ?? request.headers.get("host") ?? new URL(request.url).host;
+    return new URL(origin).host === host;
   } catch {
     return false;
   }

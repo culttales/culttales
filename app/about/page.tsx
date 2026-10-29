@@ -110,7 +110,7 @@ export default function AboutPage() {
               understanding your story, anticipating meaningful moments, preserving the details, and
               creating films and photographs that grow more valuable with time.
             </p>
-            <p className="font-display text-2xl italic text-bronze">Short for Culture. Long on Tales.</p>
+            <p className="font-display text-2xl italic text-bronze">Where culture becomes story.</p>
           </Reveal>
         </div>
       </section>

@@ -32,11 +32,11 @@ export const metadata: Metadata = {
     template: "%s — CULT. tales",
   },
   description:
-    "CULT. tales documents Pan Indian wedding stories — unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+    "CULT. tales — where culture becomes story. Wedding stories, culture and documentary: unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
   openGraph: {
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
-      "Unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+      "Where culture becomes story. Wedding stories, culture and documentary from across India.",
     url: "https://culttales.com",
     siteName: "CULT. tales",
     type: "website",
@@ -45,7 +45,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
-      "Unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+      "Where culture becomes story. Wedding stories, culture and documentary from across India.",
   },
 };
 
@@ -58,7 +58,7 @@ const studio = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
   name: "CULT. tales",
-  slogan: "Short for Culture. Long on Tales.",
+  slogan: "Where Culture Becomes Story",
   description:
     "A Pan-Indian wedding photography and filmmaking team documenting weddings in their most authentic form.",
   url: "https://culttales.com",

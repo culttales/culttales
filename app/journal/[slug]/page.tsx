@@ -86,7 +86,7 @@ export default async function JournalArticlePage({ params }: JournalPageProps) {
               {paragraph}
             </p>
           ))}
-          <p className="pt-4 font-display text-xl italic text-bronze">Short for Culture. Long on Tales.</p>
+          <p className="pt-4 font-display text-xl italic text-bronze">Where culture becomes story.</p>
         </div>
       </section>
 

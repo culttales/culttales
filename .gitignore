@@ -47,3 +47,7 @@ Thumbs.db
 .open-next/
 .wrangler/
 .dev.vars
+
+# Build caches and stray archives
+*.tsbuildinfo
+*.zip

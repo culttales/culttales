@@ -196,7 +196,7 @@ export default function TeamPreviewPage() {
           <div className="mx-auto mt-20 grid max-w-5xl grid-cols-1 gap-12 md:mt-28 md:grid-cols-2 md:gap-20">
             <div className="space-y-8 text-[17px] leading-[1.95] text-char/70">
               <p className="first-letter:float-left first-letter:mr-3 first-letter:mt-1.5 first-letter:font-display first-letter:text-[4.5rem] first-letter:leading-[0.75] first-letter:text-char">
-                We are a Pan-Indian wedding photography and filmmaking team dedicated to documenting weddings in their most
+                We are a Pan-Indian wedding photography and wedding cinema team dedicated to documenting weddings in their most
                 authentic form. From intimate rituals and sacred traditions to
                 spontaneous laughter, heartfelt emotions, and grand
                 celebrations, we look beyond the obvious to capture the moments
@@ -233,7 +233,7 @@ export default function TeamPreviewPage() {
           <dl className="mx-auto mt-24 grid max-w-3xl grid-cols-1 text-center md:mt-32 md:grid-cols-2">
             {[
               ["Based in", "Kerala & Rajasthan"],
-              ["Craft", "Photography & Filmmaking"],
+              ["Craft", "Photography & Wedding Cinema"],
             ].map(([term, value], i) => (
               <div
                 key={term}
@@ -279,7 +279,7 @@ export default function TeamPreviewPage() {
             as="h2"
             className="mx-auto mt-16 max-w-3xl text-center font-display text-display-md font-normal text-balance md:mt-20"
           >
-            Photography and cinematography,{" "}
+            Photography and wedding cinema,{" "}
             <em className="italic">woven into one story.</em>
           </RevealText>
 

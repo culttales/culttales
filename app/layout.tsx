@@ -66,14 +66,14 @@ const studio = {
   name: "CULT. tales",
   slogan: "Where Culture Becomes Story",
   description:
-    "A Pan-Indian wedding photography and filmmaking team documenting weddings in their most authentic form.",
+    "A Pan-Indian wedding photography and wedding cinema team documenting weddings in their most authentic form.",
   url: "https://culttales.com",
   logo: "https://culttales.com/logo/cult-tales-logo-black.png",
   image: "https://culttales.com/opengraph-image.jpg",
   email: contact.email,
   telephone: contact.phone,
   areaServed: "India",
-  serviceType: ["Wedding photography", "Wedding cinematography"],
+  serviceType: ["Wedding photography", "Wedding cinema"],
   sameAs: [contact.instagramUrl, contact.youtubeUrl, contact.facebookUrl],
 };
 

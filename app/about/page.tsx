@@ -8,7 +8,7 @@ import SectionMarker from "@/components/SectionMarker";
 export const metadata: Metadata = {
   title: "About",
   description:
-    "CULT. tales is a Pan-Indian wedding photography and filmmaking team based in Kerala and Rajasthan, documenting weddings in their most authentic form.",
+    "CULT. tales is a Pan-Indian wedding photography and wedding cinema team based in Kerala and Rajasthan, documenting weddings in their most authentic form.",
 };
 
 const APPROACH = [
@@ -36,7 +36,7 @@ const DOCUMENT = [
 const SERVICES = [
   {
     title: "Wedding stories",
-    body: "Full coverage across photography and cinematography, delivered as one visual story of the wedding, its people and its rituals.",
+    body: "Full coverage across photography and wedding cinema, delivered as one visual story of the wedding, its people and its rituals.",
   },
   {
     title: "Wedding films",
@@ -59,7 +59,7 @@ export default function AboutPage() {
             Storytellers of <em>culture, love</em> &amp; tradition.
           </>
         }
-        intro="A Pan-Indian wedding photography and filmmaking team, travelling across India and beyond to document weddings in their most authentic form."
+        intro="A Pan-Indian wedding photography and wedding cinema team, travelling across India and beyond to document weddings in their most authentic form."
       />
 
       <section className="bg-paper px-5 pb-24 md:px-12 md:pb-36">
@@ -86,7 +86,7 @@ export default function AboutPage() {
 
           <Reveal delay={0.1} className="space-y-6 text-base font-light leading-[1.75] text-char/85 lg:col-span-7 lg:pt-6 md:text-[17px]">
             <p className="first-letter:float-left first-letter:mr-3 first-letter:mt-1 first-letter:font-display first-letter:text-[4.5rem] first-letter:leading-[0.8] first-letter:text-obsidian">
-              We are a Pan-Indian wedding photography and filmmaking team dedicated to documenting
+              We are a Pan-Indian wedding photography and wedding cinema team dedicated to documenting
               weddings in their most authentic form. From intimate rituals and sacred traditions to
               spontaneous laughter, heartfelt emotions and grand celebrations, we look beyond the
               obvious to capture the moments that truly matter.
@@ -119,7 +119,7 @@ export default function AboutPage() {
         <div className="mx-auto max-w-site">
           <SectionMarker title="Our approach" aside="Photography · Cinema · Culture" />
           <h2 className="mt-14 max-w-4xl text-[2.5rem] font-light leading-[1.05] sm:text-6xl md:text-[68px]">
-            Photography and cinematography, <em>woven into one story.</em>
+            Photography and wedding cinema, <em>woven into one story.</em>
           </h2>
           <div className="mt-16 grid grid-cols-1 border-t border-line-light md:grid-cols-3">
             {APPROACH.map((item, i) => (

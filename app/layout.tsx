@@ -57,6 +57,9 @@ export const metadata: Metadata = {
 
 export const viewport: Viewport = {
   themeColor: "#F7F4EF",
+  // Lets the fixed header draw under the iPhone status bar; Header pads
+  // itself by env(safe-area-inset-top) so its content stays clear of it.
+  viewportFit: "cover",
 };
 
 // Tells search engines who the studio is, using only details published on the site.

@@ -62,7 +62,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
   return (
     <article className="bg-paper text-char">
-      <div className="px-5 pt-28 md:px-12 md:pt-32">
+      <div className="px-5 pt-[calc(7rem+env(safe-area-inset-top))] md:px-12 md:pt-[calc(8rem+env(safe-area-inset-top))]">
         <nav
           aria-label="Stories"
           className="mx-auto flex max-w-site items-center justify-between gap-4 border-b border-line-dark py-4"

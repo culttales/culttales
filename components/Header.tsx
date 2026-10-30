@@ -31,7 +31,10 @@ export default function Header() {
   }, []);
 
   // Over the homepage's dark hero the bar starts clear with light text;
-  // everywhere else, and once scrolled, it settles onto ivory.
+  // everywhere else, and once scrolled, it settles onto ivory. The ivory is
+  // opaque so iPhone Safari tints the status bar to match instead of showing
+  // the page through it, and the top padding grows by the status bar's
+  // height (viewport-fit=cover) so the bar reaches the top of the screen.
   const solid = scrolled || pathname !== "/";
 
   return (
@@ -39,8 +42,8 @@ export default function Header() {
       className={clsx(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,padding,box-shadow,color] duration-500",
         solid
-          ? "bg-paper/90 py-3 text-obsidian shadow-[0_1px_0_rgba(22,20,18,0.08)] backdrop-blur-md"
-          : "py-5 text-paper"
+          ? "bg-paper pb-3 pt-[calc(0.75rem+env(safe-area-inset-top))] text-obsidian shadow-[0_1px_0_rgba(22,20,18,0.08)]"
+          : "pb-5 pt-[calc(1.25rem+env(safe-area-inset-top))] text-paper"
       )}
     >
       <div className="mx-auto grid max-w-site grid-cols-[1fr_auto_1fr] items-center px-5 md:px-12">

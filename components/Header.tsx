@@ -10,6 +10,7 @@ import AmbientToggle from "./AmbientToggle";
 import { SHOW_JOURNAL } from "@/lib/site";
 
 const NAV_LINKS = [
+  { label: "Home", href: "/" },
   { label: "Stories", href: "/stories" },
   { label: "Films", href: "/films" },
   { label: "About", href: "/about" },
@@ -54,7 +55,7 @@ export default function Header() {
               href={link.href}
               className={clsx(
                 "py-1 transition-colors hover:text-bronze",
-                pathname.startsWith(link.href) && "text-bronze"
+                (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)) && "text-bronze"
               )}
             >
               {link.label}

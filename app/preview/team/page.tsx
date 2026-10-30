@@ -140,7 +140,7 @@ export default function TeamPreviewPage() {
         <div className="absolute inset-x-0 bottom-0 h-1/2 bg-gradient-to-t from-ink to-transparent" />
         <Grain />
 
-        <header className="relative z-10 flex justify-center pt-10 md:pt-12">
+        <header className="relative z-10 flex justify-center pt-[calc(2.5rem+env(safe-area-inset-top))] md:pt-[calc(3rem+env(safe-area-inset-top))]">
           <Image
             src="/logo/cult-tales-logo-white.png"
             alt="CULT. tales"

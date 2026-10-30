@@ -19,7 +19,7 @@ export default function PageIntro({
   children?: ReactNode;
 }) {
   return (
-    <header className="bg-paper px-5 pb-14 pt-32 md:px-12 md:pb-20 md:pt-44">
+    <header className="bg-paper px-5 pb-14 pt-[calc(8rem+env(safe-area-inset-top))] md:px-12 md:pb-20 md:pt-[calc(11rem+env(safe-area-inset-top))]">
       <div className="mx-auto max-w-site">
         <SectionMarker title={label} aside={aside} />
         <div className="mt-12 grid grid-cols-1 items-end gap-8 md:mt-16 lg:grid-cols-12 lg:gap-10">

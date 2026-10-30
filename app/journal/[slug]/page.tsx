@@ -42,7 +42,7 @@ export default async function JournalArticlePage({ params }: JournalPageProps) {
 
   return (
     <article className="bg-paper text-char">
-      <header className="px-5 pt-32 md:px-12 md:pt-44">
+      <header className="px-5 pt-[calc(8rem+env(safe-area-inset-top))] md:px-12 md:pt-[calc(11rem+env(safe-area-inset-top))]">
         <div className="mx-auto max-w-site">
           <div className="section-marker">
             <Link href="/journal" className="transition-colors hover:text-bronze">

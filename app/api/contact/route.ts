@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { contact } from "@/lib/site";
+import { BUDGETS } from "@/lib/budgets";
 
 // Every field the enquiry forms may send, with its label in the email.
 const fields = [
@@ -12,6 +13,7 @@ const fields = [
   ["guests", "Guests"],
   ["rituals", "Rituals & events"],
   ["scope", "Coverage"],
+  ["budget", "Budget estimate"],
   ["message", "Message"],
 ] as const;
 
@@ -72,6 +74,9 @@ export async function POST(request: Request) {
         : "";
     data[key] = text.trim().slice(0, 4000);
   }
+
+  // Optional; anything outside the offered ranges is dropped.
+  if (!(BUDGETS as readonly string[]).includes(data.budget)) data.budget = "";
 
   if (!data.name || !data.message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     return NextResponse.json(

@@ -1,3 +1,7 @@
+// Set to true to bring the Journal back: nav links, home section, /journal
+// pages and sitemap entries all follow this one flag.
+export const SHOW_JOURNAL = false;
+
 // Single source of truth for contact details and social links.
 export const contact = {
   email: "helloculttales@gmail.com",

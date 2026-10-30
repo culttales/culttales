@@ -9,6 +9,7 @@ import Inquire from "@/components/home/Inquire";
 import { getAllStories } from "@/lib/stories";
 import { getReleasedFilms } from "@/lib/films";
 import { getAllJournalPosts } from "@/lib/journal";
+import { SHOW_JOURNAL } from "@/lib/site";
 
 // The home page keeps the original type: Cormorant Garamond headings and
 // Plus Jakarta Sans text. Loaded here, so other pages don't download them.
@@ -55,7 +56,7 @@ export default function HomePage() {
       <StoriesShowcase stories={getAllStories()} />
       <Cinema films={films} />
       <Craft />
-      <JournalNotes posts={getAllJournalPosts().slice(0, 3)} />
+      {SHOW_JOURNAL && <JournalNotes posts={getAllJournalPosts().slice(0, 3)} />}
       <Inquire />
     </>
   );

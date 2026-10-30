@@ -1,12 +1,12 @@
 import Link from "next/link";
 import Logo from "./Logo";
-import { contact } from "@/lib/site";
+import { SHOW_JOURNAL, contact } from "@/lib/site";
 
 const NAV = [
   { label: "Wedding Stories", href: "/stories" },
   { label: "Films", href: "/films" },
   { label: "About Us", href: "/about" },
-  { label: "Journal", href: "/journal" },
+  ...(SHOW_JOURNAL ? [{ label: "Journal", href: "/journal" }] : []),
   { label: "Contact", href: "/contact" },
 ];
 

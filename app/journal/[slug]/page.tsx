@@ -4,19 +4,21 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import ClosingInvite from "@/components/ClosingInvite";
 import { getAllJournalPosts, getJournalPostBySlug } from "@/lib/journal";
+import { SHOW_JOURNAL } from "@/lib/site";
 
 type JournalPageProps = {
   params: Promise<{ slug: string }>;
 };
 
 export function generateStaticParams() {
+  if (!SHOW_JOURNAL) return [];
   return getAllJournalPosts().map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: JournalPageProps): Promise<Metadata> {
   const { slug } = await params;
   const post = getJournalPostBySlug(slug);
-  if (!post) return {};
+  if (!SHOW_JOURNAL || !post) return {};
 
   return {
     title: post.title,
@@ -32,7 +34,7 @@ export async function generateMetadata({ params }: JournalPageProps): Promise<Me
 export default async function JournalArticlePage({ params }: JournalPageProps) {
   const { slug } = await params;
   const post = getJournalPostBySlug(slug);
-  if (!post) notFound();
+  if (!SHOW_JOURNAL || !post) notFound();
 
   const allPosts = getAllJournalPosts();
   const currentIdx = allPosts.findIndex((p) => p.slug === post.slug);

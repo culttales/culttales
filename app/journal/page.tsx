@@ -2,7 +2,9 @@ import type { Metadata } from "next";
 import ClosingInvite from "@/components/ClosingInvite";
 import JournalList from "@/components/JournalList";
 import PageIntro from "@/components/PageIntro";
+import { notFound } from "next/navigation";
 import { getAllJournalPosts } from "@/lib/journal";
+import { SHOW_JOURNAL } from "@/lib/site";
 
 export const metadata: Metadata = {
   title: "Journal",
@@ -10,6 +12,8 @@ export const metadata: Metadata = {
 };
 
 export default function JournalPage() {
+  if (!SHOW_JOURNAL) notFound();
+
   return (
     <>
       <PageIntro

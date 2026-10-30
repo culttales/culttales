@@ -7,12 +7,13 @@ import clsx from "clsx";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
 import AmbientToggle from "./AmbientToggle";
+import { SHOW_JOURNAL } from "@/lib/site";
 
 const NAV_LINKS = [
   { label: "Stories", href: "/stories" },
   { label: "Films", href: "/films" },
   { label: "About", href: "/about" },
-  { label: "Journal", href: "/journal" },
+  ...(SHOW_JOURNAL ? [{ label: "Journal", href: "/journal" }] : []),
 ];
 
 export default function Header() {

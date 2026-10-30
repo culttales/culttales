@@ -5,6 +5,7 @@ import { useId, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
 import { contact } from "@/lib/site";
+import { BUDGETS } from "@/lib/budgets";
 import Turnstile from "./Turnstile";
 
 const RITUALS = [
@@ -196,6 +197,16 @@ export default function InquiryForm() {
                 ))}
               </div>
             </fieldset>
+
+            <div>
+              <label htmlFor={field("budget")} className="field-label">Budget estimate</label>
+              <select id={field("budget")} name="budget" defaultValue="" className="field cursor-pointer">
+                <option value="">Choose a range</option>
+                {BUDGETS.map((b) => (
+                  <option key={b} value={b}>{b}</option>
+                ))}
+              </select>
+            </div>
 
             <div>
               <label htmlFor={field("message")} className="field-label">Tell us about the two of you *</label>

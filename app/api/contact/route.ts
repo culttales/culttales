@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { contact } from "@/lib/site";
 import { BUDGETS } from "@/lib/budgets";
+import { buildEnquiryHtml, buildEnquiryText } from "@/lib/enquiry-email";
 
 // Every field the enquiry forms may send, with its label in the email.
 const fields = [
@@ -154,11 +155,6 @@ async function sendEmail(data: Record<Field, string>) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return false;
 
-  const html = fields
-    .filter(([key]) => key !== "message" && data[key])
-    .map(([key, label]) => `<p><strong>${label}:</strong> ${escapeHtml(data[key])}</p>`)
-    .join("");
-
   const res = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
@@ -170,9 +166,8 @@ async function sendEmail(data: Record<Field, string>) {
       to: [process.env.CONTACT_TO_EMAIL || contact.email],
       reply_to: data.email,
       subject: `New enquiry from ${data.name.replace(/[\r\n]+/g, " ")}`,
-      html:
-        html +
-        `<p><strong>Message:</strong></p><p>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>`,
+      html: buildEnquiryHtml(data),
+      text: buildEnquiryText(data),
     }),
   }).catch(() => null);
 

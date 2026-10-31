@@ -21,7 +21,7 @@
   // RESEND_API_KEY and SUPABASE_SECRET_KEY stay in the dashboard.
   "vars": {
     "CONTACT_FROM_EMAIL": "CULT. tales <enquiries@culttales.com>",
-    "SUPABASE_URL": "https://yfptwzzyagykxmydwimc.supabase.co"
+    "SUPABASE_URL": "https://dlkbxqaqvesbelaryitb.supabase.co"
   },
   // Keep any other variables added in the dashboard when deploying.
   "keep_vars": true,

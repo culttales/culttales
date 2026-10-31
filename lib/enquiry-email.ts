@@ -157,3 +157,62 @@ export function buildEnquiryText(data: EnquiryData) {
     data.message,
   ].join("\n");
 }
+
+// Automatic acknowledgement sent to the person who submitted the enquiry.
+// No response time is promised on purpose.
+export function buildConfirmationHtml(data: EnquiryData) {
+  const first = escapeHtml(data.name.split(/\s+/)[0] || data.name);
+  const rows = (
+    [
+      ["Celebration dates", data.wedding],
+      ["Venue & city", data.location],
+      ["Coverage", data.scope],
+    ] as const
+  )
+    .filter(([, v]) => v)
+    .map(
+      ([k, v]) =>
+        `<tr><td style="padding:10px 0;border-top:1px solid ${SAND}">${label(k)}<div style="font:400 15px/1.5 ${SANS};color:${INK}">${escapeHtml(v)}</div></td></tr>`,
+    )
+    .join("");
+
+  return `<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="color-scheme" content="light"></head>
+<body style="margin:0;padding:0;background:${IVORY}">
+<div style="display:none;max-height:0;overflow:hidden;opacity:0">Thank you for reaching out. Our team will be in touch with you shortly.</div>
+<table role="presentation" width="100%" cellpadding="0" cellspacing="0" style="background:${IVORY}"><tr><td align="center" style="padding:32px 12px">
+<table role="presentation" width="600" cellpadding="0" cellspacing="0" style="width:100%;max-width:600px">
+  <tr><td style="background:${INK};padding:28px 32px"><div style="font:400 22px/1 ${SERIF};letter-spacing:1px;color:${IVORY}">CULT<span style="color:${BRONZE}">.</span> tales</div></td></tr>
+  <tr><td style="background:#FFFFFF;padding:40px 32px 8px">
+    ${label("Enquiry received")}
+    <div style="font:400 30px/1.2 ${SERIF};color:${INK}">Thank you, ${first}.</div>
+  </td></tr>
+  <tr><td style="background:#FFFFFF;padding:12px 32px 8px;font:400 15px/1.7 ${SANS};color:${INK}">
+    <p style="margin:0 0 16px">We have received your enquiry and are grateful you thought of us for your celebration.</p>
+    <p style="margin:0">Our team will contact you shortly to talk through your story and how we can document it.</p>
+  </td></tr>
+  ${rows ? `<tr><td style="background:#FFFFFF;padding:20px 32px 0"><div style="font:600 10px/1 ${SANS};letter-spacing:2px;text-transform:uppercase;color:${MUTED};padding-bottom:10px">What you shared</div><table role="presentation" width="100%" cellpadding="0" cellspacing="0">${rows}</table></td></tr>` : ""}
+  <tr><td style="background:#FFFFFF;padding:24px 32px 36px;font:400 14px/1.7 ${SANS};color:${MUTED}">
+    If you would like to add anything, simply reply to this email.<br><br>
+    <span style="font:400 18px/1 ${SERIF};color:${INK}">Warmly,</span><br>
+    <span style="font:400 18px/1.6 ${SERIF};color:${INK}">Team CULT<span style="color:${BRONZE}">.</span> tales</span>
+  </td></tr>
+  <tr><td style="padding:20px 32px;font:400 11px/1.6 ${SANS};color:${MUTED};text-align:center">You are receiving this because you submitted an enquiry at culttales.com.</td></tr>
+</table>
+</td></tr></table>
+</body></html>`;
+}
+
+export function buildConfirmationText(data: EnquiryData) {
+  const first = data.name.split(/\s+/)[0] || data.name;
+  return `Thank you, ${first}.
+
+We have received your enquiry and are grateful you thought of us for your celebration.
+
+Our team will contact you shortly to talk through your story and how we can document it.
+
+If you would like to add anything, simply reply to this email.
+
+Warmly,
+Team CULT. tales`;
+}

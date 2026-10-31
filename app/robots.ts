@@ -5,7 +5,7 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: "*",
       allow: "/",
-      disallow: ["/api/", "/.well-known/"],
+      disallow: ["/api/"],
     },
     sitemap: "https://culttales.in/sitemap.xml",
   };

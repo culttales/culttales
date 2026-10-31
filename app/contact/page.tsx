@@ -13,7 +13,7 @@ export default function ContactPage() {
       <section className="relative flex min-h-screen w-full items-center overflow-hidden bg-ink px-6 pb-20 pt-36 md:px-10 md:pb-32 md:pt-44">
         <Image
           src="/images/contact-bg.jpg"
-          alt="Background"
+          alt="Wedding celebration backdrop for contacting CULT. tales"
           fill
           sizes="100vw"
           className="absolute inset-0 object-cover opacity-40"

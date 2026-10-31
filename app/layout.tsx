@@ -29,6 +29,7 @@ export const metadata: Metadata = {
   },
   description:
     "CULT. tales documents Pan Indian wedding stories — unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+  alternates: { canonical: "./" },
   openGraph: {
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
@@ -53,6 +54,21 @@ export default function RootLayout({
   return (
     <html lang="en" className={`${fraunces.variable} ${inter.variable}`}>
       <body>
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Organization",
+              name: "CULT. tales",
+              url: "https://culttales.in",
+              logo: "https://culttales.in/logo/cult-tales-logo-black.png",
+              email: "hello@culttales.in",
+              description:
+                "Documenting Pan Indian wedding stories: rituals, traditions and tales of love across India.",
+            }),
+          }}
+        />
         <SmoothScroll />
         <CustomCursor />
         <Header />

@@ -24,8 +24,10 @@ export function generateMetadata({ params }: StoryPageProps): Metadata {
     openGraph: {
       title: `${story.coupleNames} — ${story.location}`,
       description: story.excerpt,
+      type: "article",
       images: [story.heroImage],
     },
+    twitter: { card: "summary_large_image", images: [story.heroImage] },
   };
 }
 
@@ -40,6 +42,20 @@ export default function StoryPage({ params }: StoryPageProps) {
 
   return (
     <article className="bg-ink text-bone">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: `${story.coupleNames} — ${story.location}`,
+            description: story.excerpt,
+            image: `https://culttales.in${story.heroImage}`,
+            url: `https://culttales.in/stories/${story.slug}`,
+            publisher: { "@type": "Organization", name: "CULT. tales" },
+          }),
+        }}
+      />
       {/* Opening */}
       <section className="relative flex h-[90svh] w-full items-end overflow-hidden">
         <Image

@@ -23,8 +23,10 @@ export function generateMetadata({ params }: JournalPageProps): Metadata {
     openGraph: {
       title: post.title,
       description: post.excerpt,
+      type: "article",
       images: [post.image],
     },
+    twitter: { card: "summary_large_image", images: [post.image] },
   };
 }
 

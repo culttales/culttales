@@ -24,7 +24,7 @@ export default function AboutPage() {
         <div className="relative aspect-[4/5] w-full md:aspect-auto">
           <Image
             src="/images/about-1.jpg"
-            alt="Portrait"
+            alt="Portrait of the CULT. tales storytellers documenting an Indian wedding"
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"
@@ -55,7 +55,7 @@ export default function AboutPage() {
         <div className="relative aspect-video w-full md:col-span-1">
           <Image
             src="/images/about-2.jpg"
-            alt="Behind the scenes"
+            alt="Behind the scenes with the CULT. tales crew filming a wedding ritual"
             fill
             sizes="(min-width: 768px) 50vw, 100vw"
             className="object-cover"

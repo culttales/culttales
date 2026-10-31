@@ -2,6 +2,12 @@ import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { contact } from "@/lib/site";
 import { BUDGETS } from "@/lib/budgets";
+import {
+  buildConfirmationHtml,
+  buildConfirmationText,
+  buildEnquiryHtml,
+  buildEnquiryText,
+} from "@/lib/enquiry-email";
 
 // Every field the enquiry forms may send, with its label in the email.
 const fields = [
@@ -154,33 +160,41 @@ async function sendEmail(data: Record<Field, string>) {
   const apiKey = process.env.RESEND_API_KEY;
   if (!apiKey) return false;
 
-  const html = fields
-    .filter(([key]) => key !== "message" && data[key])
-    .map(([key, label]) => `<p><strong>${label}:</strong> ${escapeHtml(data[key])}</p>`)
-    .join("");
+  const from = process.env.CONTACT_FROM_EMAIL || "CULT. tales <onboarding@resend.dev>";
+  const teamEmail = process.env.CONTACT_TO_EMAIL || contact.email;
+  const send = (payload: Record<string, unknown>) =>
+    fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${apiKey}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ from, ...payload }),
+    }).catch(() => null);
 
-  const res = await fetch("https://api.resend.com/emails", {
-    method: "POST",
-    headers: {
-      Authorization: `Bearer ${apiKey}`,
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify({
-      from: process.env.CONTACT_FROM_EMAIL || "CULT. tales <onboarding@resend.dev>",
-      to: [process.env.CONTACT_TO_EMAIL || contact.email],
-      reply_to: data.email,
-      subject: `New enquiry from ${data.name.replace(/[\r\n]+/g, " ")}`,
-      html:
-        html +
-        `<p><strong>Message:</strong></p><p>${escapeHtml(data.message).replace(/\n/g, "<br>")}</p>`,
-    }),
-  }).catch(() => null);
+  const res = await send({
+    to: [teamEmail],
+    reply_to: data.email,
+    subject: `New enquiry from ${data.name.replace(/[\r\n]+/g, " ")}`,
+    html: buildEnquiryHtml(data),
+    text: buildEnquiryText(data),
+  });
 
   if (!res?.ok) {
     // Status only: the response body can echo the enquiry back.
     console.error("[contact] Resend send failed:", res?.status ?? "network error");
     return false;
   }
+
+  // Automatic acknowledgement to the client; replies go to the team. Best effort.
+  const ack = await send({
+    to: [data.email],
+    reply_to: teamEmail,
+    subject: "We have received your enquiry | CULT. tales",
+    html: buildConfirmationHtml(data),
+    text: buildConfirmationText(data),
+  });
+  if (!ack?.ok) console.error("[contact] Confirmation email failed:", ack?.status ?? "network error");
   return true;
 }
 

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import clsx from "clsx";
 import Logo from "./Logo";
 import MobileMenu from "./MobileMenu";
-import AmbientToggle from "./AmbientToggle";
+import SoundToggle from "./SoundToggle";
 import { SHOW_JOURNAL } from "@/lib/site";
 
 const NAV_LINKS = [
@@ -79,7 +79,7 @@ export default function Header() {
 
         <div className="flex items-center justify-end gap-2.5 sm:gap-4 md:gap-6">
           <div className="hidden sm:block">
-            <AmbientToggle light={!solid} />
+            <SoundToggle light={!solid} />
           </div>
           <Link href="/contact" className="btn-bronze btn-sm">
             Enquire<span className="hidden sm:inline">&nbsp;/ Book a Date</span>

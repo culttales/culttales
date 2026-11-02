@@ -3,7 +3,7 @@
 import Link from "next/link";
 import { AnimatePresence, motion } from "motion/react";
 import { contact } from "@/lib/site";
-import AmbientToggle from "./AmbientToggle";
+import SoundToggle from "./SoundToggle";
 
 type MobileMenuProps = {
   open: boolean;
@@ -38,7 +38,7 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
             <Link href="/contact" onClick={onClose} className="btn-bronze w-full">
               Book Your Dates
             </Link>
-            <AmbientToggle light />
+            <SoundToggle light />
             <div className="flex gap-6 pt-1 text-[10px] uppercase tracking-editorial text-paper/70">
               <a href={contact.instagramUrl} className="hover:text-bronze">Instagram</a>
               <a href={contact.youtubeUrl} className="hover:text-bronze">YouTube</a>

@@ -2,8 +2,10 @@
 
 import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
-import { useEffect, useId, useRef } from "react";
-import { announceMediaPlay, lockScroll } from "@/lib/scrollLock";
+import { useEffect, useId, useRef, useState } from "react";
+import { lockScroll } from "@/lib/scrollLock";
+import { allowFilmSound, playWithSound, setSoundOn, useSoundOn } from "@/lib/sound";
+import SoundToggle from "./SoundToggle";
 
 type VideoPlayerProps = {
   open: boolean;
@@ -25,10 +27,32 @@ export default function VideoPlayer({ open, onClose, poster, title, src, descrip
   const titleId = useId();
   const closeRef = useRef<HTMLButtonElement>(null);
   const onCloseRef = useRef(onClose);
+  const videoRef = useRef<HTMLVideoElement>(null);
+  const soundOn = useSoundOn();
+  const [playing, setPlaying] = useState(false);
 
   useEffect(() => {
     onCloseRef.current = onClose;
   });
+
+  // Sound follows playback: start on open, and pause on close so the audio
+  // does not run on through the exit fade.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (!video) return;
+    if (!open) {
+      video.pause();
+      return;
+    }
+    video.muted = !allowFilmSound();
+    playWithSound(video);
+  }, [open]);
+
+  // Turning sound on has to be audible even if the native slider sits at zero.
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && soundOn && video.volume === 0) video.volume = 1;
+  }, [soundOn]);
 
   useEffect(() => {
     if (!open) return;
@@ -36,7 +60,6 @@ export default function VideoPlayer({ open, onClose, poster, title, src, descrip
     const onKey = (e: KeyboardEvent) => e.key === "Escape" && onCloseRef.current();
     document.addEventListener("keydown", onKey);
     lockScroll(true);
-    announceMediaPlay();
     closeRef.current?.focus();
     return () => {
       document.removeEventListener("keydown", onKey);
@@ -76,28 +99,35 @@ export default function VideoPlayer({ open, onClose, poster, title, src, descrip
                   {title}
                 </h3>
               </div>
-              <button
-                ref={closeRef}
-                type="button"
-                onClick={onClose}
-                aria-label="Close film"
-                className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-paper/20 text-paper transition-colors hover:border-bronze hover:bg-bronze"
-              >
-                <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden>
-                  <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.3" />
-                </svg>
-              </button>
+              <div className="flex shrink-0 items-center gap-3">
+                {src && <SoundToggle light playing={playing} />}
+                <button
+                  ref={closeRef}
+                  type="button"
+                  onClick={onClose}
+                  aria-label="Close film"
+                  className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border border-paper/20 text-paper transition-colors hover:border-bronze hover:bg-bronze"
+                >
+                  <svg width="12" height="12" viewBox="0 0 12 12" aria-hidden>
+                    <path d="M1 1l10 10M11 1L1 11" stroke="currentColor" strokeWidth="1.3" />
+                  </svg>
+                </button>
+              </div>
             </div>
 
             <div className="relative aspect-video overflow-hidden rounded-2xl border border-paper/15 bg-black shadow-2xl">
               {src ? (
                 <video
+                  ref={videoRef}
                   src={src}
                   poster={poster}
                   controls
-                  autoPlay
+                  muted={!soundOn}
                   playsInline
                   preload="auto"
+                  onPlay={() => setPlaying(true)}
+                  onPause={() => setPlaying(false)}
+                  onVolumeChange={(e) => setSoundOn(!e.currentTarget.muted && e.currentTarget.volume > 0)}
                   className="h-full w-full object-contain"
                 />
               ) : (

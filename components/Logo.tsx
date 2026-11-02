@@ -1,5 +1,8 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import clsx from "clsx";
 
 type LogoProps = {
@@ -16,6 +19,7 @@ type LogoProps = {
  *  - black: for use on light (paper) backgrounds
  */
 export default function Logo({ variant = "white", className, eager }: LogoProps) {
+  const pathname = usePathname();
   const src =
     variant === "white"
       ? "/logo/cult-tales-logo-white.png"
@@ -24,6 +28,10 @@ export default function Logo({ variant = "white", className, eager }: LogoProps)
   return (
     <Link
       href="/"
+      // Already on the homepage: Next won't navigate, so scroll up ourselves.
+      onClick={() => {
+        if (pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+      }}
       aria-label="CULT. tales — home"
       className={clsx("relative block", className)}
     >

@@ -133,10 +133,12 @@ export default async function StoryPage({ params }: StoryPageProps) {
               <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Location</p>
               <p className="font-display text-xl text-obsidian">{story.location}</p>
             </div>
-            <div>
-              <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Rituals</p>
-              <p className="mt-0.5 text-sm text-char">{story.rituals.map((r) => r.name).join(" · ")}</p>
-            </div>
+            {story.rituals.length > 0 && (
+              <div>
+                <p className="text-[10px] uppercase tracking-[0.16em] text-muted">Rituals</p>
+                <p className="mt-0.5 text-sm text-char">{story.rituals.map((r) => r.name).join(" · ")}</p>
+              </div>
+            )}
             <div>
               <p className="text-[10px] uppercase tracking-[0.16em] text-muted">In a line</p>
               <p className="mt-1 font-display text-base italic text-obsidian">{story.excerpt}</p>
@@ -148,19 +150,21 @@ export default async function StoryPage({ params }: StoryPageProps) {
               {story.description}
             </p>
 
-            <div>
-              <h2 className="text-3xl text-obsidian md:text-4xl">
-                The rituals behind the <em>ceremony.</em>
-              </h2>
-              <dl className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
-                {story.rituals.map((ritual) => (
-                  <div key={ritual.name} className="border-t border-line-dark pt-5">
-                    <dt className="font-display text-xl text-obsidian">{ritual.name}</dt>
-                    <dd className="mt-2 text-sm leading-relaxed text-char/75">{ritual.description}</dd>
-                  </div>
-                ))}
-              </dl>
-            </div>
+            {story.rituals.length > 0 && (
+              <div>
+                <h2 className="text-3xl text-obsidian md:text-4xl">
+                  The rituals behind the <em>ceremony.</em>
+                </h2>
+                <dl className="mt-8 grid grid-cols-1 gap-8 sm:grid-cols-2">
+                  {story.rituals.map((ritual) => (
+                    <div key={ritual.name} className="border-t border-line-dark pt-5">
+                      <dt className="font-display text-xl text-obsidian">{ritual.name}</dt>
+                      <dd className="mt-2 text-sm leading-relaxed text-char/75">{ritual.description}</dd>
+                    </div>
+                  ))}
+                </dl>
+              </div>
+            )}
           </div>
         </div>
       </section>

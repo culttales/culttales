@@ -31,7 +31,7 @@ export default function RevealText({
       initial={{ clipPath: "inset(0 0 100% 0)", opacity: 0.6 }}
       whileInView={{ clipPath: "inset(0 0 0% 0)", opacity: 1 }}
       viewport={{ once: true, margin: "-10% 0px -10% 0px" }}
-      transition={{ duration: 1, ease: [0.22, 1, 0.36, 1], delay }}
+      transition={{ duration: 1.5, ease: [0.22, 1, 0.36, 1], delay }}
       className={className}
     >
       {children}

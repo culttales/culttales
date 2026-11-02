@@ -41,6 +41,30 @@ export type Story = {
 // names, text and images with each real wedding before launch.
 export const stories: Story[] = [
   {
+    slug: "alana-jafiz-wedding",
+    title: "Alana Anish & Jafiz Javad",
+    coupleNames: "Alana Anish & Jafiz Javad",
+    location: "Kerala",
+    region: "Kerala",
+    year: "2026",
+    category: "Wedding Story",
+    zone: "south",
+    heroImage: "/images/alana-jafiz/portrait.jpg",
+    cardImage: "/images/alana-jafiz/portrait.jpg",
+    cardFocus: "40% 35%",
+    excerpt:
+      "A Kerala wedding in blush and champagne, held among palms and tropical leaves.",
+    openingLine: "Blush sequins, a drifting veil and a garden full of green.",
+    description:
+      "Alana and Jafiz's wedding in Kerala, dressed in soft blush and champagne against a backdrop of palms, heliconia and green lawns. A held hand, a lowered gaze and a quiet touch on the shoulder carried the day.",
+    images: [
+      { src: "/images/alana-jafiz/vows.jpg", alt: "Jafiz and Alana holding hands and looking at each other among tropical plants", orientation: "portrait" },
+      { src: "/images/alana-jafiz/chair.jpg", alt: "Alana resting her hand on Jafiz's shoulder as he looks up at her", orientation: "portrait" },
+    ],
+    rituals: [],
+    featured: true,
+  },
+  {
     slug: "aiswarya-jishnu-engagement",
     title: "Aiswarya & Jishnu",
     coupleNames: "Aiswarya & Jishnu",

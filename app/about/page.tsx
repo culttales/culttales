@@ -77,10 +77,6 @@ export default function AboutPage() {
                   className="object-cover"
                 />
               </div>
-              <figcaption className="mt-3 flex justify-between text-[10px] uppercase tracking-[0.18em] text-muted">
-                <span>Fig. 01 — Among family</span>
-                <span className="font-display text-[13px] normal-case italic tracking-normal">Not how it looks, how it feels</span>
-              </figcaption>
             </figure>
           </Reveal>
 

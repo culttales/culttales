@@ -41,6 +41,32 @@ export type Story = {
 // names, text and images with each real wedding before launch.
 export const stories: Story[] = [
   {
+    slug: "arun-prabishna-wedding",
+    title: "Arun & Prabishna",
+    coupleNames: "Arun & Prabishna",
+    location: "Kerala",
+    region: "Kerala",
+    year: "2026",
+    category: "Wedding Story",
+    zone: "south",
+    heroImage: "/images/arun-prabishna/doorway.jpg",
+    cardImage: "/images/arun-prabishna/doorway.jpg",
+    cardFocus: "70% 65%",
+    excerpt:
+      "A Kerala celebration in emerald silk and cream mundu, set inside a traditional tiled-roof home.",
+    openingLine: "Emerald silk, a brass bell and a house that remembers.",
+    description:
+      "Arun and Prabishna's celebration at a traditional Kerala home, all terracotta tiles, carved timber and warm lamplight. She wore emerald and magenta Kanjivaram silk, he wore a cream kurta and gold-bordered mundu, and the day moved between easy laughter and quiet, framed stillness.",
+    images: [
+      { src: "/images/arun-prabishna/balcony.jpg", alt: "Arun and Prabishna laughing together at a carved wooden balcony", orientation: "portrait" },
+      { src: "/images/arun-prabishna/bride.jpg", alt: "Prabishna smiling in an emerald saree in warm lamplight", orientation: "portrait" },
+      { src: "/images/arun-prabishna/hallway.jpg", alt: "Prabishna standing beside Arun seated in a wooden chair in a timber-beamed hallway", orientation: "portrait" },
+      { src: "/images/arun-prabishna/chair.jpg", alt: "Arun seated in a wooden chair with Prabishna's arm around his shoulders", orientation: "portrait" },
+    ],
+    rituals: [],
+    featured: true,
+  },
+  {
     slug: "alana-jafiz-wedding",
     title: "Alana Anish & Jafiz Javad",
     coupleNames: "Alana Anish & Jafiz Javad",

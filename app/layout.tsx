@@ -39,6 +39,7 @@ export const metadata: Metadata = {
   },
   description:
     "CULT. tales — where culture becomes story. Wedding photography, cinema and culture: unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+  alternates: { canonical: "./" },
   openGraph: {
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:

@@ -62,6 +62,20 @@ export default async function StoryPage({ params }: StoryPageProps) {
 
   return (
     <article className="bg-paper text-char">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Article",
+            headline: `${story.coupleNames} — ${story.location}`,
+            description: story.excerpt,
+            image: `https://culttales.in${story.heroImage}`,
+            url: `https://culttales.in/stories/${story.slug}`,
+            publisher: { "@type": "Organization", name: "CULT. tales" },
+          }).replace(/</g, "\\u003c"),
+        }}
+      />
       <div className="px-5 pt-[calc(7rem+env(safe-area-inset-top))] md:px-12 md:pt-[calc(8rem+env(safe-area-inset-top))]">
         <nav
           aria-label="Stories"

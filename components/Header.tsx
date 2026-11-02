@@ -53,6 +53,9 @@ export default function Header() {
             <Link
               key={link.href}
               href={link.href}
+              onClick={() => {
+                if (link.href === "/" && pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+              }}
               className={clsx(
                 "py-1 transition-colors hover:text-bronze",
                 (link.href === "/" ? pathname === "/" : pathname.startsWith(link.href)) && "text-bronze"

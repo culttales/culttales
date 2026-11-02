@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "motion/react";
 import { contact } from "@/lib/site";
 import SoundToggle from "./SoundToggle";
@@ -12,6 +13,7 @@ type MobileMenuProps = {
 };
 
 export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
+  const pathname = usePathname();
   return (
     <AnimatePresence>
       {open && (
@@ -25,7 +27,16 @@ export default function MobileMenu({ open, onClose, links }: MobileMenuProps) {
         >
           <nav className="flex flex-col items-center gap-5 font-display text-[1.65rem] leading-tight">
             {[...links, { label: "Contact", href: "/contact" }].map((link) => (
-              <Link key={link.href} href={link.href} onClick={onClose} className="transition-colors hover:text-bronze">
+              <Link
+                key={link.href}
+                href={link.href}
+                onClick={() => {
+                  onClose();
+                  // Already on the homepage: Next won't navigate, so scroll up ourselves.
+                  if (link.href === "/" && pathname === "/") window.scrollTo({ top: 0, behavior: "smooth" });
+                }}
+                className="transition-colors hover:text-bronze"
+              >
                 {link.label}
               </Link>
             ))}

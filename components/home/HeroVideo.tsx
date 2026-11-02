@@ -3,15 +3,19 @@
 import { useEffect, useRef, useState } from "react";
 import { useReducedMotion } from "motion/react";
 import type { Film } from "@/lib/films";
+import { playWithSound, useSoundOn } from "@/lib/sound";
+import SoundToggle from "../SoundToggle";
 import VideoPlayer from "../VideoPlayer";
 
 /**
- * Full-screen opening: a muted, looping film of a real wedding behind a
- * centred headline. The loop pauses while the hero is off screen, and
- * stays on its poster frame for visitors who prefer reduced motion.
+ * Full-screen opening: a looping film of a real wedding behind a centred
+ * headline, audible only while the sound toggle is on. The loop pauses, and so
+ * falls silent, while the hero is off screen or a film is open, and stays on
+ * its poster frame for visitors who prefer reduced motion.
  */
 export default function HeroVideo({ film }: { film?: Film }) {
   const reduceMotion = useReducedMotion();
+  const soundOn = useSoundOn();
   const sectionRef = useRef<HTMLElement>(null);
   const videoRef = useRef<HTMLVideoElement>(null);
   const [filmOpen, setFilmOpen] = useState(false);
@@ -26,7 +30,7 @@ export default function HeroVideo({ film }: { film?: Film }) {
     }
     let inView = true;
     const sync = () => {
-      if (inView && !document.hidden) void video.play().catch(() => {});
+      if (inView && !document.hidden) playWithSound(video);
       else video.pause();
     };
     const observer = new IntersectionObserver(([entry]) => {
@@ -48,7 +52,7 @@ export default function HeroVideo({ film }: { film?: Film }) {
     >
       <video
         ref={videoRef}
-        muted
+        muted={!soundOn}
         loop
         playsInline
         autoPlay={!reduceMotion}
@@ -57,7 +61,7 @@ export default function HeroVideo({ film }: { film?: Film }) {
         aria-hidden
         className="absolute inset-0 h-full w-full object-cover"
       >
-        <source src="/videos/hero-loop.mp4" type="video/mp4" />
+        <source src="/videos/hero-film.mp4" type="video/mp4" />
       </video>
 
       <div className="pointer-events-none absolute inset-0 bg-obsidian/45" />
@@ -93,6 +97,11 @@ export default function HeroVideo({ film }: { film?: Film }) {
       >
         <span aria-hidden className="h-12 w-px bg-paper/40 transition-colors group-hover:bg-gold" />
       </a>
+
+      {/* The header hides its toggle on phones, where it would crowd the logo. */}
+      <div className="hero-rise absolute bottom-8 right-5 z-10 [--d:360ms] sm:hidden">
+        <SoundToggle light />
+      </div>
 
       {film?.src && (
         <VideoPlayer

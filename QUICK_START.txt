@@ -58,7 +58,7 @@ app/
 components/
   home/                 Homepage sections: HeroVideo, Manifesto,
                         StoriesShowcase, Cinema, Craft, JournalNotes, Inquire
-  Header, Footer, MobileMenu, AmbientToggle (optional ambient music)
+  Header, Footer, MobileMenu, SoundToggle (site-wide video sound on/off)
   StoryBoard            Story filters and magazine grid
   InquiryForm           The wedding enquiry form
   VideoPlayer           The "screening room" film dialog

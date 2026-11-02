@@ -41,6 +41,32 @@ export type Story = {
 // names, text and images with each real wedding before launch.
 export const stories: Story[] = [
   {
+    slug: "aiswarya-jishnu-engagement",
+    title: "Aiswarya & Jishnu",
+    coupleNames: "Aiswarya & Jishnu",
+    location: "Kerala",
+    region: "Kerala",
+    year: "2026",
+    category: "Wedding Story",
+    zone: "south",
+    heroImage: "/images/aiswarya-jishnu/garden.jpg",
+    cardImage: "/images/aiswarya-jishnu/garden.jpg",
+    cardFocus: "50% 60%",
+    excerpt:
+      "A Kerala engagement in cream and gold, set between whitewashed doors, patterned tiles and a tropical garden.",
+    openingLine: "Cream silk, brass bells and a garden gone quiet.",
+    description:
+      "Aiswarya and Jishnu's engagement in Kerala, dressed in matching cream and gold. Soft light fell across carved white doors and old patterned tiles, and the couple slipped between easy laughter and stillness among banana leaves and hanging vines.",
+    images: [
+      { src: "/images/aiswarya-jishnu/steps.jpg", alt: "Jishnu touching Aiswarya's hair as they sit together on tiled steps before a white carved door", orientation: "portrait" },
+      { src: "/images/aiswarya-jishnu/seated.jpg", alt: "Aiswarya and Jishnu seated among green plants in a whitewashed courtyard", orientation: "portrait" },
+      { src: "/images/aiswarya-jishnu/bride.jpg", alt: "Aiswarya in a cream saree seated beside a white door with brass bells", orientation: "portrait" },
+      { src: "/images/aiswarya-jishnu/engaged.webp", alt: "We are Engaged, Aiswarya and Jishnu, two portraits among tropical leaves", orientation: "portrait" },
+    ],
+    rituals: [],
+    featured: true,
+  },
+  {
     slug: "shatrunjay-pushkar-wedding",
     title: "Shatrunjay & Surbhi",
     coupleNames: "Shatrunjay & Surbhi",

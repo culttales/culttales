@@ -1,6 +1,5 @@
 import Image from "next/image";
 import Reveal from "../Reveal";
-import RotatingBadge from "../RotatingBadge";
 import SectionMarker from "../SectionMarker";
 
 // What the studio is, in plain facts rather than invented numbers.
@@ -29,10 +28,6 @@ export default function Manifesto() {
                   className="card-img aspect-[4/5] h-auto w-full object-cover"
                 />
               </div>
-              <figcaption className="mt-3 flex justify-between gap-4 text-[10px] uppercase tracking-[0.18em] text-muted">
-                <span>Fig. 01 — Among family</span>
-                <span className="font-display text-[13px] normal-case italic tracking-normal">The hour before</span>
-              </figcaption>
             </figure>
           </Reveal>
 
@@ -55,20 +50,11 @@ export default function Manifesto() {
               </p>
             </div>
 
-            <div className="mt-9 flex items-center justify-between gap-6 border-t border-line-dark pt-7">
-              <div>
-                <p className="font-display text-2xl italic text-obsidian">The CULT. tales team</p>
-                <p className="mt-1 text-[10px] uppercase tracking-editorial text-muted">
-                  Visual storytellers &middot; Memory keepers
-                </p>
-              </div>
-              <RotatingBadge
-                id="manifesto-seal"
-                text="Short for culture · Long on tales · "
-                className="relative h-20 w-20 shrink-0 text-bronze"
-              >
-                <span className="font-display text-lg italic">CT</span>
-              </RotatingBadge>
+            <div className="mt-9 border-t border-line-dark pt-7">
+              <p className="font-display text-2xl italic text-obsidian">The CULT. tales team</p>
+              <p className="mt-1 text-[10px] uppercase tracking-editorial text-muted">
+                Visual storytellers &middot; Memory keepers
+              </p>
             </div>
           </Reveal>
 

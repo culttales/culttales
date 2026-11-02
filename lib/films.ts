@@ -31,7 +31,7 @@ export const films: Film[] = [
   {
     slug: "the-sangeet",
     title: "The Sangeet",
-    location: "Kerala",
+    location: "Pushkar, Rajasthan",
     year: "2026",
     thumbnail: "/images/film-2-still.jpg",
     duration: "0:39",

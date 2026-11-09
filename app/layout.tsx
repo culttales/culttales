@@ -9,6 +9,7 @@ import HideOnPreview from "@/components/HideOnPreview";
 import Intro from "@/components/Intro";
 import MotionProvider from "@/components/MotionProvider";
 import { contact } from "@/lib/site";
+import { SITE_NAME, SITE_URL, jsonLd } from "@/lib/seo";
 
 // Headings: Noto Serif Display, a light, high-contrast Didone in the
 // fashion-editorial style, set slightly condensed (see globals.css).
@@ -31,28 +32,30 @@ const jost = Jost({
   display: "swap",
 });
 
+const homeTitle = "Wedding Photography & Films Across India — CULT. tales";
+const homeDescription =
+  "Pan-Indian wedding photography and cinematic wedding films by CULT. tales, based in Kerala and Rajasthan and travelling across India for every ritual.";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.culttales.com"),
+  metadataBase: new URL(SITE_URL),
   title: {
-    default: "CULT. tales — Pan Indian Wedding Stories",
-    template: "%s — CULT. tales",
+    default: homeTitle,
+    template: `%s — ${SITE_NAME}`,
   },
-  description:
-    "CULT. tales — where culture becomes story. Wedding photography, cinema and culture: unearthing the real rituals, colourful traditions, and beautiful tales of love across India.",
+  description: homeDescription,
   alternates: { canonical: "./" },
   openGraph: {
-    title: "CULT. tales — Pan Indian Wedding Stories",
-    description:
-      "Where culture becomes story. Wedding photography, cinema and culture from across India.",
-    url: "https://www.culttales.com",
-    siteName: "CULT. tales",
+    title: homeTitle,
+    description: homeDescription,
+    url: SITE_URL,
+    siteName: SITE_NAME,
+    locale: "en_IN",
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "CULT. tales — Pan Indian Wedding Stories",
-    description:
-      "Where culture becomes story. Wedding photography, cinema and culture from across India.",
+    title: homeTitle,
+    description: homeDescription,
   },
 };
 
@@ -67,18 +70,34 @@ export const viewport: Viewport = {
 const studio = {
   "@context": "https://schema.org",
   "@type": "ProfessionalService",
-  name: "CULT. tales",
+  "@id": `${SITE_URL}/#studio`,
+  name: SITE_NAME,
   slogan: "Where Culture Becomes Story",
   description:
-    "A Pan-Indian wedding photography and wedding cinema team documenting weddings in their most authentic form.",
-  url: "https://www.culttales.com",
-  logo: "https://www.culttales.com/logo/cult-tales-logo-black.png",
-  image: "https://www.culttales.com/opengraph-image.jpg",
+    "A Pan-Indian wedding photography and wedding cinema team based in Kerala and Rajasthan, documenting weddings in their most authentic form.",
+  url: SITE_URL,
+  logo: `${SITE_URL}/logo/cult-tales-logo-black.png`,
+  image: `${SITE_URL}/opengraph-image.jpg`,
   email: contact.email,
   telephone: contact.phone,
-  areaServed: "India",
-  serviceType: ["Wedding photography", "Wedding cinema"],
+  address: [
+    { "@type": "PostalAddress", addressRegion: "Kerala", addressCountry: "IN" },
+    { "@type": "PostalAddress", addressRegion: "Rajasthan", addressCountry: "IN" },
+  ],
+  areaServed: { "@type": "Country", name: "India" },
+  serviceType: ["Wedding photography", "Wedding cinematography", "Engagement photography"],
+  knowsAbout: ["Indian wedding rituals", "Kerala weddings", "Rajasthani weddings", "Bengali weddings"],
   sameAs: [contact.instagramUrl, contact.youtubeUrl, contact.facebookUrl],
+};
+
+const website = {
+  "@context": "https://schema.org",
+  "@type": "WebSite",
+  "@id": `${SITE_URL}/#website`,
+  name: SITE_NAME,
+  url: SITE_URL,
+  inLanguage: "en-IN",
+  publisher: { "@id": `${SITE_URL}/#studio` },
 };
 
 export default function RootLayout({
@@ -107,8 +126,9 @@ export default function RootLayout({
         </a>
         <script
           type="application/ld+json"
-          dangerouslySetInnerHTML={{ __html: JSON.stringify(studio).replace(/</g, "\\u003c") }}
+          dangerouslySetInnerHTML={jsonLd(studio)}
         />
+        <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(website)} />
         <MotionProvider>
           <Intro />
           <SmoothScroll />

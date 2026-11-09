@@ -1,6 +1,9 @@
 import SectionMarker from "./SectionMarker";
+import { jsonLd } from "@/lib/seo";
 
-const QUESTIONS = [
+export type Question = { q: string; a: string };
+
+const QUESTIONS: Question[] = [
   {
     q: "What do you cover at a wedding?",
     a: "We document every wedding across photography, wedding cinema and culture. Photography holds the detail, cinema carries the emotion, and our culture work places the day within its traditions.",
@@ -23,9 +26,21 @@ const QUESTIONS = [
   },
 ];
 
-export default function FAQ() {
+// The same questions are sent as FAQPage data so search engines can read them.
+export default function FAQ({ questions = QUESTIONS }: { questions?: Question[] }) {
+  const schema = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: questions.map((item) => ({
+      "@type": "Question",
+      name: item.q,
+      acceptedAnswer: { "@type": "Answer", text: item.a },
+    })),
+  };
+
   return (
     <section className="border-t border-line-dark bg-paper px-5 py-24 md:px-12 md:py-36">
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(schema)} />
       <div className="mx-auto max-w-site">
         <SectionMarker title="Questions" aside="Before you write to us" />
         <div className="mt-14 grid grid-cols-1 gap-12 lg:grid-cols-12 lg:gap-10">
@@ -36,7 +51,7 @@ export default function FAQ() {
           </div>
 
           <div className="border-t border-line-dark lg:col-span-7 lg:col-start-6">
-            {QUESTIONS.map((item) => (
+            {questions.map((item) => (
               <details key={item.q} className="faq group border-b border-line-dark">
                 <summary className="flex cursor-pointer list-none items-center justify-between gap-6 py-6 font-display text-[1.4rem] leading-snug text-obsidian transition-colors hover:text-bronze md:py-7 md:text-2xl">
                   {item.q}

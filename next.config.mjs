@@ -23,6 +23,15 @@ const nextConfig = {
   experimental: {
     scrollRestoration: true,
   },
+  // Placeholder stories removed in #33 that Google had already indexed.
+  async redirects() {
+    return [
+      { source: "/stories/kerala-backwater-wedding", destination: "/wedding-photography/kerala", permanent: true },
+      { source: "/stories/tamil-nadu-temple-wedding", destination: "/stories", permanent: true },
+      { source: "/stories/punjab-anand-karaj", destination: "/stories", permanent: true },
+      { source: "/stories/goa-konkani-wedding", destination: "/stories", permanent: true },
+    ];
+  },
   async headers() {
     return [{ source: "/:path*", headers: securityHeaders }];
   },

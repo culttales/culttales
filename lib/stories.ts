@@ -17,6 +17,10 @@ export type Story = {
   region: string;
   year: string;
   category: string;
+  /** What the story is, in the words people search for, e.g. "Kerala Wedding Story". */
+  headline: string;
+  /** Search result text; falls back to the excerpt. Aim for 140-160 characters. */
+  metaDescription?: string;
   /** Filter group on the homepage. */
   zone: "north" | "south" | "east-west";
   heroImage: string;
@@ -48,6 +52,9 @@ export const stories: Story[] = [
     region: "Rajasthan",
     year: "2026",
     category: "Wedding Story",
+    headline: "Pushkar Wedding, Rajasthan",
+    metaDescription:
+      "Shatrunjay & Surbhi's three-day Rajasthani wedding on the edge of Pushkar's holy lake: baraat, mayra and pheras, in photographs and film by CULT. tales.",
     zone: "north",
     heroImage: "/images/wedding-canopy.jpg",
     cardImage: "/images/moment-8.jpg",
@@ -78,6 +85,9 @@ export const stories: Story[] = [
     region: "Kerala",
     year: "2026",
     category: "Wedding Story",
+    headline: "Kerala Engagement Story",
+    metaDescription:
+      "Aiswarya & Jishnu's Kerala engagement in cream and gold, among carved white doors, patterned tiles and a tropical garden. Photographed by CULT. tales.",
     zone: "south",
     heroImage: "/images/aiswarya-jishnu/garden.jpg",
     cardImage: "/images/aiswarya-jishnu/garden.jpg",
@@ -104,6 +114,9 @@ export const stories: Story[] = [
     region: "Kerala",
     year: "2026",
     category: "Wedding Story",
+    headline: "Kerala Wedding Story",
+    metaDescription:
+      "Alana Anish & Jafiz Javad's Kerala wedding in blush and champagne, among palms, heliconia and green lawns. Wedding photography by CULT. tales.",
     zone: "south",
     heroImage: "/images/alana-jafiz/portrait.jpg",
     cardImage: "/images/alana-jafiz/portrait.jpg",
@@ -128,6 +141,9 @@ export const stories: Story[] = [
     region: "Kerala",
     year: "2026",
     category: "Wedding Story",
+    headline: "Kerala Wedding Story",
+    metaDescription:
+      "Arun & Prabishna's Kerala wedding in emerald Kanjivaram silk and a gold-bordered mundu, inside a traditional tiled-roof home. By CULT. tales.",
     zone: "south",
     heroImage: "/images/arun-prabishna/doorway.jpg",
     cardImage: "/images/arun-prabishna/doorway.jpg",
@@ -154,6 +170,9 @@ export const stories: Story[] = [
     region: "West Bengal",
     year: "2025",
     category: "Wedding Story",
+    headline: "Bengali Wedding in Shantiniketan",
+    metaDescription:
+      "Rohan & Anwesha's Bengali wedding in Shantiniketan: alpana floor art, dhunuchi dance and the hush of Shubho Drishti, photographed by CULT. tales.",
     zone: "east-west",
     heroImage: "/images/moment-5.jpg",
     cardImage: "/images/moment-5.jpg",

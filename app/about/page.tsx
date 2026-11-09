@@ -1,15 +1,17 @@
 import type { Metadata } from "next";
+import { breadcrumbs, jsonLd, pageMetadata } from "@/lib/seo";
 import Image from "next/image";
 import ClosingInvite from "@/components/ClosingInvite";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
 import SectionMarker from "@/components/SectionMarker";
 
-export const metadata: Metadata = {
-  title: "About",
+export const metadata: Metadata = pageMetadata({
+  title: "About Our Pan-Indian Wedding Photographers",
   description:
     "CULT. tales is a Pan-Indian wedding photography and wedding cinema team based in Kerala and Rajasthan, documenting weddings in their most authentic form.",
-};
+  path: "/about",
+});
 
 const APPROACH = [
   {
@@ -51,12 +53,13 @@ const SERVICES = [
 export default function AboutPage() {
   return (
     <>
+      <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbs([{ name: "About", path: "/about" }]))} />
       <PageIntro
         label="About us — who we are"
         aside="Based in Kerala & Rajasthan"
         title={
           <>
-            Storytellers of <em>culture, love</em> &amp; tradition.
+            Wedding storytellers of <em>culture, love</em> &amp; tradition.
           </>
         }
         intro="A Pan-Indian wedding photography and wedding cinema team, travelling across India and beyond to document weddings in their most authentic form."

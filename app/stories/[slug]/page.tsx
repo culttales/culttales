@@ -6,6 +6,8 @@ import clsx from "clsx";
 import ClosingInvite from "@/components/ClosingInvite";
 import Reveal from "@/components/Reveal";
 import VideoPlayerLauncher from "@/components/VideoPlayerLauncher";
+import { getRegionByName } from "@/lib/regions";
+import { SITE_NAME, SITE_URL, breadcrumbs, jsonLd, pageMetadata } from "@/lib/seo";
 import { getAllStories, getAdjacentStory, getStoryBySlug, type Story } from "@/lib/stories";
 
 type StoryPageProps = {
@@ -21,15 +23,12 @@ export async function generateMetadata({ params }: StoryPageProps): Promise<Meta
   const story = getStoryBySlug(slug);
   if (!story) return {};
 
-  return {
-    title: `${story.coupleNames} — ${story.location}`,
-    description: story.excerpt,
-    openGraph: {
-      title: `${story.coupleNames} — ${story.location}`,
-      description: story.excerpt,
-      images: [story.heroImage],
-    },
-  };
+  return pageMetadata({
+    title: `${story.coupleNames} — ${story.headline}`,
+    description: story.metaDescription ?? story.excerpt,
+    path: `/stories/${story.slug}`,
+    images: [story.heroImage],
+  });
 }
 
 // Gallery rhythm: wide frames span the page; tall frames pair up with an
@@ -59,22 +58,34 @@ export default async function StoryPage({ params }: StoryPageProps) {
   const previous = all[(index - 1 + all.length) % all.length];
   const next = getAdjacentStory(story.slug);
   const gallery = galleryLayout(story.images);
+  const region = getRegionByName(story.region);
+  const path = `/stories/${story.slug}`;
 
   return (
     <article className="bg-paper text-char">
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{
-          __html: JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "Article",
-            headline: `${story.coupleNames} — ${story.location}`,
-            description: story.excerpt,
-            image: `https://culttales.in${story.heroImage}`,
-            url: `https://culttales.in/stories/${story.slug}`,
-            publisher: { "@type": "Organization", name: "CULT. tales" },
-          }).replace(/</g, "\\u003c"),
-        }}
+        dangerouslySetInnerHTML={jsonLd({
+          "@context": "https://schema.org",
+          "@type": "Article",
+          headline: `${story.coupleNames} — ${story.headline}`,
+          description: story.metaDescription ?? story.excerpt,
+          image: `${SITE_URL}${story.heroImage}`,
+          url: `${SITE_URL}${path}`,
+          mainEntityOfPage: `${SITE_URL}${path}`,
+          contentLocation: { "@type": "Place", name: story.location },
+          author: { "@id": `${SITE_URL}/#studio`, name: SITE_NAME },
+          publisher: { "@id": `${SITE_URL}/#studio`, name: SITE_NAME },
+        })}
+      />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={jsonLd(
+          breadcrumbs([
+            { name: "Wedding Stories", path: "/stories" },
+            { name: story.coupleNames, path },
+          ])
+        )}
       />
       <div className="px-5 pt-[calc(7rem+env(safe-area-inset-top))] md:px-12 md:pt-[calc(8rem+env(safe-area-inset-top))]">
         <nav
@@ -104,10 +115,13 @@ export default async function StoryPage({ params }: StoryPageProps) {
       <header className="px-5 pt-14 md:px-12 md:pt-20">
         <div className="mx-auto max-w-3xl space-y-5 text-center">
           <p className="eyebrow">
-            {story.location} &middot; {story.year} &middot; {story.category}
+            {story.location} &middot; {story.year}
           </p>
           <h1 className="text-[3.25rem] font-light leading-none text-obsidian sm:text-7xl md:text-[88px]">
-            {story.coupleNames}
+            {story.coupleNames}{" "}
+            <span className="mt-5 block font-sans text-[11px] font-medium uppercase not-italic leading-normal tracking-editorial text-bronze">
+              {story.headline}
+            </span>
           </h1>
           <p className="font-display text-2xl italic text-char/80">&ldquo;{story.openingLine}&rdquo;</p>
         </div>
@@ -163,6 +177,18 @@ export default async function StoryPage({ params }: StoryPageProps) {
                     </div>
                   ))}
                 </dl>
+              </div>
+            )}
+
+            {region && (
+              <div className="border-t border-line-dark pt-8">
+                <h2 className="text-3xl text-obsidian md:text-4xl">
+                  Weddings in <em>{region.name}.</em>
+                </h2>
+                <p className="mt-5 text-base font-light leading-[1.75] text-char/85">{region.storyNote}</p>
+                <Link href={`/wedding-photography/${region.slug}`} className="text-link mt-6">
+                  {region.name} wedding photography &amp; films &rarr;
+                </Link>
               </div>
             )}
           </div>

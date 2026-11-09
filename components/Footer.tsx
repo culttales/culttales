@@ -73,7 +73,15 @@ export default function Footer() {
           <div className="md:col-span-4">
             <p className="text-[10px] uppercase tracking-editorial text-paper/50">The Studio</p>
             <p className="mt-4 text-sm font-light leading-relaxed text-paper/75">
-              Based in Kerala &amp; Rajasthan.
+              Based in{" "}
+              <Link href="/wedding-photography/kerala" className="underline-offset-4 transition-colors hover:text-bronze hover:underline">
+                Kerala
+              </Link>{" "}
+              &amp;{" "}
+              <Link href="/wedding-photography/rajasthan" className="underline-offset-4 transition-colors hover:text-bronze hover:underline">
+                Rajasthan
+              </Link>
+              .
               <br />
               Travelling across India and beyond.
             </p>

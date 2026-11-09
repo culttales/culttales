@@ -3,7 +3,7 @@ import { getAllStories } from "@/lib/stories";
 import { getAllJournalPosts } from "@/lib/journal";
 import { SHOW_JOURNAL } from "@/lib/site";
 
-const baseUrl = "https://culttales.com";
+const baseUrl = "https://www.culttales.com";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const stories = getAllStories().map((story) => ({

@@ -32,7 +32,7 @@ const jost = Jost({
   display: "swap",
 });
 
-const homeTitle = "Wedding Photography & Films Across India — CULT. tales";
+const homeTitle = "CULT. tales — Where Culture Becomes Story | Wedding Photography India";
 const homeDescription =
   "Pan-Indian wedding photography and cinematic wedding films by CULT. tales, based in Kerala and Rajasthan and travelling across India for every ritual.";
 
@@ -95,6 +95,7 @@ const website = {
   "@type": "WebSite",
   "@id": `${SITE_URL}/#website`,
   name: SITE_NAME,
+  alternateName: ["CULT tales", "Cult Tales", "culttales"],
   url: SITE_URL,
   inLanguage: "en-IN",
   publisher: { "@id": `${SITE_URL}/#studio` },

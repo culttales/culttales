@@ -32,7 +32,7 @@ const jost = Jost({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://culttales.com"),
+  metadataBase: new URL("https://www.culttales.com"),
   title: {
     default: "CULT. tales — Pan Indian Wedding Stories",
     template: "%s — CULT. tales",
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
     title: "CULT. tales — Pan Indian Wedding Stories",
     description:
       "Where culture becomes story. Wedding photography, cinema and culture from across India.",
-    url: "https://culttales.com",
+    url: "https://www.culttales.com",
     siteName: "CULT. tales",
     type: "website",
   },
@@ -71,9 +71,9 @@ const studio = {
   slogan: "Where Culture Becomes Story",
   description:
     "A Pan-Indian wedding photography and wedding cinema team documenting weddings in their most authentic form.",
-  url: "https://culttales.com",
-  logo: "https://culttales.com/logo/cult-tales-logo-black.png",
-  image: "https://culttales.com/opengraph-image.jpg",
+  url: "https://www.culttales.com",
+  logo: "https://www.culttales.com/logo/cult-tales-logo-black.png",
+  image: "https://www.culttales.com/opengraph-image.jpg",
   email: contact.email,
   telephone: contact.phone,
   areaServed: "India",

@@ -7,6 +7,6 @@ export default function robots(): MetadataRoute.Robots {
       allow: "/",
       disallow: ["/api/"],
     },
-    sitemap: "https://culttales.com/sitemap.xml",
+    sitemap: "https://www.culttales.com/sitemap.xml",
   };
 }

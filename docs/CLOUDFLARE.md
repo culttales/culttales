@@ -29,5 +29,7 @@ npm run preview   # builds and serves the site in the Workers runtime
 3. **Connect the repo.** Workers & Pages → Create → Import a repository → `culttales/culttales`,
    branch `main`. Build command `npx opennextjs-cloudflare build`, deploy command
    `npx opennextjs-cloudflare deploy`. Or deploy by hand with `npm run deploy`.
-4. **Domain.** Add `culttales.com` under the Worker's Settings → Domains & Routes once the
-   `*.workers.dev` URL looks right, then remove the domain from Vercel.
+4. **Domain.** Add `www.culttales.com` (the canonical address) and `culttales.com` under the
+   Worker's Settings → Domains & Routes once the `*.workers.dev` URL looks right, then remove the
+   domain from Vercel. Add a Redirect Rule (Rules → Redirect Rules) sending `culttales.com/*` to
+   `https://www.culttales.com/${1}` with a 301, keeping the query string.

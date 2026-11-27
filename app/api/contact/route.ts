@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { getCloudflareContext } from "@opennextjs/cloudflare";
 import { contact } from "@/lib/site";
-import { BUDGETS } from "@/lib/budgets";
+import { BUDGETS, GUESTS, SCOPES } from "@/lib/enquiry-options";
 import {
   buildConfirmationHtml,
   buildConfirmationText,
@@ -81,8 +81,11 @@ export async function POST(request: Request) {
     data[key] = text.trim().slice(0, 4000);
   }
 
-  // Optional; anything outside the offered ranges is dropped.
-  if (!(BUDGETS as readonly string[]).includes(data.budget)) data.budget = "";
+  // Optional choices; anything outside the offered options is dropped.
+  const offered = (options: readonly string[], value: string) => (options.includes(value) ? value : "");
+  data.budget = offered(BUDGETS, data.budget);
+  data.guests = offered(GUESTS, data.guests);
+  data.scope = offered(SCOPES, data.scope);
 
   if (!data.name || !data.message || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
     return NextResponse.json(
@@ -225,12 +228,4 @@ async function saveEnquiry(data: Record<Field, string>, emailed: boolean) {
     return false;
   }
   return true;
-}
-
-function escapeHtml(value: string) {
-  return value
-    .replace(/&/g, "&amp;")
-    .replace(/</g, "&lt;")
-    .replace(/>/g, "&gt;")
-    .replace(/"/g, "&quot;");
 }

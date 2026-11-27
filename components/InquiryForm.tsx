@@ -5,7 +5,7 @@ import { useId, useState, type FormEvent } from "react";
 import { AnimatePresence, motion } from "motion/react";
 import clsx from "clsx";
 import { contact } from "@/lib/site";
-import { BUDGETS } from "@/lib/budgets";
+import { BUDGETS, GUESTS, SCOPES } from "@/lib/enquiry-options";
 import Turnstile from "./Turnstile";
 
 const RITUALS = [
@@ -16,10 +16,6 @@ const RITUALS = [
   "Reception",
   "Pre-wedding shoot",
 ];
-
-const GUESTS = ["Intimate (under 100 guests)", "100 – 250 guests", "250 – 500 guests", "500+ guests"];
-
-const SCOPES = ["Photography + Wedding Cinema", "Photography only", "Wedding Cinema only"];
 
 type Sent = { email: string; dates: string; venue: string };
 

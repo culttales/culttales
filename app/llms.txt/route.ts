@@ -21,7 +21,7 @@ export function GET() {
 
 - Services: wedding photography, wedding cinematography (films usually three to five minutes long), engagement photography, cultural documentation of rituals and traditions.
 - Based in: Kerala and Rajasthan, India. Travels across every region of India and abroad.
-- Contact: ${contact.email}, ${contact.phone}. Enquiries are answered within 48 hours.
+- Contact: ${contact.email}, ${contact.phone}.
 
 ## Main pages
 

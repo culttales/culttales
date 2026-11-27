@@ -158,15 +158,23 @@ export function buildEnquiryText(data: EnquiryData) {
   ].join("\n");
 }
 
+// The acknowledgement goes to whatever address was typed into the form, so it
+// repeats nothing free-form: a first name only when it looks like a name, and
+// only the fixed choices the API accepts. Otherwise anyone could use the form
+// to send their own text, links included, from the studio's address.
+function greetingName(name: string) {
+  const first = name.split(/\s+/)[0] ?? "";
+  return /^[\p{L}\p{M}'’-]{1,24}$/u.test(first) ? first : "";
+}
+
 // Automatic acknowledgement sent to the person who submitted the enquiry.
 // No response time is promised on purpose.
 export function buildConfirmationHtml(data: EnquiryData) {
-  const first = escapeHtml(data.name.split(/\s+/)[0] || data.name);
+  const first = greetingName(data.name);
   const rows = (
     [
-      ["Celebration dates", data.wedding],
-      ["Venue & city", data.location],
       ["Coverage", data.scope],
+      ["Guests", data.guests],
     ] as const
   )
     .filter(([, v]) => v)
@@ -185,7 +193,7 @@ export function buildConfirmationHtml(data: EnquiryData) {
   <tr><td style="background:${INK};padding:28px 32px"><div style="font:400 22px/1 ${SERIF};letter-spacing:1px;color:${IVORY}">CULT<span style="color:${BRONZE}">.</span> tales</div></td></tr>
   <tr><td style="background:#FFFFFF;padding:40px 32px 8px">
     ${label("Enquiry received")}
-    <div style="font:400 30px/1.2 ${SERIF};color:${INK}">Thank you, ${first}.</div>
+    <div style="font:400 30px/1.2 ${SERIF};color:${INK}">Thank you${first ? `, ${escapeHtml(first)}` : ""}.</div>
   </td></tr>
   <tr><td style="background:#FFFFFF;padding:12px 32px 8px;font:400 15px/1.7 ${SANS};color:${INK}">
     <p style="margin:0 0 16px">We have received your enquiry and are grateful you thought of us for your celebration.</p>
@@ -204,8 +212,8 @@ export function buildConfirmationHtml(data: EnquiryData) {
 }
 
 export function buildConfirmationText(data: EnquiryData) {
-  const first = data.name.split(/\s+/)[0] || data.name;
-  return `Thank you, ${first}.
+  const first = greetingName(data.name);
+  return `Thank you${first ? `, ${first}` : ""}.
 
 We have received your enquiry and are grateful you thought of us for your celebration.
 

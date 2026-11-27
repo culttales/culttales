@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import clsx from "clsx";
@@ -23,6 +23,19 @@ export default function Header() {
   // The page the menu was opened on; navigating anywhere else closes it.
   const [menuPath, setMenuPath] = useState<string | null>(null);
   const menuOpen = menuPath === pathname;
+  const menuButtonRef = useRef<HTMLButtonElement>(null);
+
+  // Escape closes the mobile menu and puts focus back on its button.
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key !== "Escape") return;
+      setMenuPath(null);
+      menuButtonRef.current?.focus();
+    };
+    document.addEventListener("keydown", onKey);
+    return () => document.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 80);
@@ -67,6 +80,7 @@ export default function Header() {
         </nav>
 
         <button
+          ref={menuButtonRef}
           type="button"
           aria-label={menuOpen ? "Close menu" : "Open menu"}
           aria-expanded={menuOpen}

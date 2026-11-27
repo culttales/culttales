@@ -35,6 +35,16 @@ export function playWithSound(video: HTMLVideoElement) {
   });
 }
 
+/**
+ * For a film's volumechange event. The site mutes and unmutes films itself,
+ * which fires the same event, so only a change that differs from the current
+ * setting (the visitor using the film's own controls) counts as their choice.
+ */
+export function syncSoundFromVideo(video: HTMLVideoElement) {
+  const audible = !video.muted && video.volume > 0;
+  if (audible !== soundOn) setSoundOn(audible);
+}
+
 function subscribe(listener: () => void) {
   listeners.add(listener);
   return () => {

@@ -7,7 +7,7 @@ import PageIntro from "@/components/PageIntro";
 export const metadata: Metadata = pageMetadata({
   title: "Book a Wedding Photographer in India",
   description:
-    "Planning a wedding in Kerala, Rajasthan or anywhere in India? Tell CULT. tales your dates, rituals and story. We reply to every enquiry within 48 hours.",
+    "Planning a wedding in Kerala, Rajasthan or anywhere in India? Tell CULT. tales your dates, rituals and story. We reply to every enquiry personally.",
   path: "/contact",
 });
 
@@ -17,7 +17,7 @@ export default function ContactPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={jsonLd(breadcrumbs([{ name: "Contact", path: "/contact" }]))} />
       <PageIntro
         label="Contact — begin your story"
-        aside="We reply within 48 hours"
+        aside="We reply to every enquiry"
         title={
           <>
             Let&rsquo;s tell <em>your</em> wedding story.

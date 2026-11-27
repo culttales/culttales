@@ -22,7 +22,7 @@ const QUESTIONS: Question[] = [
   },
   {
     q: "How do we book you?",
-    a: "Tell us about your wedding through the enquiry form. We reply within 48 hours to talk through your dates, your plans and your story.",
+    a: "Tell us about your wedding through the enquiry form. We will write back to talk through your dates, your plans and your story.",
   },
 ];
 

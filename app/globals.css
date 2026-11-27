@@ -263,13 +263,16 @@ textarea:focus-visible,
 }
 
 /* Each page fades up as it opens (app/template.tsx). Plain CSS, so the page
-   shows as soon as it is painted instead of waiting for JavaScript. */
+   shows as soon as it is painted instead of waiting for JavaScript.
+   "backwards", not "both": holding the end frame would leave an identity
+   transform on this wrapper, and any transform makes fixed-position children
+   (the film dialog) size themselves to the page instead of the window. */
 @keyframes page-enter {
   from { opacity: 0; transform: translateY(12px); }
   to { opacity: 1; transform: none; }
 }
 .page-enter {
-  animation: page-enter 1s cubic-bezier(0.22, 1, 0.36, 1) both;
+  animation: page-enter 1s cubic-bezier(0.22, 1, 0.36, 1) backwards;
 }
 
 /* Hero copy rises in once the logo intro has lifted */

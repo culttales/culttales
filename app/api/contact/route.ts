@@ -109,6 +109,10 @@ export async function POST(request: Request) {
   const saved = await saveEnquiry(data, emailed);
 
   if (!emailed && !saved) return failed();
+  if (!emailed && process.env.RESEND_API_KEY) {
+    // The couple is told it was sent, so it must not sit unnoticed in Supabase.
+    console.error("[contact] ENQUIRY NOT EMAILED: saved in Supabase with emailed = false; reply from there.");
+  }
   return NextResponse.json({ ok: true });
 }
 
@@ -165,15 +169,25 @@ async function sendEmail(data: Record<Field, string>) {
 
   const from = process.env.CONTACT_FROM_EMAIL || "CULT. tales <onboarding@resend.dev>";
   const teamEmail = process.env.CONTACT_TO_EMAIL || contact.email;
-  const send = (payload: Record<string, unknown>) =>
-    fetch("https://api.resend.com/emails", {
+  // Tries once more after a network error, rate limit or server error. The
+  // idempotency key stops Resend sending twice if the first try went through.
+  const send = async (payload: Record<string, unknown>) => {
+    const init = {
       method: "POST",
       headers: {
         Authorization: `Bearer ${apiKey}`,
         "Content-Type": "application/json",
+        "Idempotency-Key": crypto.randomUUID(),
       },
       body: JSON.stringify({ from, ...payload }),
-    }).catch(() => null);
+    };
+    for (let attempt = 1; ; attempt++) {
+      const res = await fetch("https://api.resend.com/emails", init).catch(() => null);
+      const retryable = !res || res.status === 429 || res.status >= 500;
+      if (!retryable || attempt === 2) return res;
+      await new Promise((resolve) => setTimeout(resolve, 1000));
+    }
+  };
 
   const res = await send({
     to: [teamEmail],

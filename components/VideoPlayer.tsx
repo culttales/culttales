@@ -4,7 +4,7 @@ import Image from "next/image";
 import { AnimatePresence, motion } from "motion/react";
 import { useEffect, useId, useRef, useState } from "react";
 import { lockScroll } from "@/lib/scrollLock";
-import { allowFilmSound, playWithSound, setSoundOn, useSoundOn } from "@/lib/sound";
+import { allowFilmSound, playWithSound, syncSoundFromVideo, useSoundOn } from "@/lib/sound";
 import SoundToggle from "./SoundToggle";
 
 type VideoPlayerProps = {
@@ -25,6 +25,7 @@ type VideoPlayerProps = {
  */
 export default function VideoPlayer({ open, onClose, poster, title, src, description }: VideoPlayerProps) {
   const titleId = useId();
+  const dialogRef = useRef<HTMLDivElement>(null);
   const closeRef = useRef<HTMLButtonElement>(null);
   const onCloseRef = useRef(onClose);
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -57,7 +58,26 @@ export default function VideoPlayer({ open, onClose, poster, title, src, descrip
   useEffect(() => {
     if (!open) return;
     const previous = document.activeElement as HTMLElement | null;
-    const onKey = (e: KeyboardEvent) => e.key === "Escape" && onCloseRef.current();
+    // Escape closes; Tab and Shift+Tab cycle through the dialog's own
+    // controls instead of moving to the page behind it.
+    const onKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape") return onCloseRef.current();
+      const dialog = dialogRef.current;
+      if (e.key !== "Tab" || !dialog) return;
+      const items = dialog.querySelectorAll<HTMLElement>("button, [href], video[controls]");
+      if (items.length === 0) return;
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      const outside = !dialog.contains(active);
+      if (e.shiftKey && (active === first || outside)) {
+        e.preventDefault();
+        last.focus();
+      } else if (!e.shiftKey && (active === last || outside)) {
+        e.preventDefault();
+        first.focus();
+      }
+    };
     document.addEventListener("keydown", onKey);
     lockScroll(true);
     closeRef.current?.focus();
@@ -72,6 +92,7 @@ export default function VideoPlayer({ open, onClose, poster, title, src, descrip
     <AnimatePresence>
       {open && (
         <motion.div
+          ref={dialogRef}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
@@ -127,7 +148,7 @@ export default function VideoPlayer({ open, onClose, poster, title, src, descrip
                   preload="auto"
                   onPlay={() => setPlaying(true)}
                   onPause={() => setPlaying(false)}
-                  onVolumeChange={(e) => setSoundOn(!e.currentTarget.muted && e.currentTarget.volume > 0)}
+                  onVolumeChange={(e) => syncSoundFromVideo(e.currentTarget)}
                   className="h-full w-full object-contain"
                 />
               ) : (

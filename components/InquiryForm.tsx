@@ -83,7 +83,7 @@ export default function InquiryForm() {
             <p className="eyebrow">Enquiry received</p>
             <h3 className="text-3xl text-obsidian sm:text-4xl">Thank you. Your story is already special to us.</h3>
             <p className="mx-auto max-w-md text-sm leading-relaxed text-char/80">
-              We will write back to <strong className="font-medium">{sent.email}</strong> within 48 hours
+              We will write back to <strong className="font-medium">{sent.email}</strong>
               {sent.dates ? <> about {sent.dates}</> : null}
               {sent.venue ? <> in {sent.venue}</> : null}.
             </p>
@@ -115,7 +115,7 @@ export default function InquiryForm() {
           >
             <div className="flex flex-wrap items-center justify-between gap-2 border-b border-line-dark pb-4">
               <span className="font-display text-xl italic text-obsidian">The couple &amp; the celebration</span>
-              <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-bronze">We reply within 48 hours</span>
+              <span className="text-[10px] font-medium uppercase tracking-[0.16em] text-bronze">We reply to every enquiry</span>
             </div>
 
             <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">

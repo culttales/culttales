@@ -81,7 +81,7 @@ export const regions: Region[] = [
       },
       {
         q: "How do we book a Kerala wedding?",
-        a: "Tell us about your wedding through the enquiry form. We reply within 48 hours to talk through your dates, your plans and your story.",
+        a: "Tell us about your wedding through the enquiry form. We will write back to talk through your dates, your plans and your story.",
       },
     ],
   },
@@ -142,7 +142,7 @@ export const regions: Region[] = [
       },
       {
         q: "How do we book a Rajasthan wedding?",
-        a: "Tell us about your wedding through the enquiry form. We reply within 48 hours to talk through your dates, your plans and your story.",
+        a: "Tell us about your wedding through the enquiry form. We will write back to talk through your dates, your plans and your story.",
       },
     ],
   },

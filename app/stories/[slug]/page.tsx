@@ -6,6 +6,7 @@ import clsx from "clsx";
 import ClosingInvite from "@/components/ClosingInvite";
 import Reveal from "@/components/Reveal";
 import VideoPlayerLauncher from "@/components/VideoPlayerLauncher";
+import { cityPath, getCityForStory } from "@/lib/cities";
 import { getRegionByName } from "@/lib/regions";
 import { SITE_NAME, SITE_URL, breadcrumbs, jsonLd, pageMetadata } from "@/lib/seo";
 import { getAllStories, getAdjacentStory, getStoryBySlug, type Story } from "@/lib/stories";
@@ -59,6 +60,7 @@ export default async function StoryPage({ params }: StoryPageProps) {
   const next = getAdjacentStory(story.slug);
   const gallery = galleryLayout(story.images);
   const region = getRegionByName(story.region);
+  const city = getCityForStory(story);
   const path = `/stories/${story.slug}`;
 
   return (
@@ -189,6 +191,11 @@ export default async function StoryPage({ params }: StoryPageProps) {
                 <Link href={`/wedding-photography/${region.slug}`} className="text-link mt-6">
                   {region.name} wedding photography &amp; films &rarr;
                 </Link>
+                {city && (
+                  <Link href={cityPath(city)} className="text-link mt-3 flex w-fit">
+                    {city.name} wedding photography &amp; films &rarr;
+                  </Link>
+                )}
               </div>
             )}
           </div>

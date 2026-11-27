@@ -7,6 +7,7 @@ import FAQ from "@/components/FAQ";
 import PageIntro from "@/components/PageIntro";
 import Reveal from "@/components/Reveal";
 import SectionMarker from "@/components/SectionMarker";
+import { cityPath, getCitiesForRegion } from "@/lib/cities";
 import { getAllRegions, getRegionBySlug } from "@/lib/regions";
 import { SITE_NAME, SITE_URL, breadcrumbs, jsonLd, pageMetadata } from "@/lib/seo";
 import { getAllStories } from "@/lib/stories";
@@ -39,6 +40,7 @@ export default async function RegionPage({ params }: RegionPageProps) {
 
   const path = `/wedding-photography/${region.slug}`;
   const stories = getAllStories().filter((s) => s.region === region.name);
+  const cities = getCitiesForRegion(region.slug);
 
   const service = {
     "@context": "https://schema.org",
@@ -125,14 +127,25 @@ export default async function RegionPage({ params }: RegionPageProps) {
         <div className="mx-auto max-w-site">
           <SectionMarker title={`Where we work in ${region.name}`} aside="And anywhere else you are" />
           <ul className="mt-10 flex flex-wrap gap-3">
-            {region.places.map((place) => (
-              <li
-                key={place}
-                className="rounded-full bg-sand px-5 py-2.5 text-[11px] font-medium uppercase tracking-editorial text-obsidian"
-              >
-                {place}
-              </li>
-            ))}
+            {region.places.map((place) => {
+              const city = cities.find((c) => c.name === place);
+              const chip =
+                "block rounded-full bg-sand px-5 py-2.5 text-[11px] font-medium uppercase tracking-editorial text-obsidian";
+              return (
+                <li key={place}>
+                  {city ? (
+                    <Link
+                      href={cityPath(city)}
+                      className={`${chip} transition-colors hover:bg-obsidian hover:text-paper`}
+                    >
+                      {place} &rarr;
+                    </Link>
+                  ) : (
+                    <span className={chip}>{place}</span>
+                  )}
+                </li>
+              );
+            })}
           </ul>
           <p className="mt-8 max-w-2xl text-base font-light leading-[1.7] text-char/80">
             We travel across {region.name}, the rest of India and beyond for weddings. If your celebration is

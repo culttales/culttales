@@ -1,6 +1,7 @@
 import type { MetadataRoute } from "next";
 import { getAllStories } from "@/lib/stories";
 import { getAllJournalPosts } from "@/lib/journal";
+import { cityPath, getAllCities } from "@/lib/cities";
 import { getAllRegions } from "@/lib/regions";
 import { SITE_URL } from "@/lib/seo";
 import { SHOW_JOURNAL } from "@/lib/site";
@@ -20,6 +21,12 @@ export default function sitemap(): MetadataRoute.Sitemap {
     priority: 0.9,
   }));
 
+  const cities = getAllCities().map((city) => ({
+    url: `${SITE_URL}${cityPath(city)}`,
+    changeFrequency: "monthly" as const,
+    priority: 0.8,
+  }));
+
   const journal = (SHOW_JOURNAL ? getAllJournalPosts() : []).map((post) => ({
     url: `${SITE_URL}/journal/${post.slug}`,
     changeFrequency: "monthly" as const,
@@ -33,6 +40,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 1,
     },
     ...regions,
+    ...cities,
     {
       url: `${SITE_URL}/stories`,
       changeFrequency: "weekly" as const,

@@ -1,3 +1,4 @@
+import { cityPath, getAllCities } from "@/lib/cities";
 import { getAllRegions } from "@/lib/regions";
 import { SITE_URL } from "@/lib/seo";
 import { contact } from "@/lib/site";
@@ -10,6 +11,9 @@ export const dynamic = "force-static";
 export function GET() {
   const regions = getAllRegions().map(
     (r) => `- [${r.metaTitle}](${SITE_URL}/wedding-photography/${r.slug}): ${r.metaDescription}`
+  );
+  const cities = getAllCities().map(
+    (c) => `- [${c.metaTitle}](${SITE_URL}${cityPath(c)}): ${c.metaDescription}`
   );
   const stories = getAllStories().map(
     (s) => `- [${s.coupleNames} — ${s.headline}](${SITE_URL}/stories/${s.slug}): ${s.excerpt}`
@@ -34,6 +38,10 @@ export function GET() {
 ## Wedding photography by region
 
 ${regions.join("\n")}
+
+## Wedding photography by city
+
+${cities.join("\n")}
 
 ## Wedding stories
 
